@@ -11,20 +11,21 @@ namespace Eleicoes
         protected int codigo;
         protected string nome;
         protected string email;
-        protected DateTime aniversario;
+        protected DateTime dataNascimento;
         protected Partido partido;
 
-        public Candidato(string nome, string email, DateTime aniversario, Partido partido)
+        public Candidato(string nome, string email, DateTime dataNascimento, Partido partido)
         {
             this.nome = nome;
             this.email = email;
-            this.aniversario = aniversario;
+            this.dataNascimento = dataNascimento;
             this.partido = partido;
         }
 
         public override string ToString()
         {
-            return "Código: " + codigo + " Nome: " + nome + " Email: " + email + " Aniversario: " + aniversario + " Partido: " + Partido;
+            return "Código: " + codigo + " Nome: " + nome + " Email: " + email +
+                " Aniversario: " + dataNascimento + " Partido: " + partido;
         }
     }
 }

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Eleicoes
 {
-    class Prefeito : Candidato
+    class VicePrefeito : Candidato
     {
-        public Prefeito(int cod, string nome, string email, DateTime dataNascimento, Partido partido):base(nome, email, dataNascimento, partido)
+        private Prefeito prefeito;
+        public VicePrefeito(int cod, string nome, string email, DateTime dataNascimento, Partido partido, Prefeito prefeito) :base(nome, email, dataNascimento, partido)
         {
             this.codigo = cod;
+            this.prefeito = prefeito;
         }
 
         public override string ToString()
