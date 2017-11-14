@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,24 @@ namespace Eleicoes
 {
     public partial class Form2 : Form
     {
+        public static ArrayList aPartidos = new ArrayList();
         public Form2()
         {
             InitializeComponent();
+            rbnPartido.Checked = true;
+            lblNome.Visible = true;
+            lblDat.Visible = false;
+            lblCodgo.Visible = false;
+            lblEmail.Visible = false;
+            lblPartido.Visible = false;
+            txtDataNascimento.Visible = false;
+            txtNome.Visible = true;
+            txtVariavel1.Visible = false;
+            txtVariavel3.Visible = false;
+            txtVariavel2.Visible = false;
         }
 
+        
         private void rbnPartido_CheckedChanged(object sender, EventArgs e)
         {
             lblNome.Visible = true;
@@ -79,6 +93,20 @@ namespace Eleicoes
             txtNome.Visible = false;
             lblCodgo.Text = "Zona";
             lblPartido.Text = "Seção";
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if(rbnPartido.Checked==true)
+            {
+                aPartidos.Add(new Partido(txtNome.Text));
+            }
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
         }
     }
 }

@@ -16,5 +16,11 @@ namespace Eleicoes
         {
             InitializeComponent();
         }
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
     }
 }

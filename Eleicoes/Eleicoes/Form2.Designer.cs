@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbnPartido = new System.Windows.Forms.RadioButton();
-            this.rbnCandidato = new System.Windows.Forms.RadioButton();
-            this.rbnEleitores = new System.Windows.Forms.RadioButton();
             this.rbnUrna = new System.Windows.Forms.RadioButton();
+            this.rbnEleitores = new System.Windows.Forms.RadioButton();
+            this.rbnCandidato = new System.Windows.Forms.RadioButton();
+            this.rbnPartido = new System.Windows.Forms.RadioButton();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -61,29 +61,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro";
             // 
-            // rbnPartido
+            // rbnUrna
             // 
-            this.rbnPartido.AutoSize = true;
-            this.rbnPartido.Location = new System.Drawing.Point(7, 20);
-            this.rbnPartido.Name = "rbnPartido";
-            this.rbnPartido.Size = new System.Drawing.Size(58, 17);
-            this.rbnPartido.TabIndex = 0;
-            this.rbnPartido.TabStop = true;
-            this.rbnPartido.Text = "Partido";
-            this.rbnPartido.UseVisualStyleBackColor = true;
-            this.rbnPartido.CheckedChanged += new System.EventHandler(this.rbnPartido_CheckedChanged);
-            // 
-            // rbnCandidato
-            // 
-            this.rbnCandidato.AutoSize = true;
-            this.rbnCandidato.Location = new System.Drawing.Point(87, 20);
-            this.rbnCandidato.Name = "rbnCandidato";
-            this.rbnCandidato.Size = new System.Drawing.Size(73, 17);
-            this.rbnCandidato.TabIndex = 1;
-            this.rbnCandidato.TabStop = true;
-            this.rbnCandidato.Text = "Candidato";
-            this.rbnCandidato.UseVisualStyleBackColor = true;
-            this.rbnCandidato.CheckedChanged += new System.EventHandler(this.rbnCandidato_CheckedChanged);
+            this.rbnUrna.AutoSize = true;
+            this.rbnUrna.Location = new System.Drawing.Point(268, 20);
+            this.rbnUrna.Name = "rbnUrna";
+            this.rbnUrna.Size = new System.Drawing.Size(48, 17);
+            this.rbnUrna.TabIndex = 3;
+            this.rbnUrna.Text = "Urna";
+            this.rbnUrna.UseVisualStyleBackColor = true;
+            this.rbnUrna.CheckedChanged += new System.EventHandler(this.rbnUrna_CheckedChanged);
             // 
             // rbnEleitores
             // 
@@ -92,22 +79,33 @@
             this.rbnEleitores.Name = "rbnEleitores";
             this.rbnEleitores.Size = new System.Drawing.Size(65, 17);
             this.rbnEleitores.TabIndex = 2;
-            this.rbnEleitores.TabStop = true;
             this.rbnEleitores.Text = "Eleitores";
             this.rbnEleitores.UseVisualStyleBackColor = true;
             this.rbnEleitores.CheckedChanged += new System.EventHandler(this.rbnEleitores_CheckedChanged);
             // 
-            // rbnUrna
+            // rbnCandidato
             // 
-            this.rbnUrna.AutoSize = true;
-            this.rbnUrna.Location = new System.Drawing.Point(268, 20);
-            this.rbnUrna.Name = "rbnUrna";
-            this.rbnUrna.Size = new System.Drawing.Size(48, 17);
-            this.rbnUrna.TabIndex = 3;
-            this.rbnUrna.TabStop = true;
-            this.rbnUrna.Text = "Urna";
-            this.rbnUrna.UseVisualStyleBackColor = true;
-            this.rbnUrna.CheckedChanged += new System.EventHandler(this.rbnUrna_CheckedChanged);
+            this.rbnCandidato.AutoSize = true;
+            this.rbnCandidato.Location = new System.Drawing.Point(87, 20);
+            this.rbnCandidato.Name = "rbnCandidato";
+            this.rbnCandidato.Size = new System.Drawing.Size(73, 17);
+            this.rbnCandidato.TabIndex = 1;
+            this.rbnCandidato.Text = "Candidato";
+            this.rbnCandidato.UseVisualStyleBackColor = true;
+            this.rbnCandidato.CheckedChanged += new System.EventHandler(this.rbnCandidato_CheckedChanged);
+            // 
+            // rbnPartido
+            // 
+            this.rbnPartido.AutoSize = true;
+            this.rbnPartido.Checked = true;
+            this.rbnPartido.Location = new System.Drawing.Point(7, 20);
+            this.rbnPartido.Name = "rbnPartido";
+            this.rbnPartido.Size = new System.Drawing.Size(58, 17);
+            this.rbnPartido.TabIndex = 0;
+            this.rbnPartido.TabStop = true;
+            this.rbnPartido.Text = "Partido";
+            this.rbnPartido.UseVisualStyleBackColor = true;
+            this.rbnPartido.CheckedChanged += new System.EventHandler(this.rbnPartido_CheckedChanged);
             // 
             // txtNome
             // 
@@ -133,6 +131,7 @@
             this.btnCadastrar.TabIndex = 3;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnExcluir
             // 
@@ -227,6 +226,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
