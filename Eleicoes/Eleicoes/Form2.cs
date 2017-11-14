@@ -27,7 +27,6 @@ namespace Eleicoes
             txtNome.Visible = true;
             txtVariavel1.Visible = false;
             txtVariavel3.Visible = false;
-            txtVariavel2.Visible = false;
         }
 
         
