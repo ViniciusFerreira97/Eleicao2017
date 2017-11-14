@@ -8,16 +8,22 @@ namespace Eleicoes
 {
     class VicePrefeito : Candidato
     {
-        private Prefeito prefeito;
-        public VicePrefeito(int cod, string nome, string email, DateTime dataNascimento, Partido partido, Prefeito prefeito) :base(nome, email, dataNascimento, partido)
+        public VicePrefeito(string cod, string nome, string email, DateTime dataNascimento, Partido partido) :base(nome, email, dataNascimento, partido)
         {
-            this.codigo = cod;
-            this.prefeito = prefeito;
+            // TryParse do codigo do VicePrefeito
+            int aux;
+            bool ver = int.TryParse(cod, out aux);
+            if (ver)
+                this.codigo = aux;
+            else
+                throw new InvalidDataException("Valor digitado para código do Vice-Prefeito é invalido !\n" +
+                    "Por favor, digite um valor de 2 números !");
+
         }
 
         public override string ToString()
         {
-            return " Código: " + codigo + base.ToString();
+            return "Vice-Prefeito -- Código: " + codigo + base.ToString();
         }
     }
 }

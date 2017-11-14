@@ -14,18 +14,34 @@ namespace Eleicoes
         private int zona;
         private int secao;
 
-        public Eleitor(string nome, DateTime dataNascimento, string tituloEleitor, int zona, int secao)
+        public Eleitor(string nome, DateTime dataNascimento, string tituloEleitor, string zona, string secao)
         {
             this.nome = nome;
             this.dataNascimento = dataNascimento;
             this.tituloEleitor = tituloEleitor;
-            this.zona = zona;
-            this.secao = secao;
+
+            // TryParse da zona de eleição
+            int aux;
+            bool ver = int.TryParse(zona, out aux);
+            if (ver)
+                this.zona = aux;
+            else
+                throw new InvalidDataException("Valor digitado para zona de votação da Urna é invalido !\n" +
+                    "Por favor, digite um valor de números inteiros !");
+
+            // TryParse da seção de eleição
+            int aux1;
+            ver = int.TryParse(secao, out aux1);
+            if (ver)
+                this.secao = aux1;
+            else
+                throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
+                    "Por favor, digite um valor de números inteiros !");
         }
 
         public override string ToString()
         {
-            return "Nome: " + nome + "Data de nascimento: " + dataNascimento +
+            return "Eleitor -- Nome: " + nome + "Data de nascimento: " + dataNascimento +
                 " Titulo de eleitor: " + tituloEleitor + " Zona: " + zona + " Seção: " + secao;
         }
     }

@@ -18,8 +18,8 @@ namespace Eleicoes
         {
             this.nome = nome;
             this.email = email;
-            this.dataNascimento = dataNascimento;
             this.partido = partido;
+            this.dataNascimento = dataNascimento;
         }
 
         public override string ToString()
