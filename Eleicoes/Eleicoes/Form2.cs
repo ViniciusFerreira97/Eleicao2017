@@ -101,7 +101,6 @@ namespace Eleicoes
             {
                 try
                 {
-
                     Partido.aPartidos.Add(new Partido(txtNome.Text));
                     txtNome.Text = "";
                     MessageBox.Show("Partido cadastrado com sucesso!", "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -111,6 +110,14 @@ namespace Eleicoes
 
                     MessageBox.Show(a.Message, "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            if(rbnCandidato.Checked == true)
+            {
+                if(rbnPrefeito.Checked == true)
+                {
+                    
+                }
+
             }
         }
 

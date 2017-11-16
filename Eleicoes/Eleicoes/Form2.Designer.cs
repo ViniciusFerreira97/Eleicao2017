@@ -45,7 +45,21 @@
             this.txtVariavel2 = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtVariavel3 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbnPrefeito = new System.Windows.Forms.RadioButton();
+            this.rbnVereador = new System.Windows.Forms.RadioButton();
+            this.lclEmailVice = new System.Windows.Forms.Label();
+            this.txtEmailVice = new System.Windows.Forms.TextBox();
+            this.lblPartidoVice = new System.Windows.Forms.Label();
+            this.txtPartidoVice = new System.Windows.Forms.TextBox();
+            this.lblCodVice = new System.Windows.Forms.Label();
+            this.txtCodVice = new System.Windows.Forms.TextBox();
+            this.lblDatVice = new System.Windows.Forms.Label();
+            this.txtDatVice = new System.Windows.Forms.TextBox();
+            this.lblNomeVice = new System.Windows.Forms.Label();
+            this.txtNomeVice = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -56,7 +70,7 @@
             this.groupBox1.Controls.Add(this.rbnPartido);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 55);
+            this.groupBox1.Size = new System.Drawing.Size(460, 55);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro";
@@ -64,7 +78,7 @@
             // rbnUrna
             // 
             this.rbnUrna.AutoSize = true;
-            this.rbnUrna.Location = new System.Drawing.Point(268, 20);
+            this.rbnUrna.Location = new System.Drawing.Point(381, 20);
             this.rbnUrna.Name = "rbnUrna";
             this.rbnUrna.Size = new System.Drawing.Size(48, 17);
             this.rbnUrna.TabIndex = 3;
@@ -75,7 +89,7 @@
             // rbnEleitores
             // 
             this.rbnEleitores.AutoSize = true;
-            this.rbnEleitores.Location = new System.Drawing.Point(186, 20);
+            this.rbnEleitores.Location = new System.Drawing.Point(256, 20);
             this.rbnEleitores.Name = "rbnEleitores";
             this.rbnEleitores.Size = new System.Drawing.Size(65, 17);
             this.rbnEleitores.TabIndex = 2;
@@ -86,7 +100,7 @@
             // rbnCandidato
             // 
             this.rbnCandidato.AutoSize = true;
-            this.rbnCandidato.Location = new System.Drawing.Point(87, 20);
+            this.rbnCandidato.Location = new System.Drawing.Point(119, 20);
             this.rbnCandidato.Name = "rbnCandidato";
             this.rbnCandidato.Size = new System.Drawing.Size(73, 17);
             this.rbnCandidato.TabIndex = 1;
@@ -125,7 +139,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(77, 263);
+            this.btnCadastrar.Location = new System.Drawing.Point(121, 348);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(95, 32);
             this.btnCadastrar.TabIndex = 3;
@@ -135,7 +149,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(181, 263);
+            this.btnExcluir.Location = new System.Drawing.Point(256, 348);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;
@@ -145,7 +159,7 @@
             // lblDat
             // 
             this.lblDat.AutoSize = true;
-            this.lblDat.Location = new System.Drawing.Point(163, 84);
+            this.lblDat.Location = new System.Drawing.Point(131, 84);
             this.lblDat.Name = "lblDat";
             this.lblDat.Size = new System.Drawing.Size(104, 13);
             this.lblDat.TabIndex = 6;
@@ -153,7 +167,7 @@
             // 
             // txtDataNascimento
             // 
-            this.txtDataNascimento.Location = new System.Drawing.Point(163, 103);
+            this.txtDataNascimento.Location = new System.Drawing.Point(131, 103);
             this.txtDataNascimento.Name = "txtDataNascimento";
             this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
             this.txtDataNascimento.TabIndex = 5;
@@ -161,7 +175,7 @@
             // lblCodgo
             // 
             this.lblCodgo.AutoSize = true;
-            this.lblCodgo.Location = new System.Drawing.Point(12, 139);
+            this.lblCodgo.Location = new System.Drawing.Point(252, 84);
             this.lblCodgo.Name = "lblCodgo";
             this.lblCodgo.Size = new System.Drawing.Size(40, 13);
             this.lblCodgo.TabIndex = 8;
@@ -169,7 +183,7 @@
             // 
             // txtVariavel1
             // 
-            this.txtVariavel1.Location = new System.Drawing.Point(12, 158);
+            this.txtVariavel1.Location = new System.Drawing.Point(251, 103);
             this.txtVariavel1.Name = "txtVariavel1";
             this.txtVariavel1.Size = new System.Drawing.Size(100, 20);
             this.txtVariavel1.TabIndex = 7;
@@ -177,7 +191,7 @@
             // lblPartido
             // 
             this.lblPartido.AutoSize = true;
-            this.lblPartido.Location = new System.Drawing.Point(163, 139);
+            this.lblPartido.Location = new System.Drawing.Point(372, 84);
             this.lblPartido.Name = "lblPartido";
             this.lblPartido.Size = new System.Drawing.Size(40, 13);
             this.lblPartido.TabIndex = 10;
@@ -185,7 +199,7 @@
             // 
             // txtVariavel2
             // 
-            this.txtVariavel2.Location = new System.Drawing.Point(163, 158);
+            this.txtVariavel2.Location = new System.Drawing.Point(372, 103);
             this.txtVariavel2.Name = "txtVariavel2";
             this.txtVariavel2.Size = new System.Drawing.Size(100, 20);
             this.txtVariavel2.TabIndex = 9;
@@ -193,7 +207,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(12, 190);
+            this.lblEmail.Location = new System.Drawing.Point(9, 126);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 12;
@@ -201,16 +215,140 @@
             // 
             // txtVariavel3
             // 
-            this.txtVariavel3.Location = new System.Drawing.Point(12, 209);
+            this.txtVariavel3.Location = new System.Drawing.Point(9, 145);
             this.txtVariavel3.Name = "txtVariavel3";
-            this.txtVariavel3.Size = new System.Drawing.Size(251, 20);
+            this.txtVariavel3.Size = new System.Drawing.Size(342, 20);
             this.txtVariavel3.TabIndex = 11;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbnVereador);
+            this.groupBox2.Controls.Add(this.rbnPrefeito);
+            this.groupBox2.Location = new System.Drawing.Point(9, 182);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(248, 54);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tipo Candidato";
+            // 
+            // rbnPrefeito
+            // 
+            this.rbnPrefeito.AutoSize = true;
+            this.rbnPrefeito.Location = new System.Drawing.Point(7, 20);
+            this.rbnPrefeito.Name = "rbnPrefeito";
+            this.rbnPrefeito.Size = new System.Drawing.Size(132, 17);
+            this.rbnPrefeito.TabIndex = 0;
+            this.rbnPrefeito.TabStop = true;
+            this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
+            this.rbnPrefeito.UseVisualStyleBackColor = true;
+            // 
+            // rbnVereador
+            // 
+            this.rbnVereador.AutoSize = true;
+            this.rbnVereador.Location = new System.Drawing.Point(174, 20);
+            this.rbnVereador.Name = "rbnVereador";
+            this.rbnVereador.Size = new System.Drawing.Size(68, 17);
+            this.rbnVereador.TabIndex = 2;
+            this.rbnVereador.TabStop = true;
+            this.rbnVereador.Text = "Vereador";
+            this.rbnVereador.UseVisualStyleBackColor = true;
+            // 
+            // lclEmailVice
+            // 
+            this.lclEmailVice.AutoSize = true;
+            this.lclEmailVice.Location = new System.Drawing.Point(9, 293);
+            this.lclEmailVice.Name = "lclEmailVice";
+            this.lclEmailVice.Size = new System.Drawing.Size(35, 13);
+            this.lclEmailVice.TabIndex = 23;
+            this.lclEmailVice.Text = "E-mail";
+            // 
+            // txtEmailVice
+            // 
+            this.txtEmailVice.Location = new System.Drawing.Point(9, 312);
+            this.txtEmailVice.Name = "txtEmailVice";
+            this.txtEmailVice.Size = new System.Drawing.Size(342, 20);
+            this.txtEmailVice.TabIndex = 22;
+            // 
+            // lblPartidoVice
+            // 
+            this.lblPartidoVice.AutoSize = true;
+            this.lblPartidoVice.Location = new System.Drawing.Point(372, 248);
+            this.lblPartidoVice.Name = "lblPartidoVice";
+            this.lblPartidoVice.Size = new System.Drawing.Size(40, 13);
+            this.lblPartidoVice.TabIndex = 21;
+            this.lblPartidoVice.Text = "Partido";
+            // 
+            // txtPartidoVice
+            // 
+            this.txtPartidoVice.Location = new System.Drawing.Point(372, 267);
+            this.txtPartidoVice.Name = "txtPartidoVice";
+            this.txtPartidoVice.Size = new System.Drawing.Size(100, 20);
+            this.txtPartidoVice.TabIndex = 20;
+            // 
+            // lblCodVice
+            // 
+            this.lblCodVice.AutoSize = true;
+            this.lblCodVice.Location = new System.Drawing.Point(251, 248);
+            this.lblCodVice.Name = "lblCodVice";
+            this.lblCodVice.Size = new System.Drawing.Size(40, 13);
+            this.lblCodVice.TabIndex = 19;
+            this.lblCodVice.Text = "Código";
+            // 
+            // txtCodVice
+            // 
+            this.txtCodVice.Location = new System.Drawing.Point(251, 267);
+            this.txtCodVice.Name = "txtCodVice";
+            this.txtCodVice.Size = new System.Drawing.Size(100, 20);
+            this.txtCodVice.TabIndex = 18;
+            // 
+            // lblDatVice
+            // 
+            this.lblDatVice.AutoSize = true;
+            this.lblDatVice.Location = new System.Drawing.Point(131, 248);
+            this.lblDatVice.Name = "lblDatVice";
+            this.lblDatVice.Size = new System.Drawing.Size(104, 13);
+            this.lblDatVice.TabIndex = 17;
+            this.lblDatVice.Text = "Data de Nascimento";
+            // 
+            // txtDatVice
+            // 
+            this.txtDatVice.Location = new System.Drawing.Point(131, 267);
+            this.txtDatVice.Name = "txtDatVice";
+            this.txtDatVice.Size = new System.Drawing.Size(100, 20);
+            this.txtDatVice.TabIndex = 16;
+            // 
+            // lblNomeVice
+            // 
+            this.lblNomeVice.AutoSize = true;
+            this.lblNomeVice.Location = new System.Drawing.Point(9, 248);
+            this.lblNomeVice.Name = "lblNomeVice";
+            this.lblNomeVice.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeVice.TabIndex = 15;
+            this.lblNomeVice.Text = "Nome ";
+            // 
+            // txtNomeVice
+            // 
+            this.txtNomeVice.Location = new System.Drawing.Point(9, 267);
+            this.txtNomeVice.Name = "txtNomeVice";
+            this.txtNomeVice.Size = new System.Drawing.Size(100, 20);
+            this.txtNomeVice.TabIndex = 14;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 307);
+            this.ClientSize = new System.Drawing.Size(489, 389);
+            this.Controls.Add(this.lclEmailVice);
+            this.Controls.Add(this.txtEmailVice);
+            this.Controls.Add(this.lblPartidoVice);
+            this.Controls.Add(this.txtPartidoVice);
+            this.Controls.Add(this.lblCodVice);
+            this.Controls.Add(this.txtCodVice);
+            this.Controls.Add(this.lblDatVice);
+            this.Controls.Add(this.txtDatVice);
+            this.Controls.Add(this.lblNomeVice);
+            this.Controls.Add(this.txtNomeVice);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtVariavel3);
             this.Controls.Add(this.lblPartido);
@@ -229,6 +367,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,5 +393,18 @@
         private System.Windows.Forms.TextBox txtVariavel2;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtVariavel3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbnVereador;
+        private System.Windows.Forms.RadioButton rbnPrefeito;
+        private System.Windows.Forms.Label lclEmailVice;
+        private System.Windows.Forms.TextBox txtEmailVice;
+        private System.Windows.Forms.Label lblPartidoVice;
+        private System.Windows.Forms.TextBox txtPartidoVice;
+        private System.Windows.Forms.Label lblCodVice;
+        private System.Windows.Forms.TextBox txtCodVice;
+        private System.Windows.Forms.Label lblDatVice;
+        private System.Windows.Forms.TextBox txtDatVice;
+        private System.Windows.Forms.Label lblNomeVice;
+        private System.Windows.Forms.TextBox txtNomeVice;
     }
 }
