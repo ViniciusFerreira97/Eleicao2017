@@ -13,7 +13,7 @@ namespace Eleicoes
 {
     public partial class Form2 : Form
     {
-        public static ArrayList aPartidos = new ArrayList();
+        
         public Form2()
         {
             InitializeComponent();
@@ -27,6 +27,7 @@ namespace Eleicoes
             txtNome.Visible = true;
             txtVariavel1.Visible = false;
             txtVariavel3.Visible = false;
+            txtVariavel2.Visible = false;
         }
 
         
@@ -98,7 +99,18 @@ namespace Eleicoes
         {
             if(rbnPartido.Checked==true)
             {
-                aPartidos.Add(new Partido(txtNome.Text));
+                try
+                {
+
+                    Partido.aPartidos.Add(new Partido(txtNome.Text));
+                    txtNome.Text = "";
+                    MessageBox.Show("Partido cadastrado com sucesso!", "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (InvalidDataException a)
+                {
+
+                    MessageBox.Show(a.Message, "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

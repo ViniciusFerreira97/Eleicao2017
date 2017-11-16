@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,9 @@ namespace Eleicoes
     class Prefeito : Candidato
     {
         VicePrefeito vicePrefeito;
-        public Prefeito(string cod, string nome, string email, DateTime dataNascimento, Partido partido, VicePrefeito vprefeito):base(nome, email, dataNascimento, partido)
+        public static ArrayList aPrefeitos = new ArrayList();
+
+        public Prefeito(string cod, string nome, string email, DateTime dataNascimento, Partido partido, VicePrefeito vprefeito) : base(nome, email, dataNascimento, partido)
         {
             this.vicePrefeito = vprefeito;
 
@@ -17,10 +20,28 @@ namespace Eleicoes
             int aux;
             bool ver = int.TryParse(cod, out aux);
             if (ver)
-                this.codigo = aux;
+            {
+                if(VerificaExistencia(aux))
+                    this.codigo = aux;
+                else
+                    throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n" +
+                        "Pois já existe um Prefeito com esse código !");
+            }
             else
-                throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n"+
+                throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n" +
                     "Por favor, digite um valor de 2 números !");
+        }
+
+        protected override bool VerificaExistencia(int cod)
+        {
+            foreach (Prefeito p in aPrefeitos)
+            {
+                if (cod == p.codigo)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public override string ToString()

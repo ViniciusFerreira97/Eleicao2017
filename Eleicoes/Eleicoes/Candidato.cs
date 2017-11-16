@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace Eleicoes
             this.partido = partido;
             this.dataNascimento = dataNascimento;
         }
+
+        abstract protected bool VerificaExistencia(int cod);
 
         public override string ToString()
         {
