@@ -54,13 +54,13 @@
             this.lblCodVice = new System.Windows.Forms.Label();
             this.txtCodVice = new System.Windows.Forms.TextBox();
             this.lblDatVice = new System.Windows.Forms.Label();
-            this.txtDatVice = new System.Windows.Forms.TextBox();
             this.lblNomeVice = new System.Windows.Forms.Label();
             this.txtNomeVice = new System.Windows.Forms.TextBox();
             this.cbxPartido = new System.Windows.Forms.ComboBox();
             this.txtVariavel2 = new System.Windows.Forms.TextBox();
             this.grpVice = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtDatVice = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -307,13 +307,6 @@
             this.lblDatVice.TabIndex = 17;
             this.lblDatVice.Text = "Data de Nascimento";
             // 
-            // txtDatVice
-            // 
-            this.txtDatVice.Location = new System.Drawing.Point(124, 28);
-            this.txtDatVice.Name = "txtDatVice";
-            this.txtDatVice.Size = new System.Drawing.Size(100, 20);
-            this.txtDatVice.TabIndex = 16;
-            // 
             // lblNomeVice
             // 
             this.lblNomeVice.AutoSize = true;
@@ -348,6 +341,7 @@
             // 
             // grpVice
             // 
+            this.grpVice.Controls.Add(this.txtDatVice);
             this.grpVice.Controls.Add(this.txtCodVice);
             this.grpVice.Controls.Add(this.txtEmailVice);
             this.grpVice.Controls.Add(this.lclEmailVice);
@@ -355,7 +349,6 @@
             this.grpVice.Controls.Add(this.txtPartidoVice);
             this.grpVice.Controls.Add(this.lblCodVice);
             this.grpVice.Controls.Add(this.lblDatVice);
-            this.grpVice.Controls.Add(this.txtDatVice);
             this.grpVice.Controls.Add(this.lblNomeVice);
             this.grpVice.Controls.Add(this.txtNomeVice);
             this.grpVice.Location = new System.Drawing.Point(-1, 256);
@@ -373,6 +366,15 @@
             this.label1.Size = new System.Drawing.Size(158, 18);
             this.label1.TabIndex = 27;
             this.label1.Text = "Dados Vice Prefeito";
+            // 
+            // txtDatVice
+            // 
+            this.txtDatVice.Location = new System.Drawing.Point(127, 28);
+            this.txtDatVice.Mask = "00/00/0000";
+            this.txtDatVice.Name = "txtDatVice";
+            this.txtDatVice.Size = new System.Drawing.Size(100, 20);
+            this.txtDatVice.TabIndex = 28;
+            this.txtDatVice.ValidatingType = typeof(System.DateTime);
             // 
             // Form2
             // 
@@ -438,12 +440,12 @@
         private System.Windows.Forms.Label lblCodVice;
         private System.Windows.Forms.TextBox txtCodVice;
         private System.Windows.Forms.Label lblDatVice;
-        private System.Windows.Forms.TextBox txtDatVice;
         private System.Windows.Forms.Label lblNomeVice;
         private System.Windows.Forms.TextBox txtNomeVice;
         private System.Windows.Forms.ComboBox cbxPartido;
         private System.Windows.Forms.TextBox txtVariavel2;
         private System.Windows.Forms.GroupBox grpVice;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox txtDatVice;
     }
 }

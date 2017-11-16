@@ -15,12 +15,19 @@ namespace Eleicoes
         protected DateTime dataNascimento;
         protected Partido partido;
 
-        public Candidato(string nome, string email, DateTime dataNascimento, Partido partido)
+        public Candidato(string nome, string email, string dataNascimento, Partido partido)
         {
             this.nome = nome;
             this.email = email;
             this.partido = partido;
-            this.dataNascimento = dataNascimento;
+            DateTime aux;
+            bool ver = DateTime.TryParse(dataNascimento, out aux);
+            if(ver)
+            this.dataNascimento = DateTime.Parse(dataNascimento);
+            else
+            {
+                throw new InvalidDataException("Insira um valor de data que seja válido!");
+            }
         }
 
         abstract protected bool VerificaExistencia(int cod);

@@ -75,7 +75,7 @@ namespace Eleicoes
             {
                 foreach (Partido a in Partido.aPartidos)
                 {
-                    cbxPartido.Items.Add(a.getNome());
+                    cbxPartido.Items.Add(a.nome);
                 }
             }
         }
@@ -141,6 +141,8 @@ namespace Eleicoes
             {
                 if(rbnPrefeito.Checked == true)
                 {
+                    int aux = Partido.verificaPosicao(cbxPartido.Text);
+                    VicePrefeito.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text,txtDatVice.Text ,(Partido) Partido.aPartidos[aux]));
                 }
             }
         }

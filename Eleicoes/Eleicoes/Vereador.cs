@@ -11,7 +11,7 @@ namespace Eleicoes
     {
         public static ArrayList aVereador = new ArrayList();
 
-        public Vereador(string cod, string nome, string email, DateTime dataNascimento, Partido partido):base(nome, email, dataNascimento, partido)
+        public Vereador(string cod, string nome, string email, string dataNascimento, Partido partido):base(nome, email, dataNascimento, partido)
         {
             // TryParse do codigo do Vereador
             int aux;

@@ -12,7 +12,7 @@ namespace Eleicoes
         VicePrefeito vicePrefeito;
         public static ArrayList aPrefeitos = new ArrayList();
 
-        public Prefeito(string cod, string nome, string email, DateTime dataNascimento, Partido partido, VicePrefeito vprefeito) : base(nome, email, dataNascimento, partido)
+        public Prefeito(string cod, string nome, string email, string dataNascimento, Partido partido, VicePrefeito vprefeito) : base(nome, email, dataNascimento, partido)
         {
             this.vicePrefeito = vprefeito;
 

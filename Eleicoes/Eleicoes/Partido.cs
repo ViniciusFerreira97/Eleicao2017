@@ -9,7 +9,7 @@ namespace Eleicoes
 {
     class Partido
     {
-        protected string nome;
+        public string nome;
         public static ArrayList aPartidos = new ArrayList();
 
         public Partido(string nome)
@@ -45,22 +45,22 @@ namespace Eleicoes
 
         public override string ToString()
         {
-            return " Partido: " + nome;
+            return "Partido: " + nome;
         }
 
         //Clonar posição do array em que está o texto selecionado
-        public static Partido verificaPosicao(string texto)
+        public static int verificaPosicao(string texto)
         {
-            Partido x = new Partido ("");
+            int aux = 0;
             foreach (Partido p in aPartidos)
             {
                 if (texto.Equals(p.nome))
                 {
-                    x = new Partido(p.nome);
-                    return x;
+                    return aux;
                 }
+                aux++;
             }
-            return x;
+            return aux;
         }
     }
 }

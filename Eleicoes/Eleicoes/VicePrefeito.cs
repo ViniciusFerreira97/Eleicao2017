@@ -11,7 +11,7 @@ namespace Eleicoes
     {
         public static ArrayList aVicePrefeito = new ArrayList();
 
-        public VicePrefeito(string cod, string nome, string email, DateTime dataNascimento, Partido partido) :base(nome, email, dataNascimento, partido)
+        public VicePrefeito(string cod, string nome, string email, string dataNascimento, Partido partido) :base(nome, email, dataNascimento, partido)
         {
             // TryParse do codigo do VicePrefeito
             int aux;
