@@ -42,12 +42,11 @@
             this.lblCodgo = new System.Windows.Forms.Label();
             this.txtVariavel1 = new System.Windows.Forms.TextBox();
             this.lblPartido = new System.Windows.Forms.Label();
-            this.txtVariavel2 = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtVariavel3 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbnPrefeito = new System.Windows.Forms.RadioButton();
             this.rbnVereador = new System.Windows.Forms.RadioButton();
+            this.rbnPrefeito = new System.Windows.Forms.RadioButton();
             this.lclEmailVice = new System.Windows.Forms.Label();
             this.txtEmailVice = new System.Windows.Forms.TextBox();
             this.lblPartidoVice = new System.Windows.Forms.Label();
@@ -58,8 +57,13 @@
             this.txtDatVice = new System.Windows.Forms.TextBox();
             this.lblNomeVice = new System.Windows.Forms.Label();
             this.txtNomeVice = new System.Windows.Forms.TextBox();
+            this.cbxPartido = new System.Windows.Forms.ComboBox();
+            this.txtVariavel2 = new System.Windows.Forms.TextBox();
+            this.grpVice = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.grpVice.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -139,7 +143,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(121, 348);
+            this.btnCadastrar.Location = new System.Drawing.Point(121, 365);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(95, 32);
             this.btnCadastrar.TabIndex = 3;
@@ -149,7 +153,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(256, 348);
+            this.btnExcluir.Location = new System.Drawing.Point(256, 365);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;
@@ -197,13 +201,6 @@
             this.lblPartido.TabIndex = 10;
             this.lblPartido.Text = "Partido";
             // 
-            // txtVariavel2
-            // 
-            this.txtVariavel2.Location = new System.Drawing.Point(372, 103);
-            this.txtVariavel2.Name = "txtVariavel2";
-            this.txtVariavel2.Size = new System.Drawing.Size(100, 20);
-            this.txtVariavel2.TabIndex = 9;
-            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
@@ -224,23 +221,12 @@
             // 
             this.groupBox2.Controls.Add(this.rbnVereador);
             this.groupBox2.Controls.Add(this.rbnPrefeito);
-            this.groupBox2.Location = new System.Drawing.Point(9, 182);
+            this.groupBox2.Location = new System.Drawing.Point(9, 171);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(248, 54);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo Candidato";
-            // 
-            // rbnPrefeito
-            // 
-            this.rbnPrefeito.AutoSize = true;
-            this.rbnPrefeito.Location = new System.Drawing.Point(7, 20);
-            this.rbnPrefeito.Name = "rbnPrefeito";
-            this.rbnPrefeito.Size = new System.Drawing.Size(132, 17);
-            this.rbnPrefeito.TabIndex = 0;
-            this.rbnPrefeito.TabStop = true;
-            this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
-            this.rbnPrefeito.UseVisualStyleBackColor = true;
             // 
             // rbnVereador
             // 
@@ -253,10 +239,21 @@
             this.rbnVereador.Text = "Vereador";
             this.rbnVereador.UseVisualStyleBackColor = true;
             // 
+            // rbnPrefeito
+            // 
+            this.rbnPrefeito.AutoSize = true;
+            this.rbnPrefeito.Location = new System.Drawing.Point(7, 20);
+            this.rbnPrefeito.Name = "rbnPrefeito";
+            this.rbnPrefeito.Size = new System.Drawing.Size(132, 17);
+            this.rbnPrefeito.TabIndex = 0;
+            this.rbnPrefeito.TabStop = true;
+            this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
+            this.rbnPrefeito.UseVisualStyleBackColor = true;
+            // 
             // lclEmailVice
             // 
             this.lclEmailVice.AutoSize = true;
-            this.lclEmailVice.Location = new System.Drawing.Point(9, 293);
+            this.lclEmailVice.Location = new System.Drawing.Point(2, 54);
             this.lclEmailVice.Name = "lclEmailVice";
             this.lclEmailVice.Size = new System.Drawing.Size(35, 13);
             this.lclEmailVice.TabIndex = 23;
@@ -264,7 +261,7 @@
             // 
             // txtEmailVice
             // 
-            this.txtEmailVice.Location = new System.Drawing.Point(9, 312);
+            this.txtEmailVice.Location = new System.Drawing.Point(5, 77);
             this.txtEmailVice.Name = "txtEmailVice";
             this.txtEmailVice.Size = new System.Drawing.Size(342, 20);
             this.txtEmailVice.TabIndex = 22;
@@ -272,7 +269,7 @@
             // lblPartidoVice
             // 
             this.lblPartidoVice.AutoSize = true;
-            this.lblPartidoVice.Location = new System.Drawing.Point(372, 248);
+            this.lblPartidoVice.Location = new System.Drawing.Point(365, 9);
             this.lblPartidoVice.Name = "lblPartidoVice";
             this.lblPartidoVice.Size = new System.Drawing.Size(40, 13);
             this.lblPartidoVice.TabIndex = 21;
@@ -280,7 +277,7 @@
             // 
             // txtPartidoVice
             // 
-            this.txtPartidoVice.Location = new System.Drawing.Point(372, 267);
+            this.txtPartidoVice.Location = new System.Drawing.Point(365, 28);
             this.txtPartidoVice.Name = "txtPartidoVice";
             this.txtPartidoVice.Size = new System.Drawing.Size(100, 20);
             this.txtPartidoVice.TabIndex = 20;
@@ -288,7 +285,7 @@
             // lblCodVice
             // 
             this.lblCodVice.AutoSize = true;
-            this.lblCodVice.Location = new System.Drawing.Point(251, 248);
+            this.lblCodVice.Location = new System.Drawing.Point(244, 9);
             this.lblCodVice.Name = "lblCodVice";
             this.lblCodVice.Size = new System.Drawing.Size(40, 13);
             this.lblCodVice.TabIndex = 19;
@@ -296,7 +293,7 @@
             // 
             // txtCodVice
             // 
-            this.txtCodVice.Location = new System.Drawing.Point(251, 267);
+            this.txtCodVice.Location = new System.Drawing.Point(244, 28);
             this.txtCodVice.Name = "txtCodVice";
             this.txtCodVice.Size = new System.Drawing.Size(100, 20);
             this.txtCodVice.TabIndex = 18;
@@ -304,7 +301,7 @@
             // lblDatVice
             // 
             this.lblDatVice.AutoSize = true;
-            this.lblDatVice.Location = new System.Drawing.Point(131, 248);
+            this.lblDatVice.Location = new System.Drawing.Point(124, 9);
             this.lblDatVice.Name = "lblDatVice";
             this.lblDatVice.Size = new System.Drawing.Size(104, 13);
             this.lblDatVice.TabIndex = 17;
@@ -312,7 +309,7 @@
             // 
             // txtDatVice
             // 
-            this.txtDatVice.Location = new System.Drawing.Point(131, 267);
+            this.txtDatVice.Location = new System.Drawing.Point(124, 28);
             this.txtDatVice.Name = "txtDatVice";
             this.txtDatVice.Size = new System.Drawing.Size(100, 20);
             this.txtDatVice.TabIndex = 16;
@@ -320,7 +317,7 @@
             // lblNomeVice
             // 
             this.lblNomeVice.AutoSize = true;
-            this.lblNomeVice.Location = new System.Drawing.Point(9, 248);
+            this.lblNomeVice.Location = new System.Drawing.Point(2, 9);
             this.lblNomeVice.Name = "lblNomeVice";
             this.lblNomeVice.Size = new System.Drawing.Size(38, 13);
             this.lblNomeVice.TabIndex = 15;
@@ -328,31 +325,66 @@
             // 
             // txtNomeVice
             // 
-            this.txtNomeVice.Location = new System.Drawing.Point(9, 267);
+            this.txtNomeVice.Location = new System.Drawing.Point(2, 28);
             this.txtNomeVice.Name = "txtNomeVice";
             this.txtNomeVice.Size = new System.Drawing.Size(100, 20);
             this.txtNomeVice.TabIndex = 14;
+            // 
+            // cbxPartido
+            // 
+            this.cbxPartido.FormattingEnabled = true;
+            this.cbxPartido.Location = new System.Drawing.Point(375, 102);
+            this.cbxPartido.Name = "cbxPartido";
+            this.cbxPartido.Size = new System.Drawing.Size(107, 21);
+            this.cbxPartido.TabIndex = 24;
+            this.cbxPartido.Text = "SELECIONAR";
+            // 
+            // txtVariavel2
+            // 
+            this.txtVariavel2.Location = new System.Drawing.Point(377, 101);
+            this.txtVariavel2.Name = "txtVariavel2";
+            this.txtVariavel2.Size = new System.Drawing.Size(100, 20);
+            this.txtVariavel2.TabIndex = 25;
+            // 
+            // grpVice
+            // 
+            this.grpVice.Controls.Add(this.txtCodVice);
+            this.grpVice.Controls.Add(this.txtEmailVice);
+            this.grpVice.Controls.Add(this.lclEmailVice);
+            this.grpVice.Controls.Add(this.lblPartidoVice);
+            this.grpVice.Controls.Add(this.txtPartidoVice);
+            this.grpVice.Controls.Add(this.lblCodVice);
+            this.grpVice.Controls.Add(this.lblDatVice);
+            this.grpVice.Controls.Add(this.txtDatVice);
+            this.grpVice.Controls.Add(this.lblNomeVice);
+            this.grpVice.Controls.Add(this.txtNomeVice);
+            this.grpVice.Location = new System.Drawing.Point(-1, 256);
+            this.grpVice.Name = "grpVice";
+            this.grpVice.Size = new System.Drawing.Size(483, 103);
+            this.grpVice.TabIndex = 26;
+            this.grpVice.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(145, 235);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 18);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Dados Vice Prefeito";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 389);
-            this.Controls.Add(this.lclEmailVice);
-            this.Controls.Add(this.txtEmailVice);
-            this.Controls.Add(this.lblPartidoVice);
-            this.Controls.Add(this.txtPartidoVice);
-            this.Controls.Add(this.lblCodVice);
-            this.Controls.Add(this.txtCodVice);
-            this.Controls.Add(this.lblDatVice);
-            this.Controls.Add(this.txtDatVice);
-            this.Controls.Add(this.lblNomeVice);
-            this.Controls.Add(this.txtNomeVice);
+            this.ClientSize = new System.Drawing.Size(489, 407);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbxPartido);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtVariavel3);
             this.Controls.Add(this.lblPartido);
-            this.Controls.Add(this.txtVariavel2);
             this.Controls.Add(this.lblCodgo);
             this.Controls.Add(this.txtVariavel1);
             this.Controls.Add(this.lblDat);
@@ -362,6 +394,8 @@
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtVariavel2);
+            this.Controls.Add(this.grpVice);
             this.Name = "Form2";
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
@@ -369,6 +403,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.grpVice.ResumeLayout(false);
+            this.grpVice.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +426,6 @@
         private System.Windows.Forms.Label lblCodgo;
         private System.Windows.Forms.TextBox txtVariavel1;
         private System.Windows.Forms.Label lblPartido;
-        private System.Windows.Forms.TextBox txtVariavel2;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtVariavel3;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -406,5 +441,9 @@
         private System.Windows.Forms.TextBox txtDatVice;
         private System.Windows.Forms.Label lblNomeVice;
         private System.Windows.Forms.TextBox txtNomeVice;
+        private System.Windows.Forms.ComboBox cbxPartido;
+        private System.Windows.Forms.TextBox txtVariavel2;
+        private System.Windows.Forms.GroupBox grpVice;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -41,9 +41,26 @@ namespace Eleicoes
             return true;
         }
 
+        public string getNome() { return this.nome; }
+
         public override string ToString()
         {
             return " Partido: " + nome;
+        }
+
+        //Clonar posição do array em que está o texto selecionado
+        public static Partido verificaPosicao(string texto)
+        {
+            Partido x = new Partido ("");
+            foreach (Partido p in aPartidos)
+            {
+                if (texto.Equals(p.nome))
+                {
+                    x = new Partido(p.nome);
+                    return x;
+                }
+            }
+            return x;
         }
     }
 }

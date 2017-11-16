@@ -27,7 +27,11 @@ namespace Eleicoes
             txtNome.Visible = true;
             txtVariavel1.Visible = false;
             txtVariavel3.Visible = false;
-            txtVariavel2.Visible = false;
+            groupBox2.Visible = false;
+            cbxPartido.Visible = false;
+            grpVice.Visible = false;
+            label1.Visible = false;
+           txtVariavel2.Visible = false;
         }
 
         
@@ -41,8 +45,12 @@ namespace Eleicoes
             txtDataNascimento.Visible = false;
             txtNome.Visible = true;
             txtVariavel1.Visible = false;
-            txtVariavel3.Visible = false;
             txtVariavel2.Visible = false;
+            txtVariavel3.Visible = false;
+            groupBox2.Visible = false;
+            cbxPartido.Visible = false;
+            grpVice.Visible = false;
+            label1.Visible = false;
         }
 
         private void rbnCandidato_CheckedChanged(object sender, EventArgs e)
@@ -55,11 +63,21 @@ namespace Eleicoes
             txtDataNascimento.Visible = true;
             txtVariavel1.Visible = true;
             txtVariavel3.Visible = true;
-            txtVariavel2.Visible = true;
             txtNome.Visible = true;
+            txtVariavel2.Visible = false;
+            cbxPartido.Visible = true;
+            groupBox2.Visible = true;
+            grpVice.Visible = true;
             lblCodgo.Text = "Código";
             lblPartido.Text = "Partido";
             lblEmail.Text = "E-mail";
+            if (Partido.aPartidos != null)
+            {
+                foreach (Partido a in Partido.aPartidos)
+                {
+                    cbxPartido.Items.Add(a.getNome());
+                }
+            }
         }
 
         private void rbnEleitores_CheckedChanged(object sender, EventArgs e)
@@ -72,8 +90,12 @@ namespace Eleicoes
             txtDataNascimento.Visible = true;
             txtVariavel1.Visible = true;
             txtVariavel3.Visible = true;
-            txtVariavel2.Visible = true;
             txtNome.Visible = true;
+            groupBox2.Visible = false;
+            cbxPartido.Visible = false;
+            grpVice.Visible = false;
+            label1.Visible = false;
+            txtVariavel2.Visible = true;
             lblCodgo.Text = "Zona";
             lblPartido.Text = "Seção";
             lblEmail.Text = "N° Titulo";
@@ -89,8 +111,12 @@ namespace Eleicoes
             txtDataNascimento.Visible = false;
             txtVariavel1.Visible = true;
             txtVariavel3.Visible = false;
-            txtVariavel2.Visible = true;
             txtNome.Visible = false;
+            groupBox2.Visible = false;
+            cbxPartido.Visible = false;
+            grpVice.Visible = false;
+            label1.Visible = false;
+            txtVariavel2.Visible = true;
             lblCodgo.Text = "Zona";
             lblPartido.Text = "Seção";
         }
@@ -115,9 +141,7 @@ namespace Eleicoes
             {
                 if(rbnPrefeito.Checked == true)
                 {
-                    
                 }
-
             }
         }
 
@@ -126,5 +150,6 @@ namespace Eleicoes
             Form1 form1 = new Form1();
             form1.Show();
         }
+
     }
 }
