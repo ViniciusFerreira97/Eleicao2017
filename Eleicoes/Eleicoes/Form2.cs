@@ -27,16 +27,31 @@ namespace Eleicoes
             txtNome.Visible = true;
             txtVariavel1.Visible = false;
             txtVariavel3.Visible = false;
-            groupBox2.Visible = false;
+            grpTipo.Visible = false;
             cbxPartido.Visible = false;
             grpVice.Visible = false;
             label1.Visible = false;
-           txtVariavel2.Visible = false;
+            txtVariavel2.Visible = false;
         }
-
-        
+        private void zerarTudo()
+        {
+            txtNome.Text = "";
+            txtDataNascimento.Text = "";
+            txtVariavel1.Text = "";
+            txtVariavel2.Text = "";
+            txtVariavel3.Text = "";
+            txtNomeVice.Text = "";
+            txtPartidoVice.Text = "";
+            txtCodVice.Text = "";
+            txtDatVice.Text = "";
+            txtEmailVice.Text = "";
+        }
         private void rbnPartido_CheckedChanged(object sender, EventArgs e)
         {
+            txtVariavel1.Location = new Point(251, 103);
+            txtVariavel2.Location = new Point(375, 103);
+            rbnPrefeito.Checked = false;
+            rbnVereador.Checked = false;
             lblNome.Visible = true;
             lblDat.Visible = false;
             lblCodgo.Visible = false;
@@ -47,14 +62,17 @@ namespace Eleicoes
             txtVariavel1.Visible = false;
             txtVariavel2.Visible = false;
             txtVariavel3.Visible = false;
-            groupBox2.Visible = false;
+            grpTipo.Visible = false;
             cbxPartido.Visible = false;
             grpVice.Visible = false;
             label1.Visible = false;
+            lblNome.Text = "Nome";
+            zerarTudo();
         }
-
         private void rbnCandidato_CheckedChanged(object sender, EventArgs e)
         {
+            txtVariavel1.Location = new Point(251, 103);
+            txtVariavel2.Location = new Point(375, 103);
             lblNome.Visible = true;
             lblDat.Visible = true;
             lblCodgo.Visible = true;
@@ -66,12 +84,15 @@ namespace Eleicoes
             txtNome.Visible = true;
             txtVariavel2.Visible = false;
             cbxPartido.Visible = true;
-            groupBox2.Visible = true;
-            grpVice.Visible = true;
+            grpTipo.Visible = true;
+            grpVice.Visible = false;
             lblCodgo.Text = "Código";
             lblPartido.Text = "Partido";
             lblEmail.Text = "E-mail";
-            if (Partido.aPartidos != null)
+            lblNome.Text = "Nome";
+            lblDat.Text = "Data de Nascimento";
+            zerarTudo();
+            if (Partido.aPartidos != null) //Inicializando Itens cadastrados no arrayList no ComboBox
             {
                 foreach (Partido a in Partido.aPartidos)
                 {
@@ -79,9 +100,12 @@ namespace Eleicoes
                 }
             }
         }
-
         private void rbnEleitores_CheckedChanged(object sender, EventArgs e)
         {
+            txtVariavel1.Location = new Point(251, 103);
+            txtVariavel2.Location = new Point(375, 103);
+            rbnPrefeito.Checked = false;
+            rbnVereador.Checked = false;
             lblNome.Visible = true;
             lblDat.Visible = true;
             lblCodgo.Visible = true;
@@ -91,7 +115,7 @@ namespace Eleicoes
             txtVariavel1.Visible = true;
             txtVariavel3.Visible = true;
             txtNome.Visible = true;
-            groupBox2.Visible = false;
+            grpTipo.Visible = false;
             cbxPartido.Visible = false;
             grpVice.Visible = false;
             label1.Visible = false;
@@ -99,27 +123,51 @@ namespace Eleicoes
             lblCodgo.Text = "Zona";
             lblPartido.Text = "Seção";
             lblEmail.Text = "N° Titulo";
+            lblNome.Text = "Nome";
+            lblDat.Text = "Data de Nascimento";
+            zerarTudo();
         }
-
+        private void rbnPrefeito_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCodVice.Text = txtVariavel1.Text;
+            txtPartidoVice.Text = cbxPartido.Text;
+            txtCodVice.Enabled = false;
+            txtPartidoVice.Enabled = false;
+            grpTipo.Visible = true;
+            grpVice.Visible = true;
+            label1.Visible = true;
+        }
+        private void rbnVereador_CheckedChanged(object sender, EventArgs e)
+        {
+            grpTipo.Visible = true;
+            grpVice.Visible = false;
+            label1.Visible = false;
+        }
         private void rbnUrna_CheckedChanged(object sender, EventArgs e)
         {
-            lblNome.Visible = false;
-            lblDat.Visible = false;
-            lblCodgo.Visible = true;
+            txtVariavel1.Location = new Point(12, 103);
+            txtVariavel2.Location = new Point(134, 103);
+            txtVariavel2.Visible = true;
+            rbnPrefeito.Checked = false;
+            rbnVereador.Checked = false;
+            lblNome.Visible = true;
+            lblDat.Visible = true;
+            lblCodgo.Visible = false;
             lblEmail.Visible = false;
-            lblPartido.Visible = true;
+            lblPartido.Visible = false;
             txtDataNascimento.Visible = false;
             txtVariavel1.Visible = true;
             txtVariavel3.Visible = false;
             txtNome.Visible = false;
-            groupBox2.Visible = false;
+            grpTipo.Visible = false;
             cbxPartido.Visible = false;
             grpVice.Visible = false;
             label1.Visible = false;
-            txtVariavel2.Visible = true;
-            lblCodgo.Text = "Zona";
-            lblPartido.Text = "Seção";
+            lblNome.Text = "Zona";
+            lblDat.Text = "Seção";
+            zerarTudo();
         }
+
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -137,21 +185,35 @@ namespace Eleicoes
                     MessageBox.Show(a.Message, "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if(rbnCandidato.Checked == true)
+            else if(rbnCandidato.Checked == true)
             {
                 if(rbnPrefeito.Checked == true)
                 {
                     int aux = Partido.verificaPosicao(cbxPartido.Text);
                     VicePrefeito.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text,txtDatVice.Text ,(Partido) Partido.aPartidos[aux]));
+                    int auxCod = VicePrefeito.VerificaPosicao(int.Parse(txtCodVice.Text));
+                    Prefeito.aPrefeitos.Add(new Prefeito(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux], (VicePrefeito)VicePrefeito.aVicePrefeito[auxCod]));
+                }
+                if (rbnVereador.Checked == true)
+                {
+                    int aux = Partido.verificaPosicao(cbxPartido.Text);
+                    Vereador.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux]));
                 }
             }
+            else if (rbnEleitores.Checked == true)
+            {
+                Eleitor.aEleitores.Add(new Eleitor(txtNome.Text, txtDataNascimento.Text, txtVariavel3.Text, txtVariavel1.Text, txtVariavel2.Text));
+            }
+            else if (rbnUrna.Checked == true)
+            {
+                Urna.aUrnas.Add(new Urna(txtVariavel1.Text, txtVariavel2.Text));
+            }
+            zerarTudo();
         }
-
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
         }
-
     }
 }

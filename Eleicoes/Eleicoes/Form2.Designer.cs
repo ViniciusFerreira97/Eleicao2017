@@ -38,13 +38,12 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.lblDat = new System.Windows.Forms.Label();
-            this.txtDataNascimento = new System.Windows.Forms.TextBox();
             this.lblCodgo = new System.Windows.Forms.Label();
             this.txtVariavel1 = new System.Windows.Forms.TextBox();
             this.lblPartido = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtVariavel3 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpTipo = new System.Windows.Forms.GroupBox();
             this.rbnVereador = new System.Windows.Forms.RadioButton();
             this.rbnPrefeito = new System.Windows.Forms.RadioButton();
             this.lclEmailVice = new System.Windows.Forms.Label();
@@ -59,10 +58,11 @@
             this.cbxPartido = new System.Windows.Forms.ComboBox();
             this.txtVariavel2 = new System.Windows.Forms.TextBox();
             this.grpVice = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtDatVice = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDataNascimento = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,13 +169,6 @@
             this.lblDat.TabIndex = 6;
             this.lblDat.Text = "Data de Nascimento";
             // 
-            // txtDataNascimento
-            // 
-            this.txtDataNascimento.Location = new System.Drawing.Point(131, 103);
-            this.txtDataNascimento.Name = "txtDataNascimento";
-            this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
-            this.txtDataNascimento.TabIndex = 5;
-            // 
             // lblCodgo
             // 
             this.lblCodgo.AutoSize = true;
@@ -217,16 +210,16 @@
             this.txtVariavel3.Size = new System.Drawing.Size(342, 20);
             this.txtVariavel3.TabIndex = 11;
             // 
-            // groupBox2
+            // grpTipo
             // 
-            this.groupBox2.Controls.Add(this.rbnVereador);
-            this.groupBox2.Controls.Add(this.rbnPrefeito);
-            this.groupBox2.Location = new System.Drawing.Point(9, 171);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(248, 54);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tipo Candidato";
+            this.grpTipo.Controls.Add(this.rbnVereador);
+            this.grpTipo.Controls.Add(this.rbnPrefeito);
+            this.grpTipo.Location = new System.Drawing.Point(9, 171);
+            this.grpTipo.Name = "grpTipo";
+            this.grpTipo.Size = new System.Drawing.Size(248, 54);
+            this.grpTipo.TabIndex = 13;
+            this.grpTipo.TabStop = false;
+            this.grpTipo.Text = "Tipo Candidato";
             // 
             // rbnVereador
             // 
@@ -238,6 +231,7 @@
             this.rbnVereador.TabStop = true;
             this.rbnVereador.Text = "Vereador";
             this.rbnVereador.UseVisualStyleBackColor = true;
+            this.rbnVereador.CheckedChanged += new System.EventHandler(this.rbnVereador_CheckedChanged);
             // 
             // rbnPrefeito
             // 
@@ -249,6 +243,7 @@
             this.rbnPrefeito.TabStop = true;
             this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
             this.rbnPrefeito.UseVisualStyleBackColor = true;
+            this.rbnPrefeito.CheckedChanged += new System.EventHandler(this.rbnPrefeito_CheckedChanged);
             // 
             // lclEmailVice
             // 
@@ -357,6 +352,15 @@
             this.grpVice.TabIndex = 26;
             this.grpVice.TabStop = false;
             // 
+            // txtDatVice
+            // 
+            this.txtDatVice.Location = new System.Drawing.Point(127, 28);
+            this.txtDatVice.Mask = "00/00/0000";
+            this.txtDatVice.Name = "txtDatVice";
+            this.txtDatVice.Size = new System.Drawing.Size(100, 20);
+            this.txtDatVice.TabIndex = 28;
+            this.txtDatVice.ValidatingType = typeof(System.DateTime);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -367,30 +371,30 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Dados Vice Prefeito";
             // 
-            // txtDatVice
+            // txtDataNascimento
             // 
-            this.txtDatVice.Location = new System.Drawing.Point(127, 28);
-            this.txtDatVice.Mask = "00/00/0000";
-            this.txtDatVice.Name = "txtDatVice";
-            this.txtDatVice.Size = new System.Drawing.Size(100, 20);
-            this.txtDatVice.TabIndex = 28;
-            this.txtDatVice.ValidatingType = typeof(System.DateTime);
+            this.txtDataNascimento.Location = new System.Drawing.Point(134, 103);
+            this.txtDataNascimento.Mask = "00/00/0000";
+            this.txtDataNascimento.Name = "txtDataNascimento";
+            this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
+            this.txtDataNascimento.TabIndex = 28;
+            this.txtDataNascimento.ValidatingType = typeof(System.DateTime);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 407);
+            this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxPartido);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpTipo);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtVariavel3);
             this.Controls.Add(this.lblPartido);
             this.Controls.Add(this.lblCodgo);
             this.Controls.Add(this.txtVariavel1);
             this.Controls.Add(this.lblDat);
-            this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.lblNome);
@@ -403,8 +407,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpTipo.ResumeLayout(false);
+            this.grpTipo.PerformLayout();
             this.grpVice.ResumeLayout(false);
             this.grpVice.PerformLayout();
             this.ResumeLayout(false);
@@ -424,13 +428,12 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label lblDat;
-        private System.Windows.Forms.TextBox txtDataNascimento;
         private System.Windows.Forms.Label lblCodgo;
         private System.Windows.Forms.TextBox txtVariavel1;
         private System.Windows.Forms.Label lblPartido;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtVariavel3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpTipo;
         private System.Windows.Forms.RadioButton rbnVereador;
         private System.Windows.Forms.RadioButton rbnPrefeito;
         private System.Windows.Forms.Label lclEmailVice;
@@ -447,5 +450,6 @@
         private System.Windows.Forms.GroupBox grpVice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtDatVice;
+        private System.Windows.Forms.MaskedTextBox txtDataNascimento;
     }
 }

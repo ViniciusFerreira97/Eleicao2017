@@ -46,5 +46,16 @@ namespace Eleicoes
         {
             return "Vice-Prefeito -- Código: " + codigo + base.ToString();
         }
+        public static int VerificaPosicao(int x)
+        {
+            int cont = 0;
+            foreach (VicePrefeito v in aVicePrefeito)
+            {
+                if (x == v.codigo)
+                    return cont;
+                cont++; 
+            }
+            return cont;
+        }
     }
 }

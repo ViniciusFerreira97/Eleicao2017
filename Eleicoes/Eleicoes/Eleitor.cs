@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,17 @@ namespace Eleicoes
 {
     class Eleitor
     {
+        public static ArrayList aEleitores = new ArrayList();
         private string nome;
         private DateTime dataNascimento;
         private string tituloEleitor;
         private int zona;
         private int secao;
 
-        public Eleitor(string nome, DateTime dataNascimento, string tituloEleitor, string zona, string secao)
+        public Eleitor(string nome, string dataNascimento, string tituloEleitor, string zona, string secao)
         {
             this.nome = nome;
-            this.dataNascimento = dataNascimento;
+            this.dataNascimento = DateTime.Parse(dataNascimento);
             this.tituloEleitor = tituloEleitor;
 
             // TryParse da zona de eleição

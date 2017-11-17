@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Eleicoes
 {
     class Urna
     {
+        public static ArrayList aUrnas = new ArrayList();
         private int zona;
         private int secao;
         private int votosNulos;
