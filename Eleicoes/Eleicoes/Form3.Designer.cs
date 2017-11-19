@@ -44,16 +44,20 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbCargo = new System.Windows.Forms.Label();
+            this.lblCargo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.mskVotacao = new System.Windows.Forms.MaskedTextBox();
+            this.lblVerde = new System.Windows.Forms.Label();
+            this.lblVerme = new System.Windows.Forms.Label();
+            this.lblAperta = new System.Windows.Forms.Label();
+            this.txtBNome = new System.Windows.Forms.MaskedTextBox();
+            this.txtBPartido = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.txtBTitulo = new System.Windows.Forms.TextBox();
+            this.lblVice = new System.Windows.Forms.Label();
+            this.txtViceNome = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +76,7 @@
             this.btn01.Text = "1";
             this.btn01.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn01.UseVisualStyleBackColor = false;
+            this.btn01.Click += new System.EventHandler(this.btn01_Click);
             // 
             // btn02
             // 
@@ -87,6 +92,7 @@
             this.btn02.Text = "2";
             this.btn02.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn02.UseVisualStyleBackColor = false;
+            this.btn02.Click += new System.EventHandler(this.btn02_Click);
             // 
             // btn03
             // 
@@ -102,6 +108,7 @@
             this.btn03.Text = "3";
             this.btn03.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn03.UseVisualStyleBackColor = false;
+            this.btn03.Click += new System.EventHandler(this.btn03_Click);
             // 
             // btn04
             // 
@@ -117,6 +124,7 @@
             this.btn04.Text = "4";
             this.btn04.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn04.UseVisualStyleBackColor = false;
+            this.btn04.Click += new System.EventHandler(this.btn04_Click);
             // 
             // btn05
             // 
@@ -132,6 +140,7 @@
             this.btn05.Text = "5";
             this.btn05.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn05.UseVisualStyleBackColor = false;
+            this.btn05.Click += new System.EventHandler(this.btn05_Click);
             // 
             // btn06
             // 
@@ -147,6 +156,7 @@
             this.btn06.Text = "6";
             this.btn06.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn06.UseVisualStyleBackColor = false;
+            this.btn06.Click += new System.EventHandler(this.btn06_Click);
             // 
             // btn07
             // 
@@ -162,6 +172,7 @@
             this.btn07.Text = "7";
             this.btn07.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn07.UseVisualStyleBackColor = false;
+            this.btn07.Click += new System.EventHandler(this.btn07_Click);
             // 
             // btn08
             // 
@@ -177,6 +188,7 @@
             this.btn08.Text = "8";
             this.btn08.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn08.UseVisualStyleBackColor = false;
+            this.btn08.Click += new System.EventHandler(this.btn08_Click);
             // 
             // btn09
             // 
@@ -192,6 +204,7 @@
             this.btn09.Text = "9";
             this.btn09.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn09.UseVisualStyleBackColor = false;
+            this.btn09.Click += new System.EventHandler(this.btn09_Click);
             // 
             // btnBranco
             // 
@@ -207,6 +220,7 @@
             this.btnBranco.Text = "BRANCO";
             this.btnBranco.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBranco.UseVisualStyleBackColor = false;
+            this.btnBranco.Click += new System.EventHandler(this.btnBranco_Click);
             // 
             // btnCorrige
             // 
@@ -222,6 +236,7 @@
             this.btnCorrige.Text = "CORRIGE";
             this.btnCorrige.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCorrige.UseVisualStyleBackColor = false;
+            this.btnCorrige.Click += new System.EventHandler(this.btnCorrige_Click);
             // 
             // btnConfirma
             // 
@@ -238,6 +253,7 @@
             this.btnConfirma.Text = "CONFIRMA";
             this.btnConfirma.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConfirma.UseVisualStyleBackColor = false;
+            this.btnConfirma.Click += new System.EventHandler(this.btnConfirma_Click);
             // 
             // btn00
             // 
@@ -253,6 +269,7 @@
             this.btn00.Text = "0";
             this.btn00.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn00.UseVisualStyleBackColor = false;
+            this.btn00.Click += new System.EventHandler(this.btn00_Click);
             // 
             // pictureBox1
             // 
@@ -283,23 +300,23 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "SEU VOTO PARA";
             // 
-            // lbCargo
+            // lblCargo
             // 
-            this.lbCargo.AutoSize = true;
-            this.lbCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.lbCargo.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCargo.Location = new System.Drawing.Point(144, 72);
-            this.lbCargo.Name = "lbCargo";
-            this.lbCargo.Size = new System.Drawing.Size(83, 24);
-            this.lbCargo.TabIndex = 3;
-            this.lbCargo.Text = "CARGO";
+            this.lblCargo.AutoSize = true;
+            this.lblCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lblCargo.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCargo.Location = new System.Drawing.Point(144, 72);
+            this.lblCargo.Name = "lblCargo";
+            this.lblCargo.Size = new System.Drawing.Size(109, 24);
+            this.lblCargo.TabIndex = 3;
+            this.lblCargo.Text = "PREFEITO";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label3.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(25, 200);
+            this.label3.Location = new System.Drawing.Point(20, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 24);
             this.label3.TabIndex = 3;
@@ -310,7 +327,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 246);
+            this.label4.Location = new System.Drawing.Point(20, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 24);
             this.label4.TabIndex = 3;
@@ -321,7 +338,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label5.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(24, 292);
+            this.label5.Location = new System.Drawing.Point(19, 239);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 24);
             this.label5.TabIndex = 3;
@@ -332,82 +349,131 @@
             this.mskVotacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.mskVotacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mskVotacao.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskVotacao.Location = new System.Drawing.Point(122, 178);
+            this.mskVotacao.Location = new System.Drawing.Point(117, 119);
             this.mskVotacao.Mask = "00";
             this.mskVotacao.Name = "mskVotacao";
+            this.mskVotacao.ReadOnly = true;
             this.mskVotacao.Size = new System.Drawing.Size(210, 46);
             this.mskVotacao.TabIndex = 4;
+            // 
+            // lblVerde
+            // 
+            this.lblVerde.AutoSize = true;
+            this.lblVerde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lblVerde.Enabled = false;
+            this.lblVerde.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerde.Location = new System.Drawing.Point(25, 356);
+            this.lblVerde.Name = "lblVerde";
+            this.lblVerde.Size = new System.Drawing.Size(250, 24);
+            this.lblVerde.TabIndex = 3;
+            this.lblVerde.Text = "VERDE para CONFIRMAR";
+            this.lblVerde.Visible = false;
+            // 
+            // lblVerme
+            // 
+            this.lblVerme.AutoSize = true;
+            this.lblVerme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lblVerme.Enabled = false;
+            this.lblVerme.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerme.Location = new System.Drawing.Point(25, 395);
+            this.lblVerme.Name = "lblVerme";
+            this.lblVerme.Size = new System.Drawing.Size(274, 24);
+            this.lblVerme.TabIndex = 3;
+            this.lblVerme.Text = "VERMELHO para CORRIGIR";
+            this.lblVerme.Visible = false;
+            // 
+            // lblAperta
+            // 
+            this.lblAperta.AutoSize = true;
+            this.lblAperta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lblAperta.Enabled = false;
+            this.lblAperta.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAperta.Location = new System.Drawing.Point(25, 335);
+            this.lblAperta.Name = "lblAperta";
+            this.lblAperta.Size = new System.Drawing.Size(113, 16);
+            this.lblAperta.TabIndex = 3;
+            this.lblAperta.Text = "Aperte a tecla: ";
+            this.lblAperta.Visible = false;
+            // 
+            // txtBNome
+            // 
+            this.txtBNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.txtBNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBNome.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBNome.Location = new System.Drawing.Point(117, 178);
+            this.txtBNome.Name = "txtBNome";
+            this.txtBNome.ReadOnly = true;
+            this.txtBNome.Size = new System.Drawing.Size(210, 39);
+            this.txtBNome.TabIndex = 4;
+            // 
+            // txtBPartido
+            // 
+            this.txtBPartido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.txtBPartido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBPartido.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBPartido.Location = new System.Drawing.Point(117, 227);
+            this.txtBPartido.Name = "txtBPartido";
+            this.txtBPartido.ReadOnly = true;
+            this.txtBPartido.Size = new System.Drawing.Size(210, 39);
+            this.txtBPartido.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label2.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 356);
+            this.label2.Location = new System.Drawing.Point(965, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "VERDE para CONFIRMAR";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Titulo de Eleitor";
             // 
-            // label6
+            // txtBTitulo
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label6.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 395);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(274, 24);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "VERMELHO para CORRIGIR";
+            this.txtBTitulo.Location = new System.Drawing.Point(968, 34);
+            this.txtBTitulo.Name = "txtBTitulo";
+            this.txtBTitulo.Size = new System.Drawing.Size(100, 20);
+            this.txtBTitulo.TabIndex = 6;
             // 
-            // label7
+            // lblVice
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 335);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 16);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Aperte a tecla: ";
+            this.lblVice.AutoSize = true;
+            this.lblVice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lblVice.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVice.Location = new System.Drawing.Point(20, 287);
+            this.lblVice.Name = "lblVice";
+            this.lblVice.Size = new System.Drawing.Size(57, 24);
+            this.lblVice.TabIndex = 3;
+            this.lblVice.Text = "Vice:";
             // 
-            // maskedTextBox2
+            // txtViceNome
             // 
-            this.maskedTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox2.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(122, 224);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.ReadOnly = true;
-            this.maskedTextBox2.Size = new System.Drawing.Size(210, 39);
-            this.maskedTextBox2.TabIndex = 4;
-            // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.maskedTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox3.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(122, 270);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.ReadOnly = true;
-            this.maskedTextBox3.Size = new System.Drawing.Size(210, 39);
-            this.maskedTextBox3.TabIndex = 4;
+            this.txtViceNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.txtViceNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtViceNome.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtViceNome.Location = new System.Drawing.Point(117, 272);
+            this.txtViceNome.Name = "txtViceNome";
+            this.txtViceNome.ReadOnly = true;
+            this.txtViceNome.Size = new System.Drawing.Size(210, 39);
+            this.txtViceNome.TabIndex = 4;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 444);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.mskVotacao);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(1072, 444);
+            this.Controls.Add(this.txtBTitulo);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtBPartido);
+            this.Controls.Add(this.txtViceNome);
+            this.Controls.Add(this.txtBNome);
+            this.Controls.Add(this.mskVotacao);
+            this.Controls.Add(this.lblVerme);
+            this.Controls.Add(this.lblAperta);
+            this.Controls.Add(this.lblVerde);
+            this.Controls.Add(this.lblVice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbCargo);
+            this.Controls.Add(this.lblCargo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnConfirma);
@@ -425,7 +491,7 @@
             this.Controls.Add(this.btn01);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Vice:";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -452,15 +518,19 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbCargo;
+        private System.Windows.Forms.Label lblCargo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox mskVotacao;
+        private System.Windows.Forms.Label lblVerde;
+        private System.Windows.Forms.Label lblVerme;
+        private System.Windows.Forms.Label lblAperta;
+        private System.Windows.Forms.MaskedTextBox txtBNome;
+        private System.Windows.Forms.MaskedTextBox txtBPartido;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.TextBox txtBTitulo;
+        private System.Windows.Forms.Label lblVice;
+        private System.Windows.Forms.MaskedTextBox txtViceNome;
     }
 }

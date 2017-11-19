@@ -9,7 +9,7 @@ namespace Eleicoes
 {
     class Eleitor
     {
-        public static ArrayList aEleitores = new ArrayList();
+        public static List<Eleitor> aEleitores = new List<Eleitor>();
         private string nome;
         private DateTime dataNascimento;
         private string tituloEleitor;
@@ -47,6 +47,33 @@ namespace Eleicoes
             else
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
+        }
+
+        public static bool VerificaExistencia(string titulo)
+        {
+            foreach (Eleitor e in aEleitores)
+            {
+                if (titulo == e.tituloEleitor)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static void GetZonaESecao(string titulo,out int zonaE,out int secaoE)
+        {
+            int aux = 0;
+            for(int c = 0; c < aEleitores.Count; c++)
+            {
+                if(titulo == aEleitores[c].tituloEleitor)
+                {
+                    aux = c;
+                }
+            }
+            zonaE = aEleitores[aux].zona;
+
+            secaoE = aEleitores[aux].secao;
         }
 
         public override string ToString()

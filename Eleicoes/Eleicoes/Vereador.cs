@@ -9,7 +9,7 @@ namespace Eleicoes
 {
     class Vereador : Candidato
     {
-        public static ArrayList aVereador = new ArrayList();
+        public static List<Vereador> aVereador = new List<Vereador>();
 
         public Vereador(string cod, string nome, string email, string dataNascimento, Partido partido):base(nome, email, dataNascimento, partido)
         {

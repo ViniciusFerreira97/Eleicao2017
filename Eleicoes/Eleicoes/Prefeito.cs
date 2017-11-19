@@ -10,7 +10,7 @@ namespace Eleicoes
     class Prefeito : Candidato
     {
         VicePrefeito vicePrefeito;
-        public static ArrayList aPrefeitos = new ArrayList();
+        public static List<Prefeito> aPrefeitos = new List<Prefeito>();
 
         public Prefeito(string cod, string nome, string email, string dataNascimento, Partido partido, VicePrefeito vprefeito) : base(nome, email, dataNascimento, partido)
         {
@@ -43,6 +43,10 @@ namespace Eleicoes
             }
             return true;
         }
+
+        public string GetNomeVice() { return vicePrefeito.GetNome(); }
+
+        
 
         public override string ToString()
         {

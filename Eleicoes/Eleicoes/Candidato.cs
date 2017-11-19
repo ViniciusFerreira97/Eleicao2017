@@ -42,6 +42,18 @@ namespace Eleicoes
 
         abstract protected bool VerificaExistencia(int cod);
 
+        public string GetNome()
+        {
+            return this.nome;
+        }
+        public string GetNomePartido()
+        {
+            return partido.getNome();
+        }
+        public int GetCodigo()
+        {
+            return codigo;
+        }
         public override string ToString()
         {
             return "Código: " + codigo + " Nome: " + nome + " Email: " + email +
