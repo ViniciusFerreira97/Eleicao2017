@@ -17,16 +17,26 @@ namespace Eleicoes
 
         public Candidato(string nome, string email, string dataNascimento, Partido partido)
         {
-            this.nome = nome;
-            this.email = email;
+            if (nome != "")
+                this.nome = nome;
+            else
+                throw new InvalidDataException("NOME não pode ser vazio, preencha-o !");
+
+            if (email != "")
+                this.email = email;
+            else
+                throw new InvalidDataException("EMAIL não pode er vazio, preencha-o");
+
             this.partido = partido;
+
+            //TryParse Data Nascimento
             DateTime aux;
             bool ver = DateTime.TryParse(dataNascimento, out aux);
-            if(ver)
-            this.dataNascimento = DateTime.Parse(dataNascimento);
+            if (ver)
+                this.dataNascimento = DateTime.Parse(dataNascimento);
             else
             {
-                throw new InvalidDataException("Insira um valor de data que seja válido!");
+                throw new InvalidDataException("Insira um valor de DATA que seja válido!");
             }
         }
 

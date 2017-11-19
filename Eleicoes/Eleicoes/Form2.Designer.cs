@@ -224,6 +224,7 @@
             // rbnVereador
             // 
             this.rbnVereador.AutoSize = true;
+            this.rbnVereador.Checked = true;
             this.rbnVereador.Location = new System.Drawing.Point(174, 20);
             this.rbnVereador.Name = "rbnVereador";
             this.rbnVereador.Size = new System.Drawing.Size(68, 17);
@@ -240,7 +241,6 @@
             this.rbnPrefeito.Name = "rbnPrefeito";
             this.rbnPrefeito.Size = new System.Drawing.Size(132, 17);
             this.rbnPrefeito.TabIndex = 0;
-            this.rbnPrefeito.TabStop = true;
             this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
             this.rbnPrefeito.UseVisualStyleBackColor = true;
             this.rbnPrefeito.CheckedChanged += new System.EventHandler(this.rbnPrefeito_CheckedChanged);

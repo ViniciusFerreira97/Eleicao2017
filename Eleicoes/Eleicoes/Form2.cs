@@ -32,6 +32,7 @@ namespace Eleicoes
             grpVice.Visible = false;
             label1.Visible = false;
             txtVariavel2.Visible = false;
+            rbnVereador.Checked = true;
         }
         private void zerarTudo()
         {
@@ -189,15 +190,29 @@ namespace Eleicoes
             {
                 if(rbnPrefeito.Checked == true)
                 {
-                    int aux = Partido.verificaPosicao(cbxPartido.Text);
-                    VicePrefeito.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text,txtDatVice.Text ,(Partido) Partido.aPartidos[aux]));
-                    int auxCod = VicePrefeito.VerificaPosicao(int.Parse(txtCodVice.Text));
-                    Prefeito.aPrefeitos.Add(new Prefeito(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux], (VicePrefeito)VicePrefeito.aVicePrefeito[auxCod]));
+                    try
+                    {
+                        int aux = Partido.verificaPosicao(cbxPartido.Text);
+                        VicePrefeito.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text, txtDatVice.Text, (Partido)Partido.aPartidos[aux]));
+                        int auxCod = VicePrefeito.VerificaPosicao(int.Parse(txtCodVice.Text));
+                        Prefeito.aPrefeitos.Add(new Prefeito(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux], (VicePrefeito)VicePrefeito.aVicePrefeito[auxCod]));
+                    }
+                    catch(InvalidDataException a)
+                    {
+                        MessageBox.Show(a.Message, "Cadastramento - Prefeito ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 if (rbnVereador.Checked == true)
                 {
-                    int aux = Partido.verificaPosicao(cbxPartido.Text);
-                    Vereador.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux]));
+                    try
+                    {
+                        int aux = Partido.verificaPosicao(cbxPartido.Text);
+                        Vereador.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux]));
+                    }
+                    catch(InvalidDataException a)
+                    {
+                        MessageBox.Show(a.Message, "Cadastramento - Vereador ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else if (rbnEleitores.Checked == true)

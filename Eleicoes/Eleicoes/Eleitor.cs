@@ -18,9 +18,17 @@ namespace Eleicoes
 
         public Eleitor(string nome, string dataNascimento, string tituloEleitor, string zona, string secao)
         {
-            this.nome = nome;
+            if (nome != "")
+                this.nome = nome;
+            else
+                throw new InvalidDataException("NOME não pode ser vazio, preencha-o !");
+
             this.dataNascimento = DateTime.Parse(dataNascimento);
-            this.tituloEleitor = tituloEleitor;
+
+            if (tituloEleitor != "")
+                this.tituloEleitor = tituloEleitor;
+            else
+                throw new InvalidDataException("TITULO DE ELEITOR não pode ser vazio, preencha-o !");
 
             // TryParse da zona de eleição
             int aux;
