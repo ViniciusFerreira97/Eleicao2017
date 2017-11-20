@@ -4,6 +4,8 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Eleicoes
 {
@@ -39,7 +41,10 @@ namespace Eleicoes
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
         }
-
+        public override string ToString()
+        {
+            return "---Urna---  Zona: " + this.zona + "  Seção: " + this.secao;
+        }
         public static int GetUrna(int zona, int secao)
         {
                 int aux = 0;
@@ -67,6 +72,34 @@ namespace Eleicoes
                 votosVereadores[c, 1] = votosVer[c, 1];
             }
         }
-
+        public static void SalvarUrnas()
+        {
+            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Urna.txt", FileMode.Create);
+            StreamWriter escritor = new StreamWriter(salvar);
+            foreach (Urna U in aUrnas)
+            {
+                escritor.WriteLine(U.zona+";"+U.secao);
+            }
+            escritor.Close();
+            salvar.Close();
+        }
+        public static void InicializarUrnas(string caminho)
+        {
+            if (File.Exists("Urna.txt"))
+            {
+                aUrnas.Clear();
+                Stream entrada = File.Open(caminho, FileMode.Open);
+                StreamReader leitor = new StreamReader(entrada);
+                string linha = leitor.ReadLine();
+                while (linha != null)
+                {
+                    string[] campos = linha.Split(';');
+                    aUrnas.Add(new Urna(campos[0], campos[1]));
+                    linha = leitor.ReadLine();
+                }
+                leitor.Close();
+                entrada.Close();
+            }
+        }
     }
 }

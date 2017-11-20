@@ -45,16 +45,12 @@ namespace Eleicoes
             }
             return true;
         }
-
         public string GetNomeVice() { return vicePrefeito.GetNome(); }
-
-        
-
         public override string ToString()
         {
             return "Prefeito -- Código: " + codigo + base.ToString();
         }
-        /*public static void SalvarPrefeitos()
+        public static void SalvarPrefeitos()
         {
             Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Prefeito.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
@@ -64,9 +60,11 @@ namespace Eleicoes
             }
             escritor.Close();
             salvar.Close();
-        }*/
-        /*public static void InicializarPrefeitos(string caminho)
+        }
+        public static void InicializarPrefeitos(string caminho)
         {
+            if (File.Exists("Prefeito.txt"))
+            {
                 aPrefeitos.Clear();
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
@@ -74,11 +72,13 @@ namespace Eleicoes
                 while (linha != null)
                 {
                     string[] campos = linha.Split(';');
-                aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])], (VicePrefeito)VicePrefeito.aVicePrefeito[int.Parse(campos[5])]));
+                    aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])], (VicePrefeito)VicePrefeito.aVicePrefeito[int.Parse(campos[5])]));
+                    linha = leitor.ReadLine();
                 }
                 leitor.Close();
                 entrada.Close();
-        }*/
+            }
+        }
 
     }
 }

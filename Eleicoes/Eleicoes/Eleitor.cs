@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Eleicoes
 {
@@ -80,6 +82,35 @@ namespace Eleicoes
         {
             return "Eleitor -- Nome: " + nome + "Data de nascimento: " + dataNascimento +
                 " Titulo de eleitor: " + tituloEleitor + " Zona: " + zona + " Seção: " + secao;
+        }
+        public static void SalvarEleitores()
+        {
+            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Eleitor.txt", FileMode.Create);
+            StreamWriter escritor = new StreamWriter(salvar);
+            foreach (Eleitor p in aEleitores)
+            {
+                escritor.WriteLine(p.nome + ";" + p.dataNascimento + ";" + p.tituloEleitor + ";" + p.zona + ";" + p.secao);
+            }
+            escritor.Close();
+            salvar.Close();
+        }
+        public static void InicializarEleitores(string caminho)
+        {
+            if (File.Exists("Eleitor.txt"))
+            {
+                aEleitores.Clear();
+                Stream entrada = File.Open(caminho, FileMode.Open);
+                StreamReader leitor = new StreamReader(entrada);
+                string linha = leitor.ReadLine();
+                while (linha != null)
+                {
+                    string[] campos = linha.Split(';');
+                    aEleitores.Add(new Eleitor(campos[0], campos[1], campos[2], campos[3], campos[4]));
+                    linha = leitor.ReadLine();
+                }
+                leitor.Close();
+                entrada.Close();
+            }
         }
     }
 }

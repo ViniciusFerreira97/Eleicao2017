@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Eleicoes
 {
@@ -56,6 +58,35 @@ namespace Eleicoes
                 cont++; 
             }
             return cont;
+        }
+        public static void SalvarVice()
+        {
+            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\VicePrefeito.txt", FileMode.Create);
+            StreamWriter escritor = new StreamWriter(salvar);
+            foreach (VicePrefeito p in aVicePrefeito)
+            {
+                escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome()));
+            }
+            escritor.Close();
+            salvar.Close();
+        }
+        public static void InicializarVice(string caminho)
+        {
+            aVicePrefeito.Clear();
+            if (File.Exists("VicePrefeito.txt"))
+            {
+                Stream entrada = File.Open(caminho, FileMode.Open);
+                StreamReader leitor = new StreamReader(entrada);
+                string linha = leitor.ReadLine();
+                while (linha != null)
+                {
+                    string[] campos = linha.Split(';');
+                    aVicePrefeito.Add(new VicePrefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])]));
+                    linha = leitor.ReadLine();
+                }
+                leitor.Close();
+                entrada.Close();
+            }
         }
     }
 }

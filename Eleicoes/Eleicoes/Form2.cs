@@ -17,6 +17,12 @@ namespace Eleicoes
         public Form2()
         {
             InitializeComponent();
+            Partido.InicializarPartidos(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Partido.txt");
+            VicePrefeito.InicializarVice(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\VicePrefeito.txt");
+            Prefeito.InicializarPrefeitos(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Prefeito.txt");
+            Vereador.InicializarVereador(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Vereador.txt");
+            Eleitor.InicializarEleitores(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Eleitor.txt");
+            Urna.InicializarUrnas(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Urna.txt");
             rbnPartido.Checked = true;
             lblNome.Visible = true;
             lblDat.Visible = false;
@@ -227,8 +233,17 @@ namespace Eleicoes
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Partido.SalvarPartidos();
+            VicePrefeito.SalvarVice();
+            Prefeito.SalvarPrefeitos();
+            Vereador.SalvarVereador();
+            Urna.SalvarUrnas();
+            Eleitor.SalvarEleitores();
             Form1 form1 = new Form1();
             form1.Show();
+        }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
         }
     }
 }
