@@ -27,7 +27,6 @@ namespace Eleicoes
         public Form3()
         {
             InitializeComponent();
-            
             for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
             {
                     votosPrefeitos[c, 0] = Prefeito.aPrefeitos[c].GetCodigo();

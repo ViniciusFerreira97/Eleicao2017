@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Eleicoes
 {
@@ -52,5 +54,31 @@ namespace Eleicoes
         {
             return "Prefeito -- Código: " + codigo + base.ToString();
         }
+        /*public static void SalvarPrefeitos()
+        {
+            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Prefeito.txt", FileMode.Create);
+            StreamWriter escritor = new StreamWriter(salvar);
+            foreach (Prefeito p in aPrefeitos)
+            {
+                escritor.WriteLine(p.codigo+";"+p.nome+";"+p.email+";"+p.dataNascimento+";"+Partido.verificaPosicao(p.partido.getNome())+";"+VicePrefeito.VerificaPosicao(p.vicePrefeito.GetCodigo()));
+            }
+            escritor.Close();
+            salvar.Close();
+        }*/
+        /*public static void InicializarPrefeitos(string caminho)
+        {
+                aPrefeitos.Clear();
+                Stream entrada = File.Open(caminho, FileMode.Open);
+                StreamReader leitor = new StreamReader(entrada);
+                string linha = leitor.ReadLine();
+                while (linha != null)
+                {
+                    string[] campos = linha.Split(';');
+                aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])], (VicePrefeito)VicePrefeito.aVicePrefeito[int.Parse(campos[5])]));
+                }
+                leitor.Close();
+                entrada.Close();
+        }*/
+
     }
 }

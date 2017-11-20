@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Eleicoes
 {
@@ -62,5 +63,34 @@ namespace Eleicoes
             }
             return aux;
         }
+        public static void SalvarPartidos()
+        {
+            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Partido.txt", FileMode.Create);
+            StreamWriter escritor = new StreamWriter(salvar);
+            foreach (Partido p in aPartidos)
+            {
+                escritor.WriteLine(p.nome);
+            }
+            escritor.Close();
+            salvar.Close();
+        }
+        public static void InicializarPartidos(string caminho)
+        {
+            aPartidos.Clear();
+            if (File.Exists("Partido.txt"))
+            {
+                Stream entrada = File.Open(caminho, FileMode.Open);
+                StreamReader leitor = new StreamReader(entrada);
+                string linha = leitor.ReadLine();
+                while (linha != null)
+                {
+                    aPartidos.Add(new Partido(linha));
+                    linha = leitor.ReadLine();
+                }
+                leitor.Close();
+                entrada.Close();
+            }
+        }
+
     }
 }
