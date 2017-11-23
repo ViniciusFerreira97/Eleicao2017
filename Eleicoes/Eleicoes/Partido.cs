@@ -11,7 +11,8 @@ namespace Eleicoes
     class Partido
     {
         public string nome;
-        public static ArrayList aPartidos = new ArrayList();
+        public int contCandidatos = 0;
+        public static List<Partido> aPartidos = new List<Partido>();
 
         public Partido(string nome)
         {

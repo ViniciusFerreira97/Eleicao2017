@@ -28,6 +28,7 @@ namespace Eleicoes
                 throw new InvalidDataException("EMAIL não pode er vazio, preencha-o");
 
             this.partido = partido;
+            this.partido.contCandidatos++;
 
             //TryParse Data Nascimento
             DateTime aux;

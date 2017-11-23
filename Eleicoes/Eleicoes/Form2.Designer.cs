@@ -61,6 +61,7 @@
             this.txtDatVice = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDataNascimento = new System.Windows.Forms.MaskedTextBox();
+            this.ckbExcluir = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -72,7 +73,7 @@
             this.groupBox1.Controls.Add(this.rbnEleitores);
             this.groupBox1.Controls.Add(this.rbnCandidato);
             this.groupBox1.Controls.Add(this.rbnPartido);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(460, 55);
             this.groupBox1.TabIndex = 0;
@@ -127,7 +128,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(12, 103);
+            this.txtNome.Location = new System.Drawing.Point(12, 136);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 1;
@@ -135,7 +136,7 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(12, 84);
+            this.lblNome.Location = new System.Drawing.Point(12, 117);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(38, 13);
             this.lblNome.TabIndex = 2;
@@ -143,7 +144,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(121, 365);
+            this.btnCadastrar.Location = new System.Drawing.Point(121, 398);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(95, 32);
             this.btnCadastrar.TabIndex = 3;
@@ -153,7 +154,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(256, 365);
+            this.btnExcluir.Location = new System.Drawing.Point(256, 398);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;
@@ -164,7 +165,7 @@
             // lblDat
             // 
             this.lblDat.AutoSize = true;
-            this.lblDat.Location = new System.Drawing.Point(131, 84);
+            this.lblDat.Location = new System.Drawing.Point(131, 117);
             this.lblDat.Name = "lblDat";
             this.lblDat.Size = new System.Drawing.Size(104, 13);
             this.lblDat.TabIndex = 6;
@@ -173,7 +174,7 @@
             // lblCodgo
             // 
             this.lblCodgo.AutoSize = true;
-            this.lblCodgo.Location = new System.Drawing.Point(252, 84);
+            this.lblCodgo.Location = new System.Drawing.Point(252, 117);
             this.lblCodgo.Name = "lblCodgo";
             this.lblCodgo.Size = new System.Drawing.Size(40, 13);
             this.lblCodgo.TabIndex = 8;
@@ -181,7 +182,7 @@
             // 
             // txtVariavel1
             // 
-            this.txtVariavel1.Location = new System.Drawing.Point(251, 103);
+            this.txtVariavel1.Location = new System.Drawing.Point(251, 136);
             this.txtVariavel1.Name = "txtVariavel1";
             this.txtVariavel1.Size = new System.Drawing.Size(100, 20);
             this.txtVariavel1.TabIndex = 7;
@@ -189,7 +190,7 @@
             // lblPartido
             // 
             this.lblPartido.AutoSize = true;
-            this.lblPartido.Location = new System.Drawing.Point(372, 84);
+            this.lblPartido.Location = new System.Drawing.Point(372, 117);
             this.lblPartido.Name = "lblPartido";
             this.lblPartido.Size = new System.Drawing.Size(40, 13);
             this.lblPartido.TabIndex = 10;
@@ -198,7 +199,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(9, 126);
+            this.lblEmail.Location = new System.Drawing.Point(9, 159);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 12;
@@ -206,7 +207,7 @@
             // 
             // txtVariavel3
             // 
-            this.txtVariavel3.Location = new System.Drawing.Point(9, 145);
+            this.txtVariavel3.Location = new System.Drawing.Point(9, 178);
             this.txtVariavel3.Name = "txtVariavel3";
             this.txtVariavel3.Size = new System.Drawing.Size(342, 20);
             this.txtVariavel3.TabIndex = 11;
@@ -215,7 +216,7 @@
             // 
             this.grpTipo.Controls.Add(this.rbnVereador);
             this.grpTipo.Controls.Add(this.rbnPrefeito);
-            this.grpTipo.Location = new System.Drawing.Point(9, 171);
+            this.grpTipo.Location = new System.Drawing.Point(9, 204);
             this.grpTipo.Name = "grpTipo";
             this.grpTipo.Size = new System.Drawing.Size(248, 54);
             this.grpTipo.TabIndex = 13;
@@ -322,7 +323,7 @@
             // cbxPartido
             // 
             this.cbxPartido.FormattingEnabled = true;
-            this.cbxPartido.Location = new System.Drawing.Point(375, 102);
+            this.cbxPartido.Location = new System.Drawing.Point(375, 135);
             this.cbxPartido.Name = "cbxPartido";
             this.cbxPartido.Size = new System.Drawing.Size(107, 21);
             this.cbxPartido.TabIndex = 24;
@@ -330,7 +331,7 @@
             // 
             // txtVariavel2
             // 
-            this.txtVariavel2.Location = new System.Drawing.Point(377, 101);
+            this.txtVariavel2.Location = new System.Drawing.Point(377, 134);
             this.txtVariavel2.Name = "txtVariavel2";
             this.txtVariavel2.Size = new System.Drawing.Size(100, 20);
             this.txtVariavel2.TabIndex = 25;
@@ -347,7 +348,7 @@
             this.grpVice.Controls.Add(this.lblDatVice);
             this.grpVice.Controls.Add(this.lblNomeVice);
             this.grpVice.Controls.Add(this.txtNomeVice);
-            this.grpVice.Location = new System.Drawing.Point(-1, 256);
+            this.grpVice.Location = new System.Drawing.Point(-1, 289);
             this.grpVice.Name = "grpVice";
             this.grpVice.Size = new System.Drawing.Size(483, 103);
             this.grpVice.TabIndex = 26;
@@ -366,7 +367,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(145, 235);
+            this.label1.Location = new System.Drawing.Point(145, 268);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 18);
             this.label1.TabIndex = 27;
@@ -374,18 +375,30 @@
             // 
             // txtDataNascimento
             // 
-            this.txtDataNascimento.Location = new System.Drawing.Point(134, 103);
+            this.txtDataNascimento.Location = new System.Drawing.Point(134, 136);
             this.txtDataNascimento.Mask = "00/00/0000";
             this.txtDataNascimento.Name = "txtDataNascimento";
             this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
             this.txtDataNascimento.TabIndex = 28;
             this.txtDataNascimento.ValidatingType = typeof(System.DateTime);
             // 
+            // ckbExcluir
+            // 
+            this.ckbExcluir.AutoSize = true;
+            this.ckbExcluir.Location = new System.Drawing.Point(177, 12);
+            this.ckbExcluir.Name = "ckbExcluir";
+            this.ckbExcluir.Size = new System.Drawing.Size(57, 17);
+            this.ckbExcluir.TabIndex = 29;
+            this.ckbExcluir.Text = "Excluir";
+            this.ckbExcluir.UseVisualStyleBackColor = true;
+            this.ckbExcluir.CheckedChanged += new System.EventHandler(this.ckbExcluir_CheckedChanged);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 407);
+            this.ClientSize = new System.Drawing.Size(489, 437);
+            this.Controls.Add(this.ckbExcluir);
             this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxPartido);
@@ -452,5 +465,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtDatVice;
         private System.Windows.Forms.MaskedTextBox txtDataNascimento;
+        private System.Windows.Forms.CheckBox ckbExcluir;
     }
 }

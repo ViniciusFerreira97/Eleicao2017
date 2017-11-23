@@ -45,10 +45,31 @@ namespace Eleicoes
             }
             return true;
         }
+
+        public static int VerificaPosicao(int x)
+        {
+            int cont = 0;
+            foreach (Prefeito v in aPrefeitos)
+            {
+                if (x == v.codigo)
+                    return cont;
+                cont++;
+            }
+            return cont;
+        }
+        public int GetCodVice() { return vicePrefeito.GetCodigo(); }
+        public string GetPartido() { return partido.nome; }
         public string GetNomeVice() { return vicePrefeito.GetNome(); }
+
         public override string ToString()
         {
             return "Prefeito -- Código: " + codigo + base.ToString();
+        }
+        public static void ExcluirCandidato(int a, int b, int c)
+        {
+            aPrefeitos[a].partido.contCandidatos -= 2;
+            Prefeito.aPrefeitos.Remove(aPrefeitos[a]);
+            VicePrefeito.aVicePrefeito.Remove(VicePrefeito.aVicePrefeito[b]);
         }
         public static void SalvarPrefeitos()
         {

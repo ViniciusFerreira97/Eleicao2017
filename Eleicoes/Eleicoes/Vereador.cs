@@ -43,6 +43,22 @@ namespace Eleicoes
             return true;
         }
 
+        public static int VerificaPosicao(int x)
+        {
+            int cont = 0;
+            foreach (Vereador v in aVereador)
+            {
+                if (x == v.codigo)
+                    return cont;
+                cont++;
+            }
+            return cont;
+        }
+        public static void ExcluirCandidato(int a)
+        {
+            aVereador[a].partido.contCandidatos -= 1;
+            Vereador.aVereador.Remove(aVereador[a]);
+        }
         public override string ToString()
         {
             return "Vereador -- Código: " + codigo + base.ToString();
