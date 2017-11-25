@@ -18,8 +18,8 @@ namespace Eleicoes
         private int votosBrancos;
         private Candidato[] cadidatos;
         
-        private int[,] votosPrefeitos = new int[Prefeito.aPrefeitos.Count, 2];
-        private int[,] votosVereadores = new int[Vereador.aVereador.Count, 2];
+        public int[,] votosPrefeitos = new int[Prefeito.aPrefeitos.Count, 2];
+        public int[,] votosVereadores = new int[Vereador.aVereador.Count, 2];
 
         public Urna(string zona, string secao)
         {

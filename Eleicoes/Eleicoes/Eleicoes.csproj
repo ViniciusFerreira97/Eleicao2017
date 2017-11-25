@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Candidato.cs" />
     <Compile Include="Eleitor.cs" />
+    <Compile Include="FinalizadorVotacao.cs" />
     <Compile Include="Inicial.cs">
       <SubType>Form</SubType>
     </Compile>

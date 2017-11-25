@@ -144,7 +144,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(121, 398);
+            this.btnCadastrar.Location = new System.Drawing.Point(21, 398);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(95, 32);
             this.btnCadastrar.TabIndex = 3;
@@ -154,7 +154,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(256, 398);
+            this.btnExcluir.Location = new System.Drawing.Point(156, 398);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;

@@ -54,15 +54,13 @@ namespace Eleicoes
             }
             return cont;
         }
+
         public static void ExcluirCandidato(int a)
         {
             aVereador[a].partido.contCandidatos -= 1;
             Vereador.aVereador.Remove(aVereador[a]);
         }
-        public override string ToString()
-        {
-            return "Vereador -- Código: " + codigo + base.ToString();
-        }
+
         public static void SalvarVereador()
         {
             Stream salvar = File.Open("Vereador.txt", FileMode.Create);
@@ -74,6 +72,7 @@ namespace Eleicoes
             escritor.Close();
             salvar.Close();
         }
+
         public static void InicializarVereador(string caminho)
         {
             aVereador.Clear();
