@@ -66,7 +66,7 @@ namespace Eleicoes
         }
         public static void SalvarPartidos()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Partido.txt", FileMode.Create);
+            Stream salvar = File.Open("Partido.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Partido p in aPartidos)
             {

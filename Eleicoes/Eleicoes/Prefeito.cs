@@ -73,7 +73,7 @@ namespace Eleicoes
         }
         public static void SalvarPrefeitos()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Prefeito.txt", FileMode.Create);
+            Stream salvar = File.Open("Prefeito.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Prefeito p in aPrefeitos)
             {

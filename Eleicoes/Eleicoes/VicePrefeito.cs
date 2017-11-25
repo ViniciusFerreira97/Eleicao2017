@@ -61,7 +61,7 @@ namespace Eleicoes
         }
         public static void SalvarVice()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\VicePrefeito.txt", FileMode.Create);
+            Stream salvar = File.Open("VicePrefeito.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (VicePrefeito p in aVicePrefeito)
             {

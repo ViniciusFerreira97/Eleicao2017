@@ -50,7 +50,20 @@ namespace Eleicoes
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
         }
-
+        public static bool ExcluirEleitor(string titulo)
+        {
+            int cont = 0;
+            foreach(Eleitor x in aEleitores)
+            {
+                if (x.tituloEleitor == titulo)
+                {
+                    Eleitor.aEleitores.Remove(aEleitores[cont]);
+                    return true;
+                }
+                cont++;
+            }
+            return false;
+        }
         public static bool VerificaExistencia(string titulo)
         {
             foreach (Eleitor e in aEleitores)
@@ -85,7 +98,7 @@ namespace Eleicoes
         }
         public static void SalvarEleitores()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Eleitor.txt", FileMode.Create);
+            Stream salvar = File.Open("Eleitor.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Eleitor p in aEleitores)
             {

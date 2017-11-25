@@ -18,12 +18,12 @@ namespace Eleicoes
         {
             InitializeComponent();
             //Inicializando documentos TXT.
-            Partido.InicializarPartidos(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Partido.txt");
-            VicePrefeito.InicializarVice(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\VicePrefeito.txt");
-            Prefeito.InicializarPrefeitos(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Prefeito.txt");
-            Vereador.InicializarVereador(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Vereador.txt");
-            Eleitor.InicializarEleitores(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Eleitor.txt");
-            Urna.InicializarUrnas(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Urna.txt");
+            Partido.InicializarPartidos("Partido.txt");
+            VicePrefeito.InicializarVice("VicePrefeito.txt");
+            Prefeito.InicializarPrefeitos("Prefeito.txt");
+            Vereador.InicializarVereador("Vereador.txt");
+            Eleitor.InicializarEleitores("Eleitor.txt");
+            Urna.InicializarUrnas("Urna.txt");
             //Tratando visibilidade dos objetos.
             rbnPartido.Checked = true;
             lblNome.Visible = true;
@@ -103,7 +103,7 @@ namespace Eleicoes
                 txtVariavel1.Visible = false;
                 txtVariavel2.Visible = false;
                 txtVariavel3.Visible = false;
-                grpTipo.Visible = false;
+                grpTipo.Visible = true;
                 cbxPartido.Visible = false;
                 grpVice.Visible = false;
                 label1.Visible = false;
@@ -147,27 +147,50 @@ namespace Eleicoes
             txtVariavel1.Location = new Point(251, 136);
             txtVariavel2.Location = new Point(375, 136);
             //Tratando visibilidade e texto dos objetos.
-            rbnPrefeito.Checked = false;
-            rbnVereador.Checked = false;
-            lblNome.Visible = true;
-            lblDat.Visible = true;
-            lblCodgo.Visible = true;
-            lblEmail.Visible = true;
-            lblPartido.Visible = true;
-            txtDataNascimento.Visible = true;
-            txtVariavel1.Visible = true;
-            txtVariavel3.Visible = true;
-            txtNome.Visible = true;
-            grpTipo.Visible = false;
-            cbxPartido.Visible = false;
-            grpVice.Visible = false;
-            label1.Visible = false;
-            txtVariavel2.Visible = true;
-            lblCodgo.Text = "Zona";
-            lblPartido.Text = "Seção";
-            lblEmail.Text = "N° Titulo";
-            lblNome.Text = "Nome";
-            lblDat.Text = "Data de Nascimento";
+            if (ckbExcluir.Checked)
+            {
+                rbnPrefeito.Checked = false;
+                rbnVereador.Checked = false;
+                lblNome.Visible = false;
+                lblDat.Visible = false;
+                lblCodgo.Visible = false;
+                lblEmail.Visible = true;
+                lblPartido.Visible = false;
+                txtDataNascimento.Visible = false;
+                txtVariavel1.Visible = false;
+                txtVariavel3.Visible = true;
+                txtNome.Visible = false;
+                grpTipo.Visible = false;
+                cbxPartido.Visible = false;
+                grpVice.Visible = false;
+                label1.Visible = false;
+                txtVariavel2.Visible = false;
+                lblEmail.Text = "N° Titulo";
+            }
+            else
+            {
+                rbnPrefeito.Checked = false;
+                rbnVereador.Checked = false;
+                lblNome.Visible = true;
+                lblDat.Visible = true;
+                lblCodgo.Visible = true;
+                lblEmail.Visible = true;
+                lblPartido.Visible = true;
+                txtDataNascimento.Visible = true;
+                txtVariavel1.Visible = true;
+                txtVariavel3.Visible = true;
+                txtNome.Visible = true;
+                grpTipo.Visible = false;
+                cbxPartido.Visible = false;
+                grpVice.Visible = false;
+                label1.Visible = false;
+                txtVariavel2.Visible = true;
+                lblCodgo.Text = "Zona";
+                lblPartido.Text = "Seção";
+                lblEmail.Text = "N° Titulo";
+                lblNome.Text = "Nome";
+                lblDat.Text = "Data de Nascimento";
+            }
             zerarTudo();
         }
         private void rbnPrefeito_CheckedChanged(object sender, EventArgs e)
@@ -194,24 +217,47 @@ namespace Eleicoes
             txtVariavel1.Location = new Point(12, 136);
             txtVariavel2.Location = new Point(134, 136);
             //Tratando visibilidade e texto dos objetos.
-            txtVariavel2.Visible = true;
-            rbnPrefeito.Checked = false;
-            rbnVereador.Checked = false;
-            lblNome.Visible = true;
-            lblDat.Visible = true;
-            lblCodgo.Visible = false;
-            lblEmail.Visible = false;
-            lblPartido.Visible = false;
-            txtDataNascimento.Visible = false;
-            txtVariavel1.Visible = true;
-            txtVariavel3.Visible = false;
-            txtNome.Visible = false;
-            grpTipo.Visible = false;
-            cbxPartido.Visible = false;
-            grpVice.Visible = false;
-            label1.Visible = false;
-            lblNome.Text = "Zona";
-            lblDat.Text = "Seção";
+            if (ckbExcluir.Checked)
+            {
+                txtVariavel2.Visible = false;
+                rbnPrefeito.Checked = false;
+                rbnVereador.Checked = false;
+                lblNome.Visible = true;
+                lblDat.Visible = false;
+                lblCodgo.Visible = false;
+                lblEmail.Visible = false;
+                lblPartido.Visible = false;
+                txtDataNascimento.Visible = false;
+                txtVariavel1.Visible = true;
+                txtVariavel3.Visible = false;
+                txtNome.Visible = false;
+                grpTipo.Visible = false;
+                cbxPartido.Visible = false;
+                grpVice.Visible = false;
+                label1.Visible = false;
+                lblNome.Text = "Seção";
+            }
+            else
+            {
+                txtVariavel2.Visible = true;
+                rbnPrefeito.Checked = false;
+                rbnVereador.Checked = false;
+                lblNome.Visible = true;
+                lblDat.Visible = true;
+                lblCodgo.Visible = false;
+                lblEmail.Visible = false;
+                lblPartido.Visible = false;
+                txtDataNascimento.Visible = false;
+                txtVariavel1.Visible = true;
+                txtVariavel3.Visible = false;
+                txtNome.Visible = false;
+                grpTipo.Visible = false;
+                cbxPartido.Visible = false;
+                grpVice.Visible = false;
+                label1.Visible = false;
+                lblNome.Text = "Zona";
+                lblDat.Text = "Seção";
+            }
             zerarTudo();
         }
 
@@ -319,8 +365,23 @@ namespace Eleicoes
                 {
                     int aux = Vereador.VerificaPosicao(int.Parse(txtNome.Text));
                     Vereador.ExcluirCandidato(aux);
-
                     MessageBox.Show("Vereador excluido com sucesso");
+                }
+            }
+            else if (rbnEleitores.Checked == true)
+            {
+                bool ok = Eleitor.ExcluirEleitor(txtVariavel3.Text);
+                if (ok)
+                {
+                    MessageBox.Show("Eleitor excluido com sucesso");
+                }
+            }
+            else if (rbnUrna.Checked == true)
+            {
+                bool ok = Urna.ExcluirUrna(int.Parse(txtVariavel1.Text));
+                if (ok)
+                {
+                    MessageBox.Show("Urna excluida com sucesso");
                 }
             }
         }

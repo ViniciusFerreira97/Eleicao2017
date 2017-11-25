@@ -72,9 +72,23 @@ namespace Eleicoes
                 votosVereadores[c, 1] = votosVer[c, 1];
             }
         }
+        public static bool ExcluirUrna(int seca)
+        {
+            int cont = 0;
+            foreach (Urna x in aUrnas)
+            {
+                if (x.secao == seca)
+                {
+                    Urna.aUrnas.Remove(aUrnas[cont]);
+                    return true;
+                }
+                cont++;
+            }
+            return false;
+        }
         public static void SalvarUrnas()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Urna.txt", FileMode.Create);
+            Stream salvar = File.Open("Urna.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Urna U in aUrnas)
             {

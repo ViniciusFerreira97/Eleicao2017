@@ -65,7 +65,7 @@ namespace Eleicoes
         }
         public static void SalvarVereador()
         {
-            Stream salvar = File.Open(@"C:\Users\OTIMIZAÇÃO\Documents\Vinicius Git\Eleicao2017\Eleicoes\Eleicoes\bin\Debug\Vereador.txt", FileMode.Create);
+            Stream salvar = File.Open("Vereador.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Vereador p in aVereador)
             {
