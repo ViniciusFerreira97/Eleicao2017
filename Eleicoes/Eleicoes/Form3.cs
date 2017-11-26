@@ -112,14 +112,54 @@ namespace Eleicoes
             mskVotacao.Text += "0";
         }
 
+        //Alterar o modo de votação para Vereador
+        public void alterarVotacaoVereador()
+        {
+
+            lblCargo.Text = "VEREADOR";
+            lblVice.Enabled = false;
+            txtViceNome.Enabled = false;
+            txtViceNome.Visible = false;
+            lblVice.Visible = false;
+            mskVotacao.Mask = "0000";
+            prefeito = false;
+        }
+
+        // Apagar instruções de confirmação
+        public void limparVisorDeConfirmacao()
+        {
+            lblAperta.Enabled = false;
+            lblVerde.Enabled = false;
+            lblVerme.Enabled = false;
+            lblAperta.Visible = false;
+            lblVerde.Visible = false;
+            lblVerme.Visible = false;
+
+        }
+
+        // Mostrar instruções de confirmação
+        public void mostrarVisorDeConfirmaca()
+        {
+
+            lblAperta.Enabled = true;
+            lblVerde.Enabled = true;
+            lblVerme.Enabled = true;
+            lblAperta.Visible = true;
+            lblVerde.Visible = true;
+            lblVerme.Visible = true;
+
+        }
+
         private void btnBranco_Click(object sender, EventArgs e)
         {
+            //Teste inicial para verificar se foi digitado um titulo de Eleitor
             if (string.IsNullOrEmpty(txtBTitulo.Text))
             {
                 MessageBox.Show("Favor digitar o Titulo de Eleitor");
             }
             else
             {
+                //Teste inicial para verificar se o eleitor esta cadastrado
                 if (Eleitor.VerificaExistencia(txtBTitulo.Text))
                 {
 
@@ -127,11 +167,14 @@ namespace Eleicoes
                 }
                 else
                 {
+                    //Desativando a edição do titulo de eleitor
                     txtBTitulo.Enabled = false;
+
+                    //Verificando se a votação é para prefeito ou para vereador
                     if (prefeito)
                     {
                         votosBrancos++;
-                        lblVice.Visible = false;
+                        alterarVotacaoVereador();
                     }
                     else
                     {
@@ -142,28 +185,33 @@ namespace Eleicoes
             }
         }
 
-                private void btnCorrige_Click(object sender, EventArgs e)
+        private void btnCorrige_Click(object sender, EventArgs e)
         {
+            //Limpando o textboxs
             mskVotacao.Text = "";
             txtBNome.Text = "";
             txtBPartido.Text = "";
-            lblAperta.Enabled = false;
-            lblVerde.Enabled = false;
-            lblVerme.Enabled = false;
-            lblAperta.Visible = false;
-            lblVerde.Visible = false;
-            lblVerme.Visible = false;
+            limparVisorDeConfirmacao();
+
+            //Verificando se a votação é para prefeito ou para vereador
+            if (prefeito)
+            {
+                txtViceNome.Text = "";
+
+            }
             confirmar = false;
         }
 
         private void btnConfirma_Click(object sender, EventArgs e)
         {
+            //Teste inicial para verificar se foi digitado um titulo de Eleitor
             if (string.IsNullOrEmpty(txtBTitulo.Text))
             {
                 MessageBox.Show("Favor digitar o Titulo de Eleitor");
             }
             else
             {
+                //Teste inicial para verificar se o eleitor esta cadastrado
                 if (Eleitor.VerificaExistencia(txtBTitulo.Text))
                 {
 
@@ -171,15 +219,19 @@ namespace Eleicoes
                 }
                 else
                 {
+                    //Desativando a edição do titulo de eleitor
                     txtBTitulo.Enabled = false;
 
                     int aux = 0;
                     bool nulo = false;
+
+                    //Verificando se a votação é para prefeito ou para vereador
                     if (prefeito)
                     {
+                        //Verificando se foi digitado algo.
                         if (mskVotacao.Text != "")
                         {
-
+                            //rodando a matriz de prefeitos verificando se o codigo digitado pertence a algum prefeito
                             for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
                             {
                                 if (mskVotacao.Text == votosPrefeitos[c, 0].ToString())
@@ -188,13 +240,16 @@ namespace Eleicoes
                                 }
                             }
 
+                            //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do prefeito igual ao digitado é considerado nulo.
                             if (aux == 0 && mskVotacao.Text != votosPrefeitos[0, 0].ToString())
                             {
                                 nulo = true;
                             }
 
+                            //Verificando se o botão Confirma ja foi pressionado
                             if (!confirmar)
                             {
+                                //Verificando se é nulo
                                 if (!nulo)
                                 {
                                     txtBNome.Text = Prefeito.aPrefeitos[aux].GetNome();
@@ -202,29 +257,18 @@ namespace Eleicoes
                                     txtBPartido.Text = Prefeito.aPrefeitos[aux].GetNomePartido();
                                     txtViceNome.Text = Prefeito.aPrefeitos[aux].GetNomeVice();
 
-                                    lblAperta.Enabled = true;
-                                    lblVerde.Enabled = true;
-                                    lblVerme.Enabled = true;
-                                    lblAperta.Visible = true;
-                                    lblVerde.Visible = true;
-                                    lblVerme.Visible = true;
+                                    mostrarVisorDeConfirmaca();
 
                                     confirmar = true;
                                 }
                                 else
                                 {
                                     txtBNome.Text = "Nulo";
-
                                     txtViceNome.Text = "Nulo";
                                     txtBPartido.Text = "Nulo";
-                                    lblAperta.Enabled = true;
-                                    lblVerde.Enabled = true;
-                                    lblVerme.Enabled = true;
-                                    lblAperta.Visible = true;
-                                    lblVerde.Visible = true;
-                                    lblVerme.Visible = true;
 
-
+                                    mostrarVisorDeConfirmaca();
+                                    
                                     confirmar = true;
 
                                 }
@@ -238,23 +282,12 @@ namespace Eleicoes
                                     txtBNome.Text = "";
                                     txtBPartido.Text = "";
                                     txtViceNome.Text = "";
-                                    lblAperta.Enabled = false;
-                                    lblVerde.Enabled = false;
-                                    lblVerme.Enabled = false;
-                                    lblAperta.Visible = false;
-                                    lblVerde.Visible = false;
-                                    lblVerme.Visible = false;
 
+                                    limparVisorDeConfirmacao();
 
-                                    lblCargo.Text = "VEREADOR";
-                                    lblVice.Enabled = false;
-                                    txtViceNome.Enabled = false;
-                                    txtViceNome.Visible = false;
-                                    lblVice.Visible = false;
-                                    mskVotacao.Mask = "0000";
+                                    alterarVotacaoVereador();
 
                                     confirmar = false;
-                                    prefeito = false;
                                 }
                                 else
                                 {
@@ -264,41 +297,28 @@ namespace Eleicoes
                                     txtBNome.Text = "";
                                     txtBPartido.Text = "";
                                     txtViceNome.Text = "";
-                                    lblAperta.Enabled = false;
-                                    lblVerde.Enabled = false;
-                                    lblVerme.Enabled = false;
-                                    lblAperta.Visible = false;
-                                    lblVerde.Visible = false;
-                                    lblVerme.Visible = false;
 
+                                    limparVisorDeConfirmacao();
 
-                                    lblCargo.Text = "VEREADOR";
-                                    lblVice.Enabled = false;
-                                    txtViceNome.Enabled = false;
-                                    txtViceNome.Visible = false;
-                                    lblVice.Visible = false;
-                                    mskVotacao.Mask = "0000";
+                                    alterarVotacaoVereador();
 
                                     confirmar = false;
-                                    prefeito = false;
 
                                 }
                             }
                         }
                         else
                         {
+                            //Verificando se o botão Confirma ja foi pressionado
                             if (!confirmar)
                             {
+
                                 txtBNome.Text = "Branco";
                                 txtViceNome.Text = "Branco";
-
                                 txtBPartido.Text = "Branco";
-                                lblAperta.Enabled = true;
-                                lblVerde.Enabled = true;
-                                lblVerme.Enabled = true;
-                                lblAperta.Visible = true;
-                                lblVerde.Visible = true;
-                                lblVerme.Visible = true;
+
+                                mostrarVisorDeConfirmaca();
+
 
                                 confirmar = true;
                             }
@@ -310,23 +330,12 @@ namespace Eleicoes
                                 txtBNome.Text = "";
                                 txtBPartido.Text = "";
                                 txtViceNome.Text = "";
-                                lblAperta.Enabled = false;
-                                lblVerde.Enabled = false;
-                                lblVerme.Enabled = false;
-                                lblAperta.Visible = false;
-                                lblVerde.Visible = false;
-                                lblVerme.Visible = false;
 
-
-                                lblCargo.Text = "VEREADOR";
-                                lblVice.Enabled = false;
-                                txtViceNome.Enabled = false;
-                                txtViceNome.Visible = false;
-                                lblVice.Visible = false;
-                                mskVotacao.Mask = "0000";
+                                limparVisorDeConfirmacao();
+                                
+                                alterarVotacaoVereador();
 
                                 confirmar = false;
-                                prefeito = false;
                             }
 
                         }
@@ -334,10 +343,10 @@ namespace Eleicoes
                     }
                     else
                     {
-
+                        //Verificando se foi digitado algo.
                         if (mskVotacao.Text != "")
                         {
-
+                            //rodando a matriz de vereadores verificando se o codigo digitado pertence a algum prefeito
                             for (int c = 0; c < votosVereador.GetLength(0); c++)
                             {
                                 if (mskVotacao.Text == votosVereador[c, 0].ToString())
@@ -346,25 +355,23 @@ namespace Eleicoes
                                 }
                             }
 
+                            //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do vereador igual ao digitado é considerado nulo.
                             if (aux == 0 && mskVotacao.Text != votosVereador[0, 0].ToString())
                             {
                                 nulo = true;
                             }
 
+                            //Verificando se o botão Confirma foi pressionado
                             if (!confirmar)
                             {
+                                //Verificando se é nulo
                                 if (!nulo)
                                 {
                                     txtBNome.Text = Vereador.aVereador[aux].GetNome();
 
                                     txtBPartido.Text = Vereador.aVereador[aux].GetNomePartido();
-
-                                    lblAperta.Enabled = true;
-                                    lblVerde.Enabled = true;
-                                    lblVerme.Enabled = true;
-                                    lblAperta.Visible = true;
-                                    lblVerde.Visible = true;
-                                    lblVerme.Visible = true;
+                                    
+                                    mostrarVisorDeConfirmaca();
 
                                     confirmar = true;
                                 }
@@ -373,12 +380,8 @@ namespace Eleicoes
                                     txtBNome.Text = "Nulo";
 
                                     txtBPartido.Text = "Nulo";
-                                    lblAperta.Enabled = true;
-                                    lblVerde.Enabled = true;
-                                    lblVerme.Enabled = true;
-                                    lblAperta.Visible = true;
-                                    lblVerde.Visible = true;
-                                    lblVerme.Visible = true;
+
+                                    mostrarVisorDeConfirmaca();
 
                                     confirmar = true;
 
@@ -386,18 +389,15 @@ namespace Eleicoes
                             }
                             else
                             {
+                                //Verificando se é nulo
                                 if (!nulo)
                                 {
                                     votosVereador[aux, 1]++;
                                     mskVotacao.Text = "";
                                     txtBNome.Text = "";
                                     txtBPartido.Text = "";
-                                    lblAperta.Enabled = false;
-                                    lblVerde.Enabled = false;
-                                    lblVerme.Enabled = false;
-                                    lblAperta.Visible = false;
-                                    lblVerde.Visible = false;
-                                    lblVerme.Visible = false;
+
+                                    limparVisorDeConfirmacao();
 
 
                                     this.Close();
@@ -411,12 +411,8 @@ namespace Eleicoes
                                     mskVotacao.Text = "";
                                     txtBNome.Text = "";
                                     txtBPartido.Text = "";
-                                    lblAperta.Enabled = false;
-                                    lblVerde.Enabled = false;
-                                    lblVerme.Enabled = false;
-                                    lblAperta.Visible = false;
-                                    lblVerde.Visible = false;
-                                    lblVerme.Visible = false;
+
+                                    limparVisorDeConfirmacao();
 
                                     this.Close();
 
@@ -427,17 +423,15 @@ namespace Eleicoes
                         }
                         else
                         {
+                            //Verificando se o botão Confirma foi pressionado
                             if (!confirmar)
                             {
                                 txtBNome.Text = "Branco";
 
                                 txtBPartido.Text = "Branco";
-                                lblAperta.Enabled = true;
-                                lblVerde.Enabled = true;
-                                lblVerme.Enabled = true;
-                                lblAperta.Visible = true;
-                                lblVerde.Visible = true;
-                                lblVerme.Visible = true;
+
+
+                                mostrarVisorDeConfirmaca();
 
                                 confirmar = true;
                             }
@@ -448,12 +442,8 @@ namespace Eleicoes
                                 mskVotacao.Text = "";
                                 txtBNome.Text = "";
                                 txtBPartido.Text = "";
-                                lblAperta.Enabled = false;
-                                lblVerde.Enabled = false;
-                                lblVerme.Enabled = false;
-                                lblAperta.Visible = false;
-                                lblVerde.Visible = false;
-                                lblVerme.Visible = false;
+
+                                limparVisorDeConfirmacao();
 
                                 this.Close();
 
