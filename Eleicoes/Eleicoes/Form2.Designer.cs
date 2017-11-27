@@ -62,6 +62,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDataNascimento = new System.Windows.Forms.MaskedTextBox();
             this.ckbExcluir = new System.Windows.Forms.CheckBox();
+            this.btnFim = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -393,11 +394,22 @@
             this.ckbExcluir.UseVisualStyleBackColor = true;
             this.ckbExcluir.CheckedChanged += new System.EventHandler(this.ckbExcluir_CheckedChanged);
             // 
+            // btnFim
+            // 
+            this.btnFim.Location = new System.Drawing.Point(350, 398);
+            this.btnFim.Name = "btnFim";
+            this.btnFim.Size = new System.Drawing.Size(112, 32);
+            this.btnFim.TabIndex = 30;
+            this.btnFim.Text = "Finalizar Votação";
+            this.btnFim.UseVisualStyleBackColor = true;
+            this.btnFim.Click += new System.EventHandler(this.btnFim_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 437);
+            this.Controls.Add(this.btnFim);
             this.Controls.Add(this.ckbExcluir);
             this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.label1);
@@ -466,5 +478,6 @@
         private System.Windows.Forms.MaskedTextBox txtDatVice;
         private System.Windows.Forms.MaskedTextBox txtDataNascimento;
         private System.Windows.Forms.CheckBox ckbExcluir;
+        private System.Windows.Forms.Button btnFim;
     }
 }

@@ -18,7 +18,7 @@ namespace Eleicoes
             // TryParse do codigo do Vereador
             int aux;
             bool ver = int.TryParse(cod, out aux);
-            if (ver)
+            if (ver && aux > 999 && aux < 10000)
             {
                 if (VerificaExistencia(aux))
                     this.codigo = aux;

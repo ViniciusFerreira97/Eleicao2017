@@ -14,6 +14,7 @@ namespace Eleicoes
         protected string email;
         protected DateTime dataNascimento;
         protected Partido partido;
+        public int votos;
 
         public Candidato(string nome, string email, string dataNascimento, Partido partido)
         {

@@ -48,6 +48,12 @@
     <Compile Include="Candidato.cs" />
     <Compile Include="Eleitor.cs" />
     <Compile Include="FinalizadorVotacao.cs" />
+    <Compile Include="FormFinalizador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFinalizador.Designer.cs">
+      <DependentUpon>FormFinalizador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Urna.cs" />
     <Compile Include="Vereador.cs" />
     <Compile Include="VicePrefeito.cs" />
+    <EmbeddedResource Include="FormFinalizador.resx">
+      <DependentUpon>FormFinalizador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>

@@ -16,7 +16,6 @@ namespace Eleicoes
         private int secao;
         private int votosNulos;
         private int votosBrancos;
-        private Candidato[] cadidatos;
         
         public int[,] votosPrefeitos = new int[Prefeito.aPrefeitos.Count, 2];
         public int[,] votosVereadores = new int[Vereador.aVereador.Count, 2];
@@ -71,6 +70,27 @@ namespace Eleicoes
                 votosVereadores[c, 0] = votosVer[c, 0];
                 votosVereadores[c, 1] = votosVer[c, 1];
             }
+
+            for(int i = 0; i < votosVereadores.GetLength(1); i++)
+            {
+                foreach(Vereador v in Vereador.aVereador)
+                {
+                    if (v.GetCodigo() == votosVereadores[i, 0])
+                        v.votos = votosVereadores[0, 1];
+                }
+            }
+
+            for (int i = 0; i < votosPrefeitos.GetLength(1); i++)
+            {
+                foreach (Prefeito p in Prefeito.aPrefeitos)
+                {
+                    if (p.GetCodigo() == votosPrefeitos[i, 0])
+                        p.votos = votosPrefeitos[0, 1];
+                }
+            }
+
+            this.votosBrancos += votosBrancos;
+            this.votosNulos += votosNulo;
         }
         public static bool ExcluirUrna(int seca)
         {

@@ -29,6 +29,7 @@ namespace Eleicoes
             {
                 vVereadores[aux, 0] = v.GetCodigo();
                 vVereadores[aux, 1] = 0;
+                aux++;
             }
 
             //Este foreach realiza a soma de todos os votos de vereadores
@@ -37,7 +38,7 @@ namespace Eleicoes
             {
                 for (int j = 0; j < vVereadores.GetLength(1); j++)
                 {
-                    for (int i = 0; i < u.votosVereadores.Length; i++)
+                    for (int i = 0; i < u.votosVereadores.GetLength(1); i++)
                     {
                         //verifica se o código de cada vereador no vVereadores é igual ao código de cada vereador no votosVeradores da urna atual
                         if (vVereadores[j, 0] == u.votosVereadores[i, 0])

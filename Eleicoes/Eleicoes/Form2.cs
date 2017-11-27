@@ -13,7 +13,8 @@ namespace Eleicoes
 {
     public partial class Form2 : Form
     {
-        
+
+        FormFinalizador fim = new FormFinalizador();
         public Form2()
         {
             InitializeComponent();
@@ -389,6 +390,12 @@ namespace Eleicoes
         private void ckbExcluir_CheckedChanged(object sender, EventArgs e)
         {
             groupBox1.Text = "Excluir";
+        }
+
+        private void btnFim_Click(object sender, EventArgs e)
+        {
+            fim.Show();
+            this.Hide();
         }
     }
 }
