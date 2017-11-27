@@ -11,8 +11,6 @@ namespace Eleicoes
 {
     class Vereador : Candidato
     {
-        public static List<Vereador> aVereador = new List<Vereador>();
-
         public Vereador(string cod, string nome, string email, string dataNascimento, Partido partido):base(nome, email, dataNascimento, partido)
         {
             // TryParse do codigo do Vereador
@@ -21,7 +19,10 @@ namespace Eleicoes
             if (ver && aux > 999 && aux < 10000)
             {
                 if (VerificaExistencia(aux))
+                {
+                    partido.contCandidatos++;
                     this.codigo = aux;
+                }
                 else
                     throw new InvalidDataException("Valor digitado para código do Vereador é invalido !\n" +
                         "Pois já existe um Vereador com esse código !");
@@ -33,7 +34,7 @@ namespace Eleicoes
 
         protected override bool VerificaExistencia(int cod)
         {
-            foreach (Vereador v in aVereador)
+            foreach (Vereador v in Urna.aVereador)
             {
                 if (cod == v.codigo)
                 {
@@ -46,7 +47,7 @@ namespace Eleicoes
         public static int VerificaPosicao(int x)
         {
             int cont = 0;
-            foreach (Vereador v in aVereador)
+            foreach (Vereador v in Urna.aVereador)
             {
                 if (x == v.codigo)
                     return cont;
@@ -57,15 +58,15 @@ namespace Eleicoes
 
         public static void ExcluirCandidato(int a)
         {
-            aVereador[a].partido.contCandidatos -= 1;
-            Vereador.aVereador.Remove(aVereador[a]);
+            Urna.aVereador[a].partido.contCandidatos -= 1;
+            Urna.aVereador.Remove(Urna.aVereador[a]);
         }
 
         public static void SalvarVereador()
         {
             Stream salvar = File.Open("Vereador.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
-            foreach (Vereador p in aVereador)
+            foreach (Vereador p in Urna.aVereador)
             {
                 escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome())+";"+p.votos);
             }
@@ -75,7 +76,7 @@ namespace Eleicoes
 
         public static void InicializarVereador(string caminho)
         {
-            aVereador.Clear();
+            Urna.aVereador.Clear();
             if (File.Exists("Vereador.txt"))
             {
                 int cont = 0;
@@ -85,8 +86,9 @@ namespace Eleicoes
                 while (linha != null)
                 {
                     string[] campos = linha.Split(';');
-                    aVereador.Add(new Vereador(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])]));
-                    aVereador[cont].votos = int.Parse(campos[5]);
+                    Urna.aVereador.Add(new Vereador(campos[0], campos[1], campos[2], campos[3], (Partido)Urna.aPartidos[int.Parse(campos[4])]));
+                    Urna.aVereador[cont].votos = int.Parse(campos[5]);
+                    cont++;
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

@@ -12,7 +12,6 @@ namespace Eleicoes
     class Prefeito : Candidato
     {
         VicePrefeito vicePrefeito;
-        public static List<Prefeito> aPrefeitos = new List<Prefeito>();
 
         public Prefeito(string cod, string nome, string email, string dataNascimento, Partido partido, VicePrefeito vprefeito) : base(nome, email, dataNascimento, partido)
         {
@@ -23,8 +22,11 @@ namespace Eleicoes
             bool ver = int.TryParse(cod, out aux);
             if (ver)
             {
-                if(VerificaExistencia(aux))
+                if (VerificaExistencia(aux))
+                {
+                    partido.contCandidatos ++;
                     this.codigo = aux;
+                }
                 else
                     throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n" +
                         "Pois já existe um Prefeito com esse código !");
@@ -36,7 +38,7 @@ namespace Eleicoes
 
         protected override bool VerificaExistencia(int cod)
         {
-            foreach (Prefeito p in aPrefeitos)
+            foreach (Prefeito p in Urna.aPrefeitos)
             {
                 if (cod == p.codigo)
                 {
@@ -49,7 +51,7 @@ namespace Eleicoes
         public static int VerificaPosicao(int x)
         {
             int cont = 0;
-            foreach (Prefeito v in aPrefeitos)
+            foreach (Prefeito v in Urna.aPrefeitos)
             {
                 if (x == v.codigo)
                     return cont;
@@ -67,15 +69,15 @@ namespace Eleicoes
         }
         public static void ExcluirCandidato(int a, int b, int c)
         {
-            aPrefeitos[a].partido.contCandidatos -= 2;
-            Prefeito.aPrefeitos.Remove(aPrefeitos[a]);
-            VicePrefeito.aVicePrefeito.Remove(VicePrefeito.aVicePrefeito[b]);
+            Urna.aPrefeitos[a].partido.contCandidatos -= 1;
+            Urna.aPrefeitos.Remove(Urna.aPrefeitos[a]);
+            Urna.aVicePrefeito.Remove(Urna.aVicePrefeito[b]);
         }
         public static void SalvarPrefeitos()
         {
             Stream salvar = File.Open("Prefeito.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
-            foreach (Prefeito p in aPrefeitos)
+            foreach (Prefeito p in Urna.aPrefeitos)
             {
                 escritor.WriteLine(p.codigo+";"+p.nome+";"+p.email+";"+p.dataNascimento+";"+Partido.verificaPosicao(p.partido.getNome())+";"+VicePrefeito.VerificaPosicao(p.vicePrefeito.GetCodigo())+";" + p.votos);
             }
@@ -87,15 +89,15 @@ namespace Eleicoes
             if (File.Exists("Prefeito.txt"))
             {
                 int cont = 0;
-                aPrefeitos.Clear();
+                Urna.aPrefeitos.Clear();
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
                 string linha = leitor.ReadLine();
                 while (linha != null)
                 {
                     string[] campos = linha.Split(';');
-                    aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])], (VicePrefeito)VicePrefeito.aVicePrefeito[int.Parse(campos[5])]));
-                    aPrefeitos[cont].votos = int.Parse(campos[6]);
+                    Urna.aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Urna.aPartidos[int.Parse(campos[4])], (VicePrefeito)Urna.aVicePrefeito[int.Parse(campos[5])]));
+                    Urna.aPrefeitos[cont].votos = int.Parse(campos[6]);
                     cont++;
                     linha = leitor.ReadLine();
                 }

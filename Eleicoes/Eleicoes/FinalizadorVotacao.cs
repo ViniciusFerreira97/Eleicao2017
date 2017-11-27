@@ -8,71 +8,58 @@ namespace Eleicoes
 {
     class FinalizadorVotacao
     {
-        public int[,] vVereadores = new int[Vereador.aVereador.Count, 2];
         Prefeito vencedor;
         Prefeito[] vSegundoTurno = new Prefeito[2];
         int totalVotosPrefeitos;
 
         public FinalizadorVotacao(List<Urna> lUrnas)
         {
-            SomaVereadores(lUrnas);
-            OrdenaMatriz(vVereadores);
-
-           
+            VerificaGanhadorPrefeito();
+            OrganizaVereadores(Urna.aVereador);
         }
 
-        private void SomaVereadores(List<Urna> lUrnas)
+        public void VerificaGanhadorPrefeito()
         {
-            //Este foreach preenche toda a primeira coluna de vVereadores com o código dos vereadores existentes e a segunda coluna ele zera para realizar a soma
+            //Guarda o número de votos do cadidato com maior número
+            int maisVotado = -1;
+            //Guarda o número de votos do cadidato com segundo maior número
+            int segundoVotado = -1;
+            //Guarda a posição do prefeito com maior número de votos
             int aux = 0;
-            foreach (Vereador v in Vereador.aVereador)
-            {
-                vVereadores[aux, 0] = v.GetCodigo();
-                vVereadores[aux, 1] = 0;
-                aux++;
-            }
+            //Guarda a posição do prefeito com com segundo maior número de votos
+            int aux2 = 0;
+            int cont = 0;
 
-            //Este foreach realiza a soma de todos os votos de vereadores
-            // Para cada urna na lista de urnas
-            foreach (Urna u in lUrnas)
+            foreach (Prefeito pre in Urna.aPrefeitos)
             {
-                for (int j = 0; j < vVereadores.GetLength(1); j++)
+                //Verefica se o voto atual do prefeito é maior que o voto já guardado, se for, o atual passa para segundo e o novo para primeiro
+                if (pre.votos > maisVotado)
                 {
-                    for (int i = 0; i < u.votosVereadores.GetLength(1); i++)
-                    {
-                        //verifica se o código de cada vereador no vVereadores é igual ao código de cada vereador no votosVeradores da urna atual
-                        if (vVereadores[j, 0] == u.votosVereadores[i, 0])
-                        {
-                            //caso seja igual soma-se os votos e então quebra o for, para somar o número de votos de outro candidato presente na urna
-                            vVereadores[j, 1] += u.votosVereadores[i, 1];
-                        }
-                    }
+                    maisVotado = pre.votos;
+                    aux2 = aux;
+                    aux = cont;
+                } // Caso nao for, verifica se é maior que o segundo guardado
+                else if (pre.votos > segundoVotado)
+                {
+                    segundoVotado = pre.votos;
+                    aux2 = cont;
                 }
+                cont++;
+            }
+            //Verifica se o maior tem mais que 51% dos votos, caso tenha ele ganhou
+            if (maisVotado >= Urna.totalVotos * 0.51)
+                vencedor = Urna.aPrefeitos[aux];
+            else // Caso não tenha mais que 51%, haverá segundo turno
+            {
+                vSegundoTurno[0] = Urna.aPrefeitos[0];
+                vSegundoTurno[1] = Urna.aPrefeitos[1];
             }
         }
 
-        public void OrdenaMatriz(int[,] matriz)
+        public void OrganizaVereadores(List <Vereador> vetor)
         {
-            //Utilização do metodo Gnome Sort para organizar a matriz em ordem de quem tem menos votos
-            int p = 0;
-            int aux, aux2;
-            while (p < (matriz.GetLength(1) - 1))
-            {
-                if (matriz[p, 1] > matriz[p + 1, 1])
-                {
-                    aux = matriz[p, 1];
-                    aux2 = matriz[p, 0];
-                    matriz[p, 1] = matriz[p + 1, 1];
-                    matriz[p, 0] = matriz[p + 1, 0];
-                    matriz[p + 1, 1] = aux;
-                    matriz[p + 1, 0] = aux;
-                    if (p > 0)
-                    {
-                        p -= 2;
-                    }
-                }
-                p++;
-            }
+            vetor.OrderBy(c => c.votos);
         }
+
     }
 }

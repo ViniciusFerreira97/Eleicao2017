@@ -12,13 +12,17 @@ namespace Eleicoes
     class Urna
     {
         public static List<Urna> aUrnas = new List<Urna>();
+        public static List<VicePrefeito> aVicePrefeito = new List<VicePrefeito>();
+        public static List<Vereador> aVereador = new List<Vereador>();
+        public static List<Prefeito> aPrefeitos = new List<Prefeito>();
+        public static List<Partido> aPartidos = new List<Partido>();
+        public static int totalVotos;
         private int zona;
         private int secao;
-        private int votosNulos;
-        private int votosBrancos;
-        
-        public int[,] votosPrefeitos = new int[Prefeito.aPrefeitos.Count, 2];
-        public int[,] votosVereadores = new int[Vereador.aVereador.Count, 2];
+        private int votosNulosPref;
+        private int votosBrancosPref;
+        private int votosNulosVer;
+        private int votosBrancosVer;
 
         public Urna(string zona, string secao)
         {
@@ -57,41 +61,40 @@ namespace Eleicoes
             return aux;
         }
 
-        public void SetVotos(int[,] votosPref, int[,] votosVer, int votosNulo, int votosBrancos)
+        public void SetVotos(int[,] votosPref, int[,] votosVer, int votosNulosPref, int votosBrancosPref, int votosNulosVer, int votosBrancosVer)
         {
-            for(int c = 0; c < votosPrefeitos.GetLength(0); c++)
+            
+            for (int c =0; c< votosVer.GetLength(0);c++)
             {
-                votosPrefeitos[c, 0] = votosPref[c, 0];
-                votosPrefeitos[c, 1] = votosPref[c, 1];
-            }
-
-            for (int c = 0; c < votosVereadores.GetLength(0); c++)
-            {
-                votosVereadores[c, 0] = votosVer[c, 0];
-                votosVereadores[c, 1] = votosVer[c, 1];
-            }
-
-            for(int i = 0; i < votosVereadores.GetLength(1); i++)
-            {
-                foreach(Vereador v in Vereador.aVereador)
+                foreach( Vereador v in Urna.aVereador)
                 {
-                    if (v.GetCodigo() == votosVereadores[i, 0])
-                        v.votos = votosVereadores[0, 1];
+                    if(v.GetCodigo() == votosVer[c, 0])
+                    {
+                        v.votos++;
+                    }
                 }
             }
 
-            for (int i = 0; i < votosPrefeitos.GetLength(1); i++)
+
+            for (int c = 0; c < votosPref.GetLength(0); c++)
             {
-                foreach (Prefeito p in Prefeito.aPrefeitos)
+                foreach (Prefeito p in Urna.aPrefeitos)
                 {
-                    if (p.GetCodigo() == votosPrefeitos[i, 0])
-                        p.votos = votosPrefeitos[0, 1];
+                    if (p.GetCodigo() == votosPref[c, 0])
+                    {
+                        p.votos++;
+                    }
                 }
             }
 
-            this.votosBrancos += votosBrancos;
-            this.votosNulos += votosNulo;
+            
+            this.votosBrancosPref += votosBrancosPref;
+            this.votosNulosPref += votosNulosPref;
+            this.votosBrancosVer += votosBrancosVer;
+            this.votosNulosVer += votosNulosVer;
+            totalVotos++;
         }
+
         public static bool ExcluirUrna(int seca)
         {
             int cont = 0;

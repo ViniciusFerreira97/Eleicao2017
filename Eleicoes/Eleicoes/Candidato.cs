@@ -29,7 +29,6 @@ namespace Eleicoes
                 throw new InvalidDataException("EMAIL não pode ser vazio, preencha-o");
 
             this.partido = partido;
-            this.partido.contCandidatos++;
 
             //TryParse Data Nascimento
             DateTime aux;
@@ -59,7 +58,7 @@ namespace Eleicoes
         public override string ToString()
         {
             return "Código: " + codigo + " Nome: " + nome + " Email: " + email +
-                " Aniversario: " + dataNascimento + " Partido: " + partido;
+                " Aniversario: " + dataNascimento + " Partido: " + partido + " Votos: "+ votos;
         }
     }
 }

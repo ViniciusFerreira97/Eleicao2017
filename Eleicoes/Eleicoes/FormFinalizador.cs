@@ -19,11 +19,8 @@ namespace Eleicoes
 
         private void btnFim_Click(object sender, EventArgs e)
         {
-            FinalizadorVotacao fim = new FinalizadorVotacao(Urna.aUrnas);
-            for(int i = 0; i < fim.vVereadores.GetLength(1); i++)
-            {
-                lstVereadores.Items.Add(fim.vVereadores[i,0] + " - " + fim.vVereadores[i,1]);
-            }
+            foreach (Vereador ver in Urna.aVereador)
+                lstVereadores.Items.Add(ver.ToString());
         }
     }
 }

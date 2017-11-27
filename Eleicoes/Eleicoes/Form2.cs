@@ -133,10 +133,10 @@ namespace Eleicoes
                 lblDat.Text = "Data de Nascimento";
             }
             zerarTudo();
-            if (Partido.aPartidos != null) //Inicializando Itens cadastrados no arrayList no ComboBox
+            if (Urna.aPartidos != null) //Inicializando Itens cadastrados no arrayList no ComboBox
             {
                 cbxPartido.Items.Clear();
-                foreach (Partido a in Partido.aPartidos)
+                foreach (Partido a in Urna.aPartidos)
                 {
                     cbxPartido.Items.Add(a.nome);
                 }
@@ -269,7 +269,7 @@ namespace Eleicoes
             {
                 try
                 {
-                    Partido.aPartidos.Add(new Partido(txtNome.Text));
+                    Urna.aPartidos.Add(new Partido(txtNome.Text));
                     txtNome.Text = "";
                     MessageBox.Show("Partido cadastrado com sucesso!", "Cadastramento - Partido ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -286,9 +286,9 @@ namespace Eleicoes
                     try
                     {
                         int aux = Partido.verificaPosicao(cbxPartido.Text); //Chamando função para verificar em qual posição di array se encontra o partido.
-                        VicePrefeito.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text, txtDatVice.Text, (Partido)Partido.aPartidos[aux]));
+                        Urna.aVicePrefeito.Add(new VicePrefeito(txtCodVice.Text, txtNomeVice.Text, txtEmailVice.Text, txtDatVice.Text, (Partido)Urna.aPartidos[aux]));
                         int auxCod = VicePrefeito.VerificaPosicao(int.Parse(txtCodVice.Text)); //Chamando função para verificar em qual posição do array se encontra o vereador.
-                        Prefeito.aPrefeitos.Add(new Prefeito(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux], (VicePrefeito)VicePrefeito.aVicePrefeito[auxCod]));
+                        Urna.aPrefeitos.Add(new Prefeito(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Urna.aPartidos[aux], (VicePrefeito)Urna.aVicePrefeito[auxCod]));
                     }
                     catch(InvalidDataException a)
                     {
@@ -300,7 +300,7 @@ namespace Eleicoes
                     try
                     {
                         int aux = Partido.verificaPosicao(cbxPartido.Text); //Chamando função para verificar em qual posição di array se encontra o partido.
-                        Vereador.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Partido.aPartidos[aux]));
+                        Urna.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Urna.aPartidos[aux]));
                     }
                     catch(InvalidDataException a)
                     {
@@ -341,10 +341,10 @@ namespace Eleicoes
             if (rbnPartido.Checked == true)
             {
                 int aux = Partido.verificaPosicao(txtNome.Text);
-                Partido x = (Partido)Partido.aPartidos[aux];
+                Partido x = (Partido)Urna.aPartidos[aux];
                 if (x.contCandidatos == 0)
                 {
-                    Partido.aPartidos.Remove(x);
+                    Urna.aPartidos.Remove(x);
                     MessageBox.Show("Partido Excluido");
                     zerarTudo();
                 }
@@ -356,7 +356,7 @@ namespace Eleicoes
                 if(rbnPrefeito.Checked == true)
                 {
                     int aux = Prefeito.VerificaPosicao(int.Parse(txtNome.Text));
-                    Prefeito x = (Prefeito)Prefeito.aPrefeitos[aux];
+                    Prefeito x = (Prefeito)Urna.aPrefeitos[aux];
                     int aux2 = VicePrefeito.VerificaPosicao(x.GetCodVice());
                     int aux3 = Partido.verificaPosicao(x.GetPartido());
                     Prefeito.ExcluirCandidato(aux, aux2, aux3);

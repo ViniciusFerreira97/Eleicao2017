@@ -14,12 +14,16 @@ namespace Eleicoes
     {
         bool confirmar = false;
 
-        int[,] votosPrefeitos = new int[Prefeito.aPrefeitos.Count, 2];
-        int votosNulos;
-        int votosBrancos;
+        int[,] votosPrefeitos = new int[Urna.aPrefeitos.Count, 2];
         bool prefeito = true;
 
-        int[,] votosVereador = new int[Vereador.aVereador.Count, 2];
+
+        private int votosNulosPref;
+        private int votosBrancosPref;
+        private int votosNulosVer;
+        private int votosBrancosVer;
+
+        int[,] votosVereador = new int[Urna.aVereador.Count, 2];
 
         int zona, secao, urnaPos;
 
@@ -29,12 +33,12 @@ namespace Eleicoes
             InitializeComponent();
             for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
             {
-                    votosPrefeitos[c, 0] = Prefeito.aPrefeitos[c].GetCodigo();
+                    votosPrefeitos[c, 0] = Urna.aPrefeitos[c].GetCodigo();
                     votosPrefeitos[c, 1] = 0;
             }
             for(int c = 0; c < votosVereador.GetLength(0); c++)
             {
-                votosVereador[c, 0] = Vereador.aVereador[c].GetCodigo();
+                votosVereador[c, 0] = Urna.aVereador[c].GetCodigo();
                 votosVereador[c, 1] = 0;
             }
             
@@ -46,9 +50,14 @@ namespace Eleicoes
             {
                 Eleitor.GetZonaESecao(txtBTitulo.Text, out zona, out secao);
                 urnaPos = Urna.GetUrna(zona, secao);
-                Urna.aUrnas[urnaPos].SetVotos(votosPrefeitos, votosVereador, votosNulos, votosBrancos);
+                Urna.aUrnas[urnaPos].SetVotos(votosPrefeitos, votosVereador, votosNulosPref, votosBrancosPref, votosNulosVer, votosBrancosVer);
             }
-
+            Partido.SalvarPartidos();
+            VicePrefeito.SalvarVice();
+            Prefeito.SalvarPrefeitos();
+            Vereador.SalvarVereador();
+            Urna.SalvarUrnas();
+            Eleitor.SalvarEleitores();
             Form1 form1 = new Form1();
             form1.Show();
         }
@@ -173,12 +182,12 @@ namespace Eleicoes
                     //Verificando se a votação é para prefeito ou para vereador
                     if (prefeito)
                     {
-                        votosBrancos++;
+                        votosBrancosPref++;
                         alterarVotacaoVereador();
                     }
                     else
                     {
-                        votosBrancos++;
+                        votosBrancosVer++;
                         this.Close();
                     }
                 }
@@ -252,10 +261,10 @@ namespace Eleicoes
                                 //Verificando se é nulo
                                 if (!nulo)
                                 {
-                                    txtBNome.Text = Prefeito.aPrefeitos[aux].GetNome();
+                                    txtBNome.Text = Urna.aPrefeitos[aux].GetNome();
 
-                                    txtBPartido.Text = Prefeito.aPrefeitos[aux].GetNomePartido();
-                                    txtViceNome.Text = Prefeito.aPrefeitos[aux].GetNomeVice();
+                                    txtBPartido.Text = Urna.aPrefeitos[aux].GetNomePartido();
+                                    txtViceNome.Text = Urna.aPrefeitos[aux].GetNomeVice();
 
                                     mostrarVisorDeConfirmaca();
 
@@ -291,7 +300,7 @@ namespace Eleicoes
                                 }
                                 else
                                 {
-                                    votosNulos++;
+                                    votosNulosPref++;
 
                                     mskVotacao.Text = "";
                                     txtBNome.Text = "";
@@ -324,7 +333,7 @@ namespace Eleicoes
                             }
                             else
                             {
-                                votosBrancos++;
+                                votosBrancosPref++;
 
                                 mskVotacao.Text = "";
                                 txtBNome.Text = "";
@@ -367,9 +376,9 @@ namespace Eleicoes
                                 //Verificando se é nulo
                                 if (!nulo)
                                 {
-                                    txtBNome.Text = Vereador.aVereador[aux].GetNome();
+                                    txtBNome.Text = Urna.aVereador[aux].GetNome();
 
-                                    txtBPartido.Text = Vereador.aVereador[aux].GetNomePartido();
+                                    txtBPartido.Text = Urna.aVereador[aux].GetNomePartido();
                                     
                                     mostrarVisorDeConfirmaca();
 
@@ -406,7 +415,7 @@ namespace Eleicoes
                                 }
                                 else
                                 {
-                                    votosNulos++;
+                                    votosNulosVer++;
 
                                     mskVotacao.Text = "";
                                     txtBNome.Text = "";
@@ -437,7 +446,7 @@ namespace Eleicoes
                             }
                             else
                             {
-                                votosBrancos++;
+                                votosBrancosVer++;
 
                                 mskVotacao.Text = "";
                                 txtBNome.Text = "";
@@ -449,14 +458,10 @@ namespace Eleicoes
 
                                 confirmar = false;
                             }
-
                         }
-
                     }
                 }
-            }
-            
-            
+            } 
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Eleicoes
 {
     class VicePrefeito : Candidato
     {
-        public static List<VicePrefeito> aVicePrefeito = new List<VicePrefeito>();
+
 
         public VicePrefeito(string cod, string nome, string email, string dataNascimento, Partido partido) :base(nome, email, dataNascimento, partido)
         {
@@ -34,7 +34,7 @@ namespace Eleicoes
 
         protected override bool VerificaExistencia(int cod)
         {
-            foreach (VicePrefeito v in aVicePrefeito)
+            foreach (VicePrefeito v in Urna.aVicePrefeito)
             {
                 if (cod == v.codigo)
                 {
@@ -51,7 +51,7 @@ namespace Eleicoes
         public static int VerificaPosicao(int x)
         {
             int cont = 0;
-            foreach (VicePrefeito v in aVicePrefeito)
+            foreach (VicePrefeito v in Urna.aVicePrefeito)
             {
                 if (x == v.codigo)
                     return cont;
@@ -63,7 +63,7 @@ namespace Eleicoes
         {
             Stream salvar = File.Open("VicePrefeito.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
-            foreach (VicePrefeito p in aVicePrefeito)
+            foreach (VicePrefeito p in Urna.aVicePrefeito)
             {
                 escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome())+";"+ p.votos);
             }
@@ -72,7 +72,7 @@ namespace Eleicoes
         }
         public static void InicializarVice(string caminho)
         {
-            aVicePrefeito.Clear();
+            Urna.aVicePrefeito.Clear();
             if (File.Exists("VicePrefeito.txt"))
             {
                 int cont = 0;
@@ -82,8 +82,9 @@ namespace Eleicoes
                 while (linha != null)
                 {
                     string[] campos = linha.Split(';');
-                    aVicePrefeito.Add(new VicePrefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])]));
-                    aVicePrefeito[cont].votos = int.Parse(campos[5]);
+                    Urna.aVicePrefeito.Add(new VicePrefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Urna.aPartidos[int.Parse(campos[4])]));
+                    Urna.aVicePrefeito[cont].votos = int.Parse(campos[5]);
+                    cont++;
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

@@ -12,7 +12,6 @@ namespace Eleicoes
     {
         public string nome;
         public int contCandidatos = 0;
-        public static List<Partido> aPartidos = new List<Partido>();
 
         public Partido(string nome)
         {
@@ -33,7 +32,7 @@ namespace Eleicoes
 
         protected bool VerificaExistencia(string nome)
         {
-            foreach (Partido p in aPartidos)
+            foreach (Partido p in Urna.aPartidos)
             {
                 if (nome == p.nome)
                 {
@@ -54,7 +53,7 @@ namespace Eleicoes
         public static int verificaPosicao(string texto)
         {
             int aux = 0;
-            foreach (Partido p in aPartidos)
+            foreach (Partido p in Urna.aPartidos)
             {
                 if (texto.Equals(p.nome))
                 {
@@ -68,7 +67,7 @@ namespace Eleicoes
         {
             Stream salvar = File.Open("Partido.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
-            foreach (Partido p in aPartidos)
+            foreach (Partido p in Urna.aPartidos)
             {
                 escritor.WriteLine(p.nome);
             }
@@ -77,7 +76,7 @@ namespace Eleicoes
         }
         public static void InicializarPartidos(string caminho)
         {
-            aPartidos.Clear();
+            Urna.aPartidos.Clear();
             if (File.Exists("Partido.txt"))
             {
                 Stream entrada = File.Open(caminho, FileMode.Open);
@@ -85,7 +84,7 @@ namespace Eleicoes
                 string linha = leitor.ReadLine();
                 while (linha != null)
                 {
-                    aPartidos.Add(new Partido(linha));
+                    Urna.aPartidos.Add(new Partido(linha));
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();
