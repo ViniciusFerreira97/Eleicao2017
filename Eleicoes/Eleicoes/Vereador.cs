@@ -67,7 +67,7 @@ namespace Eleicoes
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Vereador p in aVereador)
             {
-                escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome()));
+                escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome())+";"+p.votos);
             }
             escritor.Close();
             salvar.Close();
@@ -78,6 +78,7 @@ namespace Eleicoes
             aVereador.Clear();
             if (File.Exists("Vereador.txt"))
             {
+                int cont = 0;
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
                 string linha = leitor.ReadLine();
@@ -85,6 +86,7 @@ namespace Eleicoes
                 {
                     string[] campos = linha.Split(';');
                     aVereador.Add(new Vereador(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])]));
+                    aVereador[cont].votos = int.Parse(campos[5]);
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

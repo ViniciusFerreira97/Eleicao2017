@@ -11,7 +11,7 @@ namespace Eleicoes
 {
     class VicePrefeito : Candidato
     {
-        public static ArrayList aVicePrefeito = new ArrayList();
+        public static List<VicePrefeito> aVicePrefeito = new List<VicePrefeito>();
 
         public VicePrefeito(string cod, string nome, string email, string dataNascimento, Partido partido) :base(nome, email, dataNascimento, partido)
         {
@@ -65,7 +65,7 @@ namespace Eleicoes
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (VicePrefeito p in aVicePrefeito)
             {
-                escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome()));
+                escritor.WriteLine(p.codigo + ";" + p.nome + ";" + p.email + ";" + p.dataNascimento + ";" + Partido.verificaPosicao(p.partido.getNome())+";"+ p.votos);
             }
             escritor.Close();
             salvar.Close();
@@ -75,6 +75,7 @@ namespace Eleicoes
             aVicePrefeito.Clear();
             if (File.Exists("VicePrefeito.txt"))
             {
+                int cont = 0;
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
                 string linha = leitor.ReadLine();
@@ -82,6 +83,7 @@ namespace Eleicoes
                 {
                     string[] campos = linha.Split(';');
                     aVicePrefeito.Add(new VicePrefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])]));
+                    aVicePrefeito[cont].votos = int.Parse(campos[5]);
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

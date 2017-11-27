@@ -26,7 +26,7 @@ namespace Eleicoes
             if (email != "")
                 this.email = email;
             else
-                throw new InvalidDataException("EMAIL não pode er vazio, preencha-o");
+                throw new InvalidDataException("EMAIL não pode ser vazio, preencha-o");
 
             this.partido = partido;
             this.partido.contCandidatos++;

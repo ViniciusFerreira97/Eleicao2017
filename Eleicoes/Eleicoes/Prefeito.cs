@@ -77,7 +77,7 @@ namespace Eleicoes
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Prefeito p in aPrefeitos)
             {
-                escritor.WriteLine(p.codigo+";"+p.nome+";"+p.email+";"+p.dataNascimento+";"+Partido.verificaPosicao(p.partido.getNome())+";"+VicePrefeito.VerificaPosicao(p.vicePrefeito.GetCodigo()));
+                escritor.WriteLine(p.codigo+";"+p.nome+";"+p.email+";"+p.dataNascimento+";"+Partido.verificaPosicao(p.partido.getNome())+";"+VicePrefeito.VerificaPosicao(p.vicePrefeito.GetCodigo())+";" + p.votos);
             }
             escritor.Close();
             salvar.Close();
@@ -86,6 +86,7 @@ namespace Eleicoes
         {
             if (File.Exists("Prefeito.txt"))
             {
+                int cont = 0;
                 aPrefeitos.Clear();
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
@@ -94,6 +95,8 @@ namespace Eleicoes
                 {
                     string[] campos = linha.Split(';');
                     aPrefeitos.Add(new Prefeito(campos[0], campos[1], campos[2], campos[3], (Partido)Partido.aPartidos[int.Parse(campos[4])], (VicePrefeito)VicePrefeito.aVicePrefeito[int.Parse(campos[5])]));
+                    aPrefeitos[cont].votos = int.Parse(campos[6]);
+                    cont++;
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();
