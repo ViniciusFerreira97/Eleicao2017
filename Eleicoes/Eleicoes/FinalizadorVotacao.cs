@@ -12,10 +12,20 @@ namespace Eleicoes
         Prefeito[] vSegundoTurno = new Prefeito[2];
         int totalVotosPrefeitos;
 
-        public FinalizadorVotacao(List<Urna> lUrnas)
+        public FinalizadorVotacao(List<Vereador> aVereador)
         {
             VerificaGanhadorPrefeito();
-            OrganizaVereadores(Urna.aVereador);
+            OrganizaVereadores(aVereador);
+        }
+
+        public Prefeito getVencedor()
+        {
+            return this.vencedor;
+        }
+
+        public Prefeito[] getSegundoTurno()
+        {
+            return this.vSegundoTurno;
         }
 
         public void VerificaGanhadorPrefeito()
@@ -55,7 +65,7 @@ namespace Eleicoes
                 vSegundoTurno[1] = Urna.aPrefeitos[1];
             }
         }
-
+        //Organiza o vetor de vereadores
         public void OrganizaVereadores(List <Vereador> vetor)
         {
             vetor.OrderBy(c => c.votos);

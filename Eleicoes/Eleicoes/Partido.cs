@@ -11,6 +11,8 @@ namespace Eleicoes
     class Partido
     {
         public string nome;
+        public string sigla;
+        public int numero;
         public int contCandidatos = 0;
 
         public Partido(string nome)
