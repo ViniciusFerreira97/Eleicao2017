@@ -32,13 +32,13 @@ namespace Eleicoes
             if (ver)
                 this.zona = aux;
             else
-                throw new InvalidDataException("Valor digitado para zona de votação da Urna é invalido !\n"+
+                throw new InvalidDataException("Valor digitado para zona de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
 
             // TryParse da seção de eleição
             int aux1;
             ver = int.TryParse(secao, out aux1);
-            if(ver)
+            if (ver)
                 this.secao = aux1;
             else
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
@@ -50,44 +50,46 @@ namespace Eleicoes
         }
         public static int GetUrna(int zona, int secao)
         {
-                int aux = 0;
-                for (int c = 0; c < aUrnas.Count; c++)
+            int aux = 0;
+            for (int c = 0; c < aUrnas.Count; c++)
+            {
+                if (zona == aUrnas[c].zona && secao == aUrnas[c].secao)
                 {
-                    if (zona == aUrnas[c].zona && secao == aUrnas[c].secao)
-                    {
-                        aux = c;
-                    }
+                    aux = c;
                 }
+            }
             return aux;
         }
 
         public void SetVotos(int[,] votosPref, int[,] votosVer, int votosNulosPref, int votosBrancosPref, int votosNulosVer, int votosBrancosVer)
         {
-            
-            for (int c =0; c< votosVer.GetLength(0);c++)
+
+
+            foreach (Vereador v in Urna.aVereador)
             {
-                foreach( Vereador v in Urna.aVereador)
+                for (int c = 0; c < votosVer.GetLength(0); c++)
                 {
-                    if(v.GetCodigo() == votosVer[c, 0])
+                    if (v.GetCodigo() == votosVer[c, 0])
                     {
-                        v.votos++;
+                        v.votos += votosVer[c, 1];
                     }
                 }
             }
 
 
-            for (int c = 0; c < votosPref.GetLength(0); c++)
+
+            foreach (Prefeito p in Urna.aPrefeitos)
             {
-                foreach (Prefeito p in Urna.aPrefeitos)
+                for (int c = 0; c < votosPref.GetLength(0); c++)
                 {
                     if (p.GetCodigo() == votosPref[c, 0])
                     {
-                        p.votos++;
+                        p.votos += votosPref[c, 1];
                     }
                 }
             }
 
-            
+
             this.votosBrancosPref += votosBrancosPref;
             this.votosNulosPref += votosNulosPref;
             this.votosBrancosVer += votosBrancosVer;
@@ -115,7 +117,7 @@ namespace Eleicoes
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Urna U in aUrnas)
             {
-                escritor.WriteLine(U.zona+";"+U.secao);
+                escritor.WriteLine(U.zona + ";" + U.secao);
             }
             escritor.Close();
             salvar.Close();

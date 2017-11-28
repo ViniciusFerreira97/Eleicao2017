@@ -33,15 +33,15 @@ namespace Eleicoes
             InitializeComponent();
             for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
             {
-                    votosPrefeitos[c, 0] = Urna.aPrefeitos[c].GetCodigo();
-                    votosPrefeitos[c, 1] = 0;
+                votosPrefeitos[c, 0] = Urna.aPrefeitos[c].GetCodigo();
+                votosPrefeitos[c, 1] = 0;
             }
-            for(int c = 0; c < votosVereador.GetLength(0); c++)
+            for (int c = 0; c < votosVereador.GetLength(0); c++)
             {
                 votosVereador[c, 0] = Urna.aVereador[c].GetCodigo();
                 votosVereador[c, 1] = 0;
             }
-            
+
         }
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
@@ -161,7 +161,24 @@ namespace Eleicoes
 
         private void btnBranco_Click(object sender, EventArgs e)
         {
-            //Teste inicial para verificar se foi digitado um titulo de Eleitor
+
+            //Verificando se a votação é para prefeito ou para vereador
+            if (prefeito)
+            {
+                votosBrancosPref++;
+                alterarVotacaoVereador();
+            }
+            else
+            {
+                votosBrancosVer++;
+                this.Close();
+            }
+
+
+        }
+
+        private void btnVerif_Click(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(txtBTitulo.Text))
             {
                 MessageBox.Show("Favor digitar o Titulo de Eleitor");
@@ -179,17 +196,15 @@ namespace Eleicoes
                     //Desativando a edição do titulo de eleitor
                     txtBTitulo.Enabled = false;
 
-                    //Verificando se a votação é para prefeito ou para vereador
-                    if (prefeito)
-                    {
-                        votosBrancosPref++;
-                        alterarVotacaoVereador();
-                    }
-                    else
-                    {
-                        votosBrancosVer++;
-                        this.Close();
-                    }
+                    //Desativando o Bloqueio do form
+                    picBBlocTecla.Visible = false;
+                    picBBlocTecla.Enabled = false;
+                    picBBlocVisor.Visible = false;
+                    picBBlocVisor.Enabled = false;
+
+                    //Desativando o Botão
+                    btnVerif.Enabled = false;
+
                 }
             }
         }
@@ -213,255 +228,239 @@ namespace Eleicoes
 
         private void btnConfirma_Click(object sender, EventArgs e)
         {
-            //Teste inicial para verificar se foi digitado um titulo de Eleitor
-            if (string.IsNullOrEmpty(txtBTitulo.Text))
+
+
+            int aux = 0;
+            bool nulo = false;
+
+            //Verificando se a votação é para prefeito ou para vereador
+            if (prefeito)
             {
-                MessageBox.Show("Favor digitar o Titulo de Eleitor");
-            }
-            else
-            {
-                //Teste inicial para verificar se o eleitor esta cadastrado
-                if (Eleitor.VerificaExistencia(txtBTitulo.Text))
+                //Verificando se foi digitado algo.
+                if (mskVotacao.Text != "")
                 {
-
-                    MessageBox.Show("Favor digitar o Titulo de Eleitor já cadastrado");
-                }
-                else
-                {
-                    //Desativando a edição do titulo de eleitor
-                    txtBTitulo.Enabled = false;
-
-                    int aux = 0;
-                    bool nulo = false;
-
-                    //Verificando se a votação é para prefeito ou para vereador
-                    if (prefeito)
+                    //rodando a matriz de prefeitos verificando se o codigo digitado pertence a algum prefeito
+                    for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
                     {
-                        //Verificando se foi digitado algo.
-                        if (mskVotacao.Text != "")
+                        if (mskVotacao.Text == votosPrefeitos[c, 0].ToString())
                         {
-                            //rodando a matriz de prefeitos verificando se o codigo digitado pertence a algum prefeito
-                            for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
-                            {
-                                if (mskVotacao.Text == votosPrefeitos[c, 0].ToString())
-                                {
-                                    aux = c;
-                                }
-                            }
+                            aux = c;
+                        }
+                    }
 
-                            //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do prefeito igual ao digitado é considerado nulo.
-                            if (aux == 0 && mskVotacao.Text != votosPrefeitos[0, 0].ToString())
-                            {
-                                nulo = true;
-                            }
+                    //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do prefeito igual ao digitado é considerado nulo.
+                    if (aux == 0 && mskVotacao.Text != votosPrefeitos[0, 0].ToString())
+                    {
+                        nulo = true;
+                    }
 
-                            //Verificando se o botão Confirma ja foi pressionado
-                            if (!confirmar)
-                            {
-                                //Verificando se é nulo
-                                if (!nulo)
-                                {
-                                    txtBNome.Text = Urna.aPrefeitos[aux].GetNome();
+                    //Verificando se o botão Confirma ja foi pressionado
+                    if (!confirmar)
+                    {
+                        //Verificando se é nulo
+                        if (!nulo)
+                        {
+                            txtBNome.Text = Urna.aPrefeitos[aux].GetNome();
 
-                                    txtBPartido.Text = Urna.aPrefeitos[aux].GetNomePartido();
-                                    txtViceNome.Text = Urna.aPrefeitos[aux].GetNomeVice();
+                            txtBPartido.Text = Urna.aPrefeitos[aux].GetNomePartido();
+                            txtViceNome.Text = Urna.aPrefeitos[aux].GetNomeVice();
 
-                                    mostrarVisorDeConfirmaca();
+                            mostrarVisorDeConfirmaca();
 
-                                    confirmar = true;
-                                }
-                                else
-                                {
-                                    txtBNome.Text = "Nulo";
-                                    txtViceNome.Text = "Nulo";
-                                    txtBPartido.Text = "Nulo";
-
-                                    mostrarVisorDeConfirmaca();
-                                    
-                                    confirmar = true;
-
-                                }
-                            }
-                            else
-                            {
-                                if (!nulo)
-                                {
-                                    votosPrefeitos[aux, 1]++;
-                                    mskVotacao.Text = "";
-                                    txtBNome.Text = "";
-                                    txtBPartido.Text = "";
-                                    txtViceNome.Text = "";
-
-                                    limparVisorDeConfirmacao();
-
-                                    alterarVotacaoVereador();
-
-                                    confirmar = false;
-                                }
-                                else
-                                {
-                                    votosNulosPref++;
-
-                                    mskVotacao.Text = "";
-                                    txtBNome.Text = "";
-                                    txtBPartido.Text = "";
-                                    txtViceNome.Text = "";
-
-                                    limparVisorDeConfirmacao();
-
-                                    alterarVotacaoVereador();
-
-                                    confirmar = false;
-
-                                }
-                            }
+                            confirmar = true;
                         }
                         else
                         {
-                            //Verificando se o botão Confirma ja foi pressionado
-                            if (!confirmar)
-                            {
+                            txtBNome.Text = "Nulo";
+                            txtViceNome.Text = "Nulo";
+                            txtBPartido.Text = "Nulo";
 
-                                txtBNome.Text = "Branco";
-                                txtViceNome.Text = "Branco";
-                                txtBPartido.Text = "Branco";
+                            mostrarVisorDeConfirmaca();
 
-                                mostrarVisorDeConfirmaca();
-
-
-                                confirmar = true;
-                            }
-                            else
-                            {
-                                votosBrancosPref++;
-
-                                mskVotacao.Text = "";
-                                txtBNome.Text = "";
-                                txtBPartido.Text = "";
-                                txtViceNome.Text = "";
-
-                                limparVisorDeConfirmacao();
-                                
-                                alterarVotacaoVereador();
-
-                                confirmar = false;
-                            }
+                            confirmar = true;
 
                         }
-
                     }
                     else
                     {
-                        //Verificando se foi digitado algo.
-                        if (mskVotacao.Text != "")
+                        if (!nulo)
                         {
-                            //rodando a matriz de vereadores verificando se o codigo digitado pertence a algum prefeito
-                            for (int c = 0; c < votosVereador.GetLength(0); c++)
-                            {
-                                if (mskVotacao.Text == votosVereador[c, 0].ToString())
-                                {
-                                    aux = c;
-                                }
-                            }
+                            votosPrefeitos[aux, 1]++;
+                            mskVotacao.Text = "";
+                            txtBNome.Text = "";
+                            txtBPartido.Text = "";
+                            txtViceNome.Text = "";
 
-                            //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do vereador igual ao digitado é considerado nulo.
-                            if (aux == 0 && mskVotacao.Text != votosVereador[0, 0].ToString())
-                            {
-                                nulo = true;
-                            }
+                            limparVisorDeConfirmacao();
 
-                            //Verificando se o botão Confirma foi pressionado
-                            if (!confirmar)
-                            {
-                                //Verificando se é nulo
-                                if (!nulo)
-                                {
-                                    txtBNome.Text = Urna.aVereador[aux].GetNome();
+                            alterarVotacaoVereador();
 
-                                    txtBPartido.Text = Urna.aVereador[aux].GetNomePartido();
-                                    
-                                    mostrarVisorDeConfirmaca();
-
-                                    confirmar = true;
-                                }
-                                else
-                                {
-                                    txtBNome.Text = "Nulo";
-
-                                    txtBPartido.Text = "Nulo";
-
-                                    mostrarVisorDeConfirmaca();
-
-                                    confirmar = true;
-
-                                }
-                            }
-                            else
-                            {
-                                //Verificando se é nulo
-                                if (!nulo)
-                                {
-                                    votosVereador[aux, 1]++;
-                                    mskVotacao.Text = "";
-                                    txtBNome.Text = "";
-                                    txtBPartido.Text = "";
-
-                                    limparVisorDeConfirmacao();
-
-
-                                    this.Close();
-
-                                    confirmar = false;
-                                }
-                                else
-                                {
-                                    votosNulosVer++;
-
-                                    mskVotacao.Text = "";
-                                    txtBNome.Text = "";
-                                    txtBPartido.Text = "";
-
-                                    limparVisorDeConfirmacao();
-
-                                    this.Close();
-
-                                    confirmar = false;
-
-                                }
-                            }
+                            confirmar = false;
                         }
                         else
                         {
-                            //Verificando se o botão Confirma foi pressionado
-                            if (!confirmar)
-                            {
-                                txtBNome.Text = "Branco";
+                            votosNulosPref++;
 
-                                txtBPartido.Text = "Branco";
+                            mskVotacao.Text = "";
+                            txtBNome.Text = "";
+                            txtBPartido.Text = "";
+                            txtViceNome.Text = "";
 
+                            limparVisorDeConfirmacao();
 
-                                mostrarVisorDeConfirmaca();
+                            alterarVotacaoVereador();
 
-                                confirmar = true;
-                            }
-                            else
-                            {
-                                votosBrancosVer++;
+                            confirmar = false;
 
-                                mskVotacao.Text = "";
-                                txtBNome.Text = "";
-                                txtBPartido.Text = "";
-
-                                limparVisorDeConfirmacao();
-
-                                this.Close();
-
-                                confirmar = false;
-                            }
                         }
                     }
                 }
-            } 
+                else
+                {
+                    //Verificando se o botão Confirma ja foi pressionado
+                    if (!confirmar)
+                    {
+
+                        txtBNome.Text = "Branco";
+                        txtViceNome.Text = "Branco";
+                        txtBPartido.Text = "Branco";
+
+                        mostrarVisorDeConfirmaca();
+
+
+                        confirmar = true;
+                    }
+                    else
+                    {
+                        votosBrancosPref++;
+
+                        mskVotacao.Text = "";
+                        txtBNome.Text = "";
+                        txtBPartido.Text = "";
+                        txtViceNome.Text = "";
+
+                        limparVisorDeConfirmacao();
+
+                        alterarVotacaoVereador();
+
+                        confirmar = false;
+                    }
+
+                }
+
+            }
+            else
+            {
+                //Verificando se foi digitado algo.
+                if (mskVotacao.Text != "")
+                {
+                    //rodando a matriz de vereadores verificando se o codigo digitado pertence a algum prefeito
+                    for (int c = 0; c < votosVereador.GetLength(0); c++)
+                    {
+                        if (mskVotacao.Text == votosVereador[c, 0].ToString())
+                        {
+                            aux = c;
+                        }
+                    }
+
+                    //Verificando se o voto é nulo, se aux for igual a zero e se na posição 0 da matriz não tiver o codigo do vereador igual ao digitado é considerado nulo.
+                    if (aux == 0 && mskVotacao.Text != votosVereador[0, 0].ToString())
+                    {
+                        nulo = true;
+                    }
+
+                    //Verificando se o botão Confirma foi pressionado
+                    if (!confirmar)
+                    {
+                        //Verificando se é nulo
+                        if (!nulo)
+                        {
+                            txtBNome.Text = Urna.aVereador[aux].GetNome();
+
+                            txtBPartido.Text = Urna.aVereador[aux].GetNomePartido();
+
+                            mostrarVisorDeConfirmaca();
+
+                            confirmar = true;
+                        }
+                        else
+                        {
+                            txtBNome.Text = "Nulo";
+
+                            txtBPartido.Text = "Nulo";
+
+                            mostrarVisorDeConfirmaca();
+
+                            confirmar = true;
+
+                        }
+                    }
+                    else
+                    {
+                        //Verificando se é nulo
+                        if (!nulo)
+                        {
+                            votosVereador[aux, 1]++;
+                            mskVotacao.Text = "";
+                            txtBNome.Text = "";
+                            txtBPartido.Text = "";
+
+                            limparVisorDeConfirmacao();
+
+
+                            this.Close();
+
+                            confirmar = false;
+                        }
+                        else
+                        {
+                            votosNulosVer++;
+
+                            mskVotacao.Text = "";
+                            txtBNome.Text = "";
+                            txtBPartido.Text = "";
+
+                            limparVisorDeConfirmacao();
+
+                            this.Close();
+
+                            confirmar = false;
+
+                        }
+                    }
+                }
+                else
+                {
+                    //Verificando se o botão Confirma foi pressionado
+                    if (!confirmar)
+                    {
+                        txtBNome.Text = "Branco";
+
+                        txtBPartido.Text = "Branco";
+
+
+                        mostrarVisorDeConfirmaca();
+
+                        confirmar = true;
+                    }
+                    else
+                    {
+                        votosBrancosVer++;
+
+                        mskVotacao.Text = "";
+                        txtBNome.Text = "";
+                        txtBPartido.Text = "";
+
+                        limparVisorDeConfirmacao();
+
+                        this.Close();
+
+                        confirmar = false;
+                    }
+                }
+            }
+
+
         }
     }
 }

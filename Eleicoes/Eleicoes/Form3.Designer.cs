@@ -58,8 +58,15 @@
             this.txtBTitulo = new System.Windows.Forms.TextBox();
             this.lblVice = new System.Windows.Forms.Label();
             this.txtViceNome = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVerif = new System.Windows.Forms.Button();
+            this.picBBlocVisor = new System.Windows.Forms.PictureBox();
+            this.picBBlocTecla = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBBlocVisor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBBlocTecla)).BeginInit();
             this.SuspendLayout();
             // 
             // btn01
@@ -420,15 +427,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(965, 13);
+            this.label2.Location = new System.Drawing.Point(6, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Titulo de Eleitor";
+            this.label2.Text = "Titulo :";
             // 
             // txtBTitulo
             // 
-            this.txtBTitulo.Location = new System.Drawing.Point(968, 34);
+            this.txtBTitulo.Location = new System.Drawing.Point(6, 38);
             this.txtBTitulo.Name = "txtBTitulo";
             this.txtBTitulo.Size = new System.Drawing.Size(100, 20);
             this.txtBTitulo.TabIndex = 6;
@@ -455,13 +462,54 @@
             this.txtViceNome.Size = new System.Drawing.Size(210, 39);
             this.txtViceNome.TabIndex = 4;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnVerif);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtBTitulo);
+            this.groupBox1.Location = new System.Drawing.Point(965, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(117, 174);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Eleitor";
+            // 
+            // btnVerif
+            // 
+            this.btnVerif.Location = new System.Drawing.Point(6, 85);
+            this.btnVerif.Name = "btnVerif";
+            this.btnVerif.Size = new System.Drawing.Size(100, 83);
+            this.btnVerif.TabIndex = 7;
+            this.btnVerif.Text = "Verificar";
+            this.btnVerif.UseVisualStyleBackColor = true;
+            this.btnVerif.Click += new System.EventHandler(this.btnVerif_Click);
+            // 
+            // picBBlocVisor
+            // 
+            this.picBBlocVisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.picBBlocVisor.Location = new System.Drawing.Point(12, 13);
+            this.picBBlocVisor.Name = "picBBlocVisor";
+            this.picBBlocVisor.Size = new System.Drawing.Size(486, 419);
+            this.picBBlocVisor.TabIndex = 8;
+            this.picBBlocVisor.TabStop = false;
+            // 
+            // picBBlocTecla
+            // 
+            this.picBBlocTecla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.picBBlocTecla.Location = new System.Drawing.Point(504, 13);
+            this.picBBlocTecla.Name = "picBBlocTecla";
+            this.picBBlocTecla.Size = new System.Drawing.Size(454, 419);
+            this.picBBlocTecla.TabIndex = 9;
+            this.picBBlocTecla.TabStop = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 444);
-            this.Controls.Add(this.txtBTitulo);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1087, 444);
+            this.Controls.Add(this.picBBlocTecla);
+            this.Controls.Add(this.picBBlocVisor);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtBPartido);
             this.Controls.Add(this.txtViceNome);
             this.Controls.Add(this.txtBNome);
@@ -495,6 +543,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBBlocVisor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBBlocTecla)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +584,9 @@
         private System.Windows.Forms.TextBox txtBTitulo;
         private System.Windows.Forms.Label lblVice;
         private System.Windows.Forms.MaskedTextBox txtViceNome;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnVerif;
+        private System.Windows.Forms.PictureBox picBBlocVisor;
+        private System.Windows.Forms.PictureBox picBBlocTecla;
     }
 }
