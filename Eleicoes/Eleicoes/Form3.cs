@@ -201,6 +201,10 @@ namespace Eleicoes
                     picBBlocTecla.Enabled = false;
                     picBBlocVisor.Visible = false;
                     picBBlocVisor.Enabled = false;
+                    lbBlocTextTecla.Enabled = false;
+                    lbBlocTextTecla.Visible = false;
+                    lbBlocTextVisor.Visible = false;
+                    lbBlocTextVisor.Enabled = false;
 
                     //Desativando o Botão
                     btnVerif.Enabled = false;

@@ -62,6 +62,8 @@
             this.btnVerif = new System.Windows.Forms.Button();
             this.picBBlocVisor = new System.Windows.Forms.PictureBox();
             this.picBBlocTecla = new System.Windows.Forms.PictureBox();
+            this.lbBlocTextVisor = new System.Windows.Forms.Label();
+            this.lbBlocTextTecla = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -502,11 +504,36 @@
             this.picBBlocTecla.TabIndex = 9;
             this.picBBlocTecla.TabStop = false;
             // 
+            // lbBlocTextVisor
+            // 
+            this.lbBlocTextVisor.AutoSize = true;
+            this.lbBlocTextVisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.lbBlocTextVisor.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
+            this.lbBlocTextVisor.Location = new System.Drawing.Point(35, 193);
+            this.lbBlocTextVisor.Name = "lbBlocTextVisor";
+            this.lbBlocTextVisor.Size = new System.Drawing.Size(446, 35);
+            this.lbBlocTextVisor.TabIndex = 10;
+            this.lbBlocTextVisor.Text = "DIGITE O TITULO DE ELEITOR";
+            // 
+            // lbBlocTextTecla
+            // 
+            this.lbBlocTextTecla.AutoSize = true;
+            this.lbBlocTextTecla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.lbBlocTextTecla.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
+            this.lbBlocTextTecla.ForeColor = System.Drawing.Color.White;
+            this.lbBlocTextTecla.Location = new System.Drawing.Point(558, 193);
+            this.lbBlocTextTecla.Name = "lbBlocTextTecla";
+            this.lbBlocTextTecla.Size = new System.Drawing.Size(350, 35);
+            this.lbBlocTextTecla.TabIndex = 10;
+            this.lbBlocTextTecla.Text = "CLIQUE EM VERIFICAR";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 444);
+            this.Controls.Add(this.lbBlocTextTecla);
+            this.Controls.Add(this.lbBlocTextVisor);
             this.Controls.Add(this.picBBlocTecla);
             this.Controls.Add(this.picBBlocVisor);
             this.Controls.Add(this.groupBox1);
@@ -588,5 +615,7 @@
         private System.Windows.Forms.Button btnVerif;
         private System.Windows.Forms.PictureBox picBBlocVisor;
         private System.Windows.Forms.PictureBox picBBlocTecla;
+        private System.Windows.Forms.Label lbBlocTextVisor;
+        private System.Windows.Forms.Label lbBlocTextTecla;
     }
 }
