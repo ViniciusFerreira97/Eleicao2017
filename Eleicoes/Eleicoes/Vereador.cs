@@ -32,6 +32,9 @@ namespace Eleicoes
                     "Por favor, digite um valor de 2 números, já que os 2 primeiros números advém do Partido !");
         }
 
+
+        public string GetPartidoSigla() { return partido.sigla; }
+
         protected override bool VerificaExistencia(int cod)
         {
             foreach (Vereador v in Urna.aVereador)

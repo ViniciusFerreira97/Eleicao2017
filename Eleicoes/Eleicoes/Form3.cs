@@ -51,7 +51,10 @@ namespace Eleicoes
                 Eleitor.GetZonaESecao(txtBTitulo.Text, out zona, out secao);
                 urnaPos = Urna.GetUrna(zona, secao);
                 Urna.aUrnas[urnaPos].SetVotos(votosPrefeitos, votosVereador, votosNulosPref, votosBrancosPref, votosNulosVer, votosBrancosVer);
+                Eleitor.ConfirmaVoto(txtBTitulo.Text);
             }
+
+
             Partido.SalvarPartidos();
             VicePrefeito.SalvarVice();
             Prefeito.SalvarPrefeitos();
@@ -193,21 +196,30 @@ namespace Eleicoes
                 }
                 else
                 {
-                    //Desativando a edição do titulo de eleitor
-                    txtBTitulo.Enabled = false;
+                    //Verificando se o Eleitor ja votou.
+                    if (Eleitor.GetJaVotou(txtBTitulo.Text))
+                    {
+                        MessageBox.Show("Favor digitar o Titulo de Eleitor já votou nesta eleição");
 
-                    //Desativando o Bloqueio do form
-                    picBBlocTecla.Visible = false;
-                    picBBlocTecla.Enabled = false;
-                    picBBlocVisor.Visible = false;
-                    picBBlocVisor.Enabled = false;
-                    lbBlocTextTecla.Enabled = false;
-                    lbBlocTextTecla.Visible = false;
-                    lbBlocTextVisor.Visible = false;
-                    lbBlocTextVisor.Enabled = false;
+                    }
+                    else
+                    {
+                        //Desativando a edição do titulo de eleitor
+                        txtBTitulo.Enabled = false;
 
-                    //Desativando o Botão
-                    btnVerif.Enabled = false;
+                        //Desativando o Bloqueio do form
+                        picBBlocTecla.Visible = false;
+                        picBBlocTecla.Enabled = false;
+                        picBBlocVisor.Visible = false;
+                        picBBlocVisor.Enabled = false;
+                        lbBlocTextTecla.Enabled = false;
+                        lbBlocTextTecla.Visible = false;
+                        lbBlocTextVisor.Visible = false;
+                        lbBlocTextVisor.Enabled = false;
+
+                        //Desativando o Botão
+                        btnVerif.Enabled = false;
+                    }
 
                 }
             }
@@ -266,7 +278,7 @@ namespace Eleicoes
                         {
                             txtBNome.Text = Urna.aPrefeitos[aux].GetNome();
 
-                            txtBPartido.Text = Urna.aPrefeitos[aux].GetNomePartido();
+                            txtBPartido.Text = Urna.aPrefeitos[aux].GetPartidoSigla();
                             txtViceNome.Text = Urna.aPrefeitos[aux].GetNomeVice();
 
                             mostrarVisorDeConfirmaca();
@@ -381,7 +393,7 @@ namespace Eleicoes
                         {
                             txtBNome.Text = Urna.aVereador[aux].GetNome();
 
-                            txtBPartido.Text = Urna.aVereador[aux].GetNomePartido();
+                            txtBPartido.Text = Urna.aVereador[aux].GetPartidoSigla();
 
                             mostrarVisorDeConfirmaca();
 

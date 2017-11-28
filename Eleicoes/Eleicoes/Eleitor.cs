@@ -17,6 +17,7 @@ namespace Eleicoes
         private string tituloEleitor;
         private int zona;
         private int secao;
+        private bool jaVotou;
 
         public Eleitor(string nome, string dataNascimento, string tituloEleitor, string zona, string secao)
         {
@@ -49,6 +50,7 @@ namespace Eleicoes
             else
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
+            this.jaVotou = false;
         }
         public static bool ExcluirEleitor(string titulo)
         {
@@ -74,6 +76,33 @@ namespace Eleicoes
                 }
             }
             return true;
+        }
+
+        public static bool GetJaVotou (string titulo)
+        {
+            int aux = 0;
+            for (int c = 0; c < aEleitores.Count; c++)
+            {
+                if (titulo == aEleitores[c].tituloEleitor)
+                {
+                    aux = c;
+                }
+            }
+            return aEleitores[aux].jaVotou;
+        }
+
+        public static void ConfirmaVoto(string titulo)
+        {
+
+            int aux = 0;
+            for (int c = 0; c < aEleitores.Count; c++)
+            {
+                if (titulo == aEleitores[c].tituloEleitor)
+                {
+                    aux = c;
+                }
+            }
+            aEleitores[aux].jaVotou = true;
         }
 
         public static void GetZonaESecao(string titulo,out int zonaE,out int secaoE)

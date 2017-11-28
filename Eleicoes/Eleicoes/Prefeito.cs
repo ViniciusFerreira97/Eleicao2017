@@ -61,6 +61,7 @@ namespace Eleicoes
         }
         public int GetCodVice() { return vicePrefeito.GetCodigo(); }
         public string GetPartido() { return partido.nome; }
+        public string GetPartidoSigla() { return partido.sigla; }
         public string GetNomeVice() { return vicePrefeito.GetNome(); }
 
         public override string ToString()

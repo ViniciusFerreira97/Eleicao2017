@@ -72,6 +72,8 @@ namespace Eleicoes
 
         public string getNome() { return this.nome; }
 
+        public string getSigla() { return this.sigla; }
+
         public override string ToString()
         {
             return "Partido: " + sigla;
