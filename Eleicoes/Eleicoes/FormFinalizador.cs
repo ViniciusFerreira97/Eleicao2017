@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+
 
 namespace Eleicoes
 {
@@ -19,6 +21,9 @@ namespace Eleicoes
 
         private void btnFim_Click(object sender, EventArgs e)
         {
+            SoundPlayer my_sound = new SoundPlayer("gemidaoAltaQualidadeEEfetividade.wav"); //put your own .wave file path
+            my_sound.Play();
+
             FinalizadorVotacao fim = new FinalizadorVotacao(Urna.aVereador);
             // Escrevendo os vereadores no ListBox
             foreach (Vereador ver in Urna.aVereador)
@@ -46,6 +51,7 @@ namespace Eleicoes
                 lblCod2.Visible = true;
                 lblNome2.Visible = true;
                 lblPartido2.Visible = true;
+                lblX.Visible = true;
 
                 // Caso getVencedor seja null, então haverá segundo turno
                 lblCod1.Text = Convert.ToString(fim.getSegundoTurno()[0].GetCodigo());
@@ -56,6 +62,13 @@ namespace Eleicoes
                 lblNome2.Text = fim.getSegundoTurno()[1].GetNome();
                 lblPartido2.Text = fim.getSegundoTurno()[1].GetNomePartido();
             }
+        }
+
+        private void FormFinalizador_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }

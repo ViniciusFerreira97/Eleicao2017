@@ -59,7 +59,7 @@ namespace Eleicoes
             //Verifica se o maior tem mais que 51% dos votos, caso tenha ele ganhou
             if (maisVotado >= Urna.totalVotos * 0.51)
                 vencedor = Urna.aPrefeitos[aux];
-            else // Caso não tenha mais que 51%, haverá segundo turno
+            else// Caso não tenha mais que 51%, haverá segundo turno, caso haja voto
             {
                 vSegundoTurno[0] = Urna.aPrefeitos[0];
                 vSegundoTurno[1] = Urna.aPrefeitos[1];

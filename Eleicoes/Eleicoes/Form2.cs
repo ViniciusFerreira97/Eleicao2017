@@ -43,6 +43,8 @@ namespace Eleicoes
             grpVice.Visible = false;
             label1.Visible = false;
             txtSigla.Visible = true;
+            lblCod2.Visible = false;
+            txtCod2.Visible = false;
             lblDat.Text = "Sigla";
             lblCodgo.Text = "Número";
             lblNome.Text = "Nome";
@@ -60,6 +62,8 @@ namespace Eleicoes
             txtCodVice.Text = "";
             txtDatVice.Text = "";
             txtEmailVice.Text = "";
+            txtSigla.Text = "";
+            txtCod2.Text = "";
         }
         private void rbnPartido_CheckedChanged(object sender, EventArgs e)
         {
@@ -85,6 +89,8 @@ namespace Eleicoes
             label1.Visible = false;
             txtSigla.Visible = true;
             txtVariavel1.Enabled = true;
+            lblCod2.Visible = false;
+            txtCod2.Visible = false;
             lblDat.Text = "Sigla";
             lblCodgo.Text = "Número";
             lblNome.Text = "Nome";
@@ -94,7 +100,7 @@ namespace Eleicoes
         {
             //Alterando localização do objeto
             txtVariavel1.Location = new Point(244, 99);
-            txtVariavel2.Location = new Point(370,97);
+            txtVariavel2.Location = new Point(370, 97);
             //Tratando visibilidade e texto dos objetos.
             lblNome.Visible = true;
             lblDat.Visible = true;
@@ -109,6 +115,9 @@ namespace Eleicoes
             cbxPartido.Visible = true;
             grpTipo.Visible = true;
             grpVice.Visible = false;
+            lblCod2.Visible = true;
+            txtCod2.Visible = true;
+            rbnVereador.Checked = true;
             lblCodgo.Text = "Código";
             lblPartido.Text = "Partido";
             lblEmail.Text = "E-mail";
@@ -163,6 +172,8 @@ namespace Eleicoes
             grpTipo.Visible = true;
             grpVice.Visible = true;
             label1.Visible = true;
+            lblCod2.Visible = false;
+            txtCod2.Visible = false;
         }
         private void rbnVereador_CheckedChanged(object sender, EventArgs e)
         {
@@ -170,6 +181,8 @@ namespace Eleicoes
             grpTipo.Visible = true;
             grpVice.Visible = false;
             label1.Visible = false;
+            lblCod2.Visible = true;
+            txtCod2.Visible = true;
         }
         private void rbnUrna_CheckedChanged(object sender, EventArgs e)
         {
@@ -237,7 +250,7 @@ namespace Eleicoes
                     try
                     {
                         int aux = Partido.verificaPosicao(cbxPartido.Text); //Chamando função para verificar em qual posição di array se encontra o partido.
-                        Urna.aVereador.Add(new Vereador(txtVariavel1.Text, txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Urna.aPartidos[aux]));
+                        Urna.aVereador.Add(new Vereador((txtVariavel1.Text + txtCod2.Text), txtNome.Text, txtVariavel3.Text, txtDataNascimento.Text, (Partido)Urna.aPartidos[aux]));
                     }
                     catch (InvalidDataException a)
                     {
@@ -286,8 +299,14 @@ namespace Eleicoes
 
         private void btnFim_Click(object sender, EventArgs e)
         {
-            fim.Show();
-            this.Hide();
+            if (Urna.totalVotos > 3)
+            {
+                fim.Show();
+                this.Hide();
+            }
+            else
+                MessageBox.Show("É necessário ao minimo 3 votos para encerrar a votação",
+                    "Finalizar - Votação", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void cbxPartido_SelectedIndexChanged(object sender, EventArgs e)
@@ -296,6 +315,7 @@ namespace Eleicoes
             Partido x = Urna.aPartidos[aux];
             txtVariavel1.Text = Convert.ToString(x.numero);
             txtPartidoVice.Text = cbxPartido.Text;
+            txtCodVice.Text = Convert.ToString(x.numero);
         }
     }
 }

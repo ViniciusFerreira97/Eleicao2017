@@ -63,6 +63,8 @@
             this.txtDataNascimento = new System.Windows.Forms.MaskedTextBox();
             this.btnFim = new System.Windows.Forms.Button();
             this.txtSigla = new System.Windows.Forms.TextBox();
+            this.txtCod2 = new System.Windows.Forms.TextBox();
+            this.lblCod2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -183,9 +185,9 @@
             // 
             // txtVariavel1
             // 
-            this.txtVariavel1.Location = new System.Drawing.Point(244, 99);
+            this.txtVariavel1.Location = new System.Drawing.Point(248, 98);
             this.txtVariavel1.Name = "txtVariavel1";
-            this.txtVariavel1.Size = new System.Drawing.Size(100, 20);
+            this.txtVariavel1.Size = new System.Drawing.Size(33, 20);
             this.txtVariavel1.TabIndex = 7;
             // 
             // lblPartido
@@ -228,7 +230,7 @@
             // 
             this.rbnVereador.AutoSize = true;
             this.rbnVereador.Checked = true;
-            this.rbnVereador.Location = new System.Drawing.Point(174, 20);
+            this.rbnVereador.Location = new System.Drawing.Point(6, 19);
             this.rbnVereador.Name = "rbnVereador";
             this.rbnVereador.Size = new System.Drawing.Size(68, 17);
             this.rbnVereador.TabIndex = 2;
@@ -240,7 +242,7 @@
             // rbnPrefeito
             // 
             this.rbnPrefeito.AutoSize = true;
-            this.rbnPrefeito.Location = new System.Drawing.Point(7, 20);
+            this.rbnPrefeito.Location = new System.Drawing.Point(90, 19);
             this.rbnPrefeito.Name = "rbnPrefeito";
             this.rbnPrefeito.Size = new System.Drawing.Size(132, 17);
             this.rbnPrefeito.TabIndex = 0;
@@ -323,19 +325,20 @@
             // 
             // cbxPartido
             // 
+            this.cbxPartido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPartido.FormattingEnabled = true;
-            this.cbxPartido.Location = new System.Drawing.Point(368, 98);
+            this.cbxPartido.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cbxPartido.Location = new System.Drawing.Point(367, 96);
             this.cbxPartido.Name = "cbxPartido";
             this.cbxPartido.Size = new System.Drawing.Size(107, 21);
             this.cbxPartido.TabIndex = 24;
-            this.cbxPartido.Text = "SELECIONAR";
             this.cbxPartido.SelectedIndexChanged += new System.EventHandler(this.cbxPartido_SelectedIndexChanged);
             // 
             // txtVariavel2
             // 
             this.txtVariavel2.Location = new System.Drawing.Point(370, 97);
             this.txtVariavel2.Name = "txtVariavel2";
-            this.txtVariavel2.Size = new System.Drawing.Size(100, 20);
+            this.txtVariavel2.Size = new System.Drawing.Size(35, 20);
             this.txtVariavel2.TabIndex = 25;
             // 
             // grpVice
@@ -377,7 +380,7 @@
             // 
             // txtDataNascimento
             // 
-            this.txtDataNascimento.Location = new System.Drawing.Point(127, 99);
+            this.txtDataNascimento.Location = new System.Drawing.Point(124, 98);
             this.txtDataNascimento.Mask = "00/00/0000";
             this.txtDataNascimento.Name = "txtDataNascimento";
             this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
@@ -401,11 +404,31 @@
             this.txtSigla.Size = new System.Drawing.Size(77, 20);
             this.txtSigla.TabIndex = 31;
             // 
+            // txtCod2
+            // 
+            this.txtCod2.Location = new System.Drawing.Point(300, 97);
+            this.txtCod2.Name = "txtCod2";
+            this.txtCod2.Size = new System.Drawing.Size(61, 20);
+            this.txtCod2.TabIndex = 32;
+            this.txtCod2.Visible = false;
+            // 
+            // lblCod2
+            // 
+            this.lblCod2.AutoSize = true;
+            this.lblCod2.Location = new System.Drawing.Point(284, 102);
+            this.lblCod2.Name = "lblCod2";
+            this.lblCod2.Size = new System.Drawing.Size(10, 13);
+            this.lblCod2.TabIndex = 33;
+            this.lblCod2.Text = "-";
+            this.lblCod2.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 410);
+            this.Controls.Add(this.lblCod2);
+            this.Controls.Add(this.txtCod2);
             this.Controls.Add(this.btnFim);
             this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.label1);
@@ -476,5 +499,7 @@
         private System.Windows.Forms.MaskedTextBox txtDataNascimento;
         private System.Windows.Forms.Button btnFim;
         private System.Windows.Forms.TextBox txtSigla;
+        private System.Windows.Forms.TextBox txtCod2;
+        private System.Windows.Forms.Label lblCod2;
     }
 }

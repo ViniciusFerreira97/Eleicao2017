@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.gpGanhadores = new System.Windows.Forms.GroupBox();
-            this.lstVereadores = new System.Windows.Forms.ListBox();
-            this.btnFim = new System.Windows.Forms.Button();
-            this.lblPrefeito = new System.Windows.Forms.Label();
-            this.lblX = new System.Windows.Forms.Label();
-            this.lblCod1 = new System.Windows.Forms.Label();
-            this.lblNome1 = new System.Windows.Forms.Label();
-            this.lblPartido1 = new System.Windows.Forms.Label();
             this.lblPartido2 = new System.Windows.Forms.Label();
             this.lblNome2 = new System.Windows.Forms.Label();
             this.lblCod2 = new System.Windows.Forms.Label();
+            this.lblPartido1 = new System.Windows.Forms.Label();
+            this.lblNome1 = new System.Windows.Forms.Label();
+            this.lblCod1 = new System.Windows.Forms.Label();
+            this.lblX = new System.Windows.Forms.Label();
+            this.lblPrefeito = new System.Windows.Forms.Label();
+            this.lstVereadores = new System.Windows.Forms.ListBox();
+            this.btnFim = new System.Windows.Forms.Button();
             this.gpGanhadores.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,85 @@
             this.gpGanhadores.TabStop = false;
             this.gpGanhadores.Text = "Final da Votação";
             // 
+            // lblPartido2
+            // 
+            this.lblPartido2.AutoSize = true;
+            this.lblPartido2.Location = new System.Drawing.Point(203, 294);
+            this.lblPartido2.Name = "lblPartido2";
+            this.lblPartido2.Size = new System.Drawing.Size(93, 13);
+            this.lblPartido2.TabIndex = 10;
+            this.lblPartido2.Text = "Prefeito Ganhador";
+            this.lblPartido2.Visible = false;
+            // 
+            // lblNome2
+            // 
+            this.lblNome2.AutoSize = true;
+            this.lblNome2.Location = new System.Drawing.Point(203, 264);
+            this.lblNome2.Name = "lblNome2";
+            this.lblNome2.Size = new System.Drawing.Size(93, 13);
+            this.lblNome2.TabIndex = 9;
+            this.lblNome2.Text = "Prefeito Ganhador";
+            this.lblNome2.Visible = false;
+            // 
+            // lblCod2
+            // 
+            this.lblCod2.AutoSize = true;
+            this.lblCod2.Location = new System.Drawing.Point(203, 234);
+            this.lblCod2.Name = "lblCod2";
+            this.lblCod2.Size = new System.Drawing.Size(93, 13);
+            this.lblCod2.TabIndex = 8;
+            this.lblCod2.Text = "Prefeito Ganhador";
+            this.lblCod2.Visible = false;
+            // 
+            // lblPartido1
+            // 
+            this.lblPartido1.AutoSize = true;
+            this.lblPartido1.Location = new System.Drawing.Point(6, 294);
+            this.lblPartido1.Name = "lblPartido1";
+            this.lblPartido1.Size = new System.Drawing.Size(93, 13);
+            this.lblPartido1.TabIndex = 7;
+            this.lblPartido1.Text = "Prefeito Ganhador";
+            this.lblPartido1.Visible = false;
+            // 
+            // lblNome1
+            // 
+            this.lblNome1.AutoSize = true;
+            this.lblNome1.Location = new System.Drawing.Point(6, 264);
+            this.lblNome1.Name = "lblNome1";
+            this.lblNome1.Size = new System.Drawing.Size(93, 13);
+            this.lblNome1.TabIndex = 6;
+            this.lblNome1.Text = "Prefeito Ganhador";
+            this.lblNome1.Visible = false;
+            // 
+            // lblCod1
+            // 
+            this.lblCod1.AutoSize = true;
+            this.lblCod1.Location = new System.Drawing.Point(6, 234);
+            this.lblCod1.Name = "lblCod1";
+            this.lblCod1.Size = new System.Drawing.Size(93, 13);
+            this.lblCod1.TabIndex = 5;
+            this.lblCod1.Text = "Prefeito Ganhador";
+            this.lblCod1.Visible = false;
+            // 
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new System.Drawing.Point(144, 264);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(14, 13);
+            this.lblX.TabIndex = 4;
+            this.lblX.Text = "X";
+            this.lblX.Visible = false;
+            // 
+            // lblPrefeito
+            // 
+            this.lblPrefeito.AutoSize = true;
+            this.lblPrefeito.Location = new System.Drawing.Point(6, 194);
+            this.lblPrefeito.Name = "lblPrefeito";
+            this.lblPrefeito.Size = new System.Drawing.Size(93, 13);
+            this.lblPrefeito.TabIndex = 1;
+            this.lblPrefeito.Text = "Prefeito Ganhador";
+            // 
             // lstVereadores
             // 
             this.lstVereadores.FormattingEnabled = true;
@@ -78,78 +157,6 @@
             this.btnFim.UseVisualStyleBackColor = true;
             this.btnFim.Click += new System.EventHandler(this.btnFim_Click);
             // 
-            // lblPrefeito
-            // 
-            this.lblPrefeito.AutoSize = true;
-            this.lblPrefeito.Location = new System.Drawing.Point(6, 194);
-            this.lblPrefeito.Name = "lblPrefeito";
-            this.lblPrefeito.Size = new System.Drawing.Size(93, 13);
-            this.lblPrefeito.TabIndex = 1;
-            this.lblPrefeito.Text = "Prefeito Ganhador";
-            // 
-            // lblX
-            // 
-            this.lblX.AutoSize = true;
-            this.lblX.Location = new System.Drawing.Point(144, 264);
-            this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(14, 13);
-            this.lblX.TabIndex = 4;
-            this.lblX.Text = "X";
-            // 
-            // lblCod1
-            // 
-            this.lblCod1.AutoSize = true;
-            this.lblCod1.Location = new System.Drawing.Point(6, 234);
-            this.lblCod1.Name = "lblCod1";
-            this.lblCod1.Size = new System.Drawing.Size(93, 13);
-            this.lblCod1.TabIndex = 5;
-            this.lblCod1.Text = "Prefeito Ganhador";
-            // 
-            // lblNome1
-            // 
-            this.lblNome1.AutoSize = true;
-            this.lblNome1.Location = new System.Drawing.Point(6, 264);
-            this.lblNome1.Name = "lblNome1";
-            this.lblNome1.Size = new System.Drawing.Size(93, 13);
-            this.lblNome1.TabIndex = 6;
-            this.lblNome1.Text = "Prefeito Ganhador";
-            // 
-            // lblPartido1
-            // 
-            this.lblPartido1.AutoSize = true;
-            this.lblPartido1.Location = new System.Drawing.Point(6, 294);
-            this.lblPartido1.Name = "lblPartido1";
-            this.lblPartido1.Size = new System.Drawing.Size(93, 13);
-            this.lblPartido1.TabIndex = 7;
-            this.lblPartido1.Text = "Prefeito Ganhador";
-            // 
-            // lblPartido2
-            // 
-            this.lblPartido2.AutoSize = true;
-            this.lblPartido2.Location = new System.Drawing.Point(203, 294);
-            this.lblPartido2.Name = "lblPartido2";
-            this.lblPartido2.Size = new System.Drawing.Size(93, 13);
-            this.lblPartido2.TabIndex = 10;
-            this.lblPartido2.Text = "Prefeito Ganhador";
-            // 
-            // lblNome2
-            // 
-            this.lblNome2.AutoSize = true;
-            this.lblNome2.Location = new System.Drawing.Point(203, 264);
-            this.lblNome2.Name = "lblNome2";
-            this.lblNome2.Size = new System.Drawing.Size(93, 13);
-            this.lblNome2.TabIndex = 9;
-            this.lblNome2.Text = "Prefeito Ganhador";
-            // 
-            // lblCod2
-            // 
-            this.lblCod2.AutoSize = true;
-            this.lblCod2.Location = new System.Drawing.Point(203, 234);
-            this.lblCod2.Name = "lblCod2";
-            this.lblCod2.Size = new System.Drawing.Size(93, 13);
-            this.lblCod2.TabIndex = 8;
-            this.lblCod2.Text = "Prefeito Ganhador";
-            // 
             // FormFinalizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,6 +166,7 @@
             this.Controls.Add(this.gpGanhadores);
             this.Name = "FormFinalizador";
             this.Text = "FomFinalizador";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFinalizador_FormClosing);
             this.gpGanhadores.ResumeLayout(false);
             this.gpGanhadores.PerformLayout();
             this.ResumeLayout(false);

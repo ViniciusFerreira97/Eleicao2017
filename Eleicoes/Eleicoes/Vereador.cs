@@ -29,7 +29,7 @@ namespace Eleicoes
             }
             else
                 throw new InvalidDataException("Valor digitado para código do Vereador é invalido !\n" +
-                    "Por favor, digite um valor de 4 números !");
+                    "Por favor, digite um valor de 2 números, já que os 2 primeiros números advém do Partido !");
         }
 
         protected override bool VerificaExistencia(int cod)
