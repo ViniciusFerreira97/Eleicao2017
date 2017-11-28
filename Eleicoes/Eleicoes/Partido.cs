@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Eleicoes
 {
@@ -15,20 +16,34 @@ namespace Eleicoes
         public int numero;
         public int contCandidatos = 0;
 
-        public Partido(string nome)
+        public Partido(string nome, string sigla, string numero)
         {
-            if (nome != "")
+            if (numero != "")
             {
                 if (VerificaExistencia(nome))
                 {
+                    this.sigla = sigla;
                     this.nome = nome;
                 }
                 else
                     throw new InvalidDataException("Nome de Partido já existente! \nPor favor insira um Partido com nome diferente dos já cadastrados !");
+
+                int aux;
+                bool ok = int.TryParse(numero, out aux);
+                if (ok)
+                {
+                    if(VerificaCod(aux))
+                        this.numero = aux;
+                    else
+                        throw new InvalidDataException("Número de Partido já existente! \nPor favor insira um Partido com número diferente dos já cadastrados");
+
+                }
+                else
+                    throw new InvalidDataException("Número do Partido é inválido");
             }
             else
             {
-                throw new InvalidDataException("Nome de Partido não pode ser vazio!");
+                throw new InvalidDataException("Nenhum campo pode ser vazio!");
             }
         }
 
@@ -37,6 +52,17 @@ namespace Eleicoes
             foreach (Partido p in Urna.aPartidos)
             {
                 if (nome == p.nome)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        protected bool VerificaCod(int x)
+        {
+            foreach (Partido p in Urna.aPartidos)
+            {
+                if (x == p.numero)
                 {
                     return false;
                 }
@@ -65,13 +91,31 @@ namespace Eleicoes
             }
             return aux;
         }
+        //Função para excluir partido
+        public static void ExcluirPartido(int numero)
+        {
+            int aux = -1;
+            for (int i = 0; aux == -1; i++)
+            {
+                if (numero == Urna.aPartidos[i].numero) //Verificando qaul posição ele se encontra
+                    aux = i;
+            }
+            Partido x = Urna.aPartidos[aux];
+            if (x.contCandidatos == 0)
+            {
+                Urna.aPartidos.Remove(x);
+                MessageBox.Show("Partido Excluido");
+            }
+            else
+                MessageBox.Show("O partido não pode ser excluido de houver candidatos", "Erro Excluir Partido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         public static void SalvarPartidos()
         {
             Stream salvar = File.Open("Partido.txt", FileMode.Create);
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Partido p in Urna.aPartidos)
             {
-                escritor.WriteLine(p.nome);
+                escritor.WriteLine(p.nome+";"+p.sigla+";"+ p.numero);
             }
             escritor.Close();
             salvar.Close();
@@ -86,7 +130,8 @@ namespace Eleicoes
                 string linha = leitor.ReadLine();
                 while (linha != null)
                 {
-                    Urna.aPartidos.Add(new Partido(linha));
+                    string[] campos = linha.Split(';');
+                    Urna.aPartidos.Add(new Partido(campos[0], campos[1], campos[2]));
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

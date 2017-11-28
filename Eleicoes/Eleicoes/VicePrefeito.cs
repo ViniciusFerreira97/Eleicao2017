@@ -23,8 +23,8 @@ namespace Eleicoes
                 if (VerificaExistencia(aux))
                     this.codigo = aux;
                 else
-                    throw new InvalidDataException("Valor digitado para código do Vice-Prefeito é invalido !\n" +
-                        "Pois já existe um Vice-Prefeito com esse código !");
+                    throw new InvalidDataException("Valor digitado para código do Prefeito e Vice-Prefeito é invalido !\n" +
+                        "Pois já existe um Prefeito e Vice-Prefeito para esse Partido !");
             }
             else
                 throw new InvalidDataException("Valor digitado para código do Vice-Prefeito é invalido !\n" +

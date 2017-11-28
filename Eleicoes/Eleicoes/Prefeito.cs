@@ -28,8 +28,8 @@ namespace Eleicoes
                     this.codigo = aux;
                 }
                 else
-                    throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n" +
-                        "Pois já existe um Prefeito com esse código !");
+                    throw new InvalidDataException("Esse Partido já existe um Prefeito !\n" +
+                        "Favor excluir o memso ou criar novo Partido !");
             }
             else
                 throw new InvalidDataException("Valor digitado para código do Prefeito é invalido !\n" +
