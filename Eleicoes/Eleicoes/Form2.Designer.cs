@@ -65,6 +65,8 @@
             this.txtSigla = new System.Windows.Forms.TextBox();
             this.txtCod2 = new System.Windows.Forms.TextBox();
             this.lblCod2 = new System.Windows.Forms.Label();
+            this.cbxZonaEleitor = new System.Windows.Forms.ComboBox();
+            this.cbxSecaoEleitor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -422,15 +424,31 @@
             this.lblCod2.Text = "-";
             this.lblCod2.Visible = false;
             // 
+            // cbxZonaEleitor
+            // 
+            this.cbxZonaEleitor.FormattingEnabled = true;
+            this.cbxZonaEleitor.Location = new System.Drawing.Point(248, 96);
+            this.cbxZonaEleitor.Name = "cbxZonaEleitor";
+            this.cbxZonaEleitor.Size = new System.Drawing.Size(99, 21);
+            this.cbxZonaEleitor.TabIndex = 34;
+            // 
+            // cbxSecaoEleitor
+            // 
+            this.cbxSecaoEleitor.FormattingEnabled = true;
+            this.cbxSecaoEleitor.Location = new System.Drawing.Point(368, 96);
+            this.cbxSecaoEleitor.Name = "cbxSecaoEleitor";
+            this.cbxSecaoEleitor.Size = new System.Drawing.Size(99, 21);
+            this.cbxSecaoEleitor.TabIndex = 35;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 410);
+            this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.lblCod2);
             this.Controls.Add(this.txtCod2);
             this.Controls.Add(this.btnFim);
-            this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxPartido);
             this.Controls.Add(this.grpTipo);
@@ -448,6 +466,8 @@
             this.Controls.Add(this.txtVariavel2);
             this.Controls.Add(this.grpVice);
             this.Controls.Add(this.txtSigla);
+            this.Controls.Add(this.cbxZonaEleitor);
+            this.Controls.Add(this.cbxSecaoEleitor);
             this.Name = "Form2";
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
@@ -501,5 +521,7 @@
         private System.Windows.Forms.TextBox txtSigla;
         private System.Windows.Forms.TextBox txtCod2;
         private System.Windows.Forms.Label lblCod2;
+        private System.Windows.Forms.ComboBox cbxZonaEleitor;
+        private System.Windows.Forms.ComboBox cbxSecaoEleitor;
     }
 }

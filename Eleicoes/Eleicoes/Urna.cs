@@ -44,6 +44,8 @@ namespace Eleicoes
                 throw new InvalidDataException("Valor digitado para seção de votação da Urna é invalido !\n" +
                     "Por favor, digite um valor de números inteiros !");
         }
+        public string getZona() { return Convert.ToString(zona); }
+        public string getSecao() { return Convert.ToString(secao); }
         public override string ToString()
         {
             return "---Urna---  Zona: " + this.zona + "  Seção: " + this.secao;
