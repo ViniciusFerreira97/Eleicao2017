@@ -25,6 +25,15 @@ namespace Eleicoes
             Vereador.InicializarVereador("Vereador.txt");
             Eleitor.InicializarEleitores("Eleitor.txt");
             Urna.InicializarUrnas("Urna.txt");
+            //Salvando o total de votos
+            foreach(Vereador v in Urna.aVereador)
+            {
+                Urna.totalVotos += v.votos;
+            }
+            foreach (Prefeito v in Urna.aPrefeitos)
+            {
+                Urna.totalVotos += v.votos;
+            }
             //Tratando visibilidade dos objetos.
             rbnPrefeito.Checked = false;
             rbnVereador.Checked = false;

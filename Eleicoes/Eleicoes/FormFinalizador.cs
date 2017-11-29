@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
 
 
 namespace Eleicoes
@@ -21,12 +20,10 @@ namespace Eleicoes
 
         private void btnFim_Click(object sender, EventArgs e)
         {
-            SoundPlayer my_sound = new SoundPlayer("gemidaoAltaQualidadeEEfetividade.wav"); //put your own .wave file path
-            my_sound.Play();
-
             FinalizadorVotacao fim = new FinalizadorVotacao(Urna.aVereador);
             // Escrevendo os vereadores no ListBox
-            foreach (Vereador ver in Urna.aVereador)
+            IEnumerable<Vereador> query = Urna.aVereador.OrderByDescending(c => c.votos);
+            foreach (Vereador ver in query)
                 lstVereadores.Items.Add(ver.ToString());
 
             if (fim.getVencedor() != null)
