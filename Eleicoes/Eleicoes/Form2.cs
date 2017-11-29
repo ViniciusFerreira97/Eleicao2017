@@ -93,6 +93,8 @@ namespace Eleicoes
             lblDat.Visible = true;
             lblCodgo.Visible = true;
             lblEmail.Visible = false;
+            lblEmail.Visible = false;
+            lblEmail.Visible = false;
             lblPartido.Visible = false;
             txtDataNascimento.Visible = false;
             txtNome.Visible = true;
@@ -368,6 +370,12 @@ namespace Eleicoes
             txtVariavel1.Text = Convert.ToString(x.numero);
             txtPartidoVice.Text = cbxPartido.Text;
             txtCodVice.Text = Convert.ToString(x.numero);
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            FrmAlteraPartido frmAltera = new FrmAlteraPartido();
+            frmAltera.Show();
         }
     }
 }

@@ -54,6 +54,12 @@
     <Compile Include="FormFinalizador.Designer.cs">
       <DependentUpon>FormFinalizador.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAlteraPartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlteraPartido.Designer.cs">
+      <DependentUpon>FrmAlteraPartido.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmExcluir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlteraPartido.resx">
+      <DependentUpon>FrmAlteraPartido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExcluir.resx">
       <DependentUpon>FrmExcluir.cs</DependentUpon>

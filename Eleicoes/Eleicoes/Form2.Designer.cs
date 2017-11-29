@@ -67,6 +67,7 @@
             this.lblCod2 = new System.Windows.Forms.Label();
             this.cbxZonaEleitor = new System.Windows.Forms.ComboBox();
             this.cbxSecaoEleitor = new System.Windows.Forms.ComboBox();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.grpVice.SuspendLayout();
@@ -149,7 +150,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(22, 361);
+            this.btnCadastrar.Location = new System.Drawing.Point(10, 366);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(95, 32);
             this.btnCadastrar.TabIndex = 3;
@@ -159,7 +160,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(182, 361);
+            this.btnExcluir.Location = new System.Drawing.Point(124, 366);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;
@@ -391,7 +392,7 @@
             // 
             // btnFim
             // 
-            this.btnFim.Location = new System.Drawing.Point(351, 361);
+            this.btnFim.Location = new System.Drawing.Point(362, 366);
             this.btnFim.Name = "btnFim";
             this.btnFim.Size = new System.Drawing.Size(112, 32);
             this.btnFim.TabIndex = 30;
@@ -440,11 +441,22 @@
             this.cbxSecaoEleitor.Size = new System.Drawing.Size(99, 21);
             this.cbxSecaoEleitor.TabIndex = 35;
             // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(244, 366);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(95, 32);
+            this.btnAlterar.TabIndex = 36;
+            this.btnAlterar.Text = "Alterar Partido";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 410);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.txtDataNascimento);
             this.Controls.Add(this.lblCod2);
             this.Controls.Add(this.txtCod2);
@@ -523,5 +535,6 @@
         private System.Windows.Forms.Label lblCod2;
         private System.Windows.Forms.ComboBox cbxZonaEleitor;
         private System.Windows.Forms.ComboBox cbxSecaoEleitor;
+        private System.Windows.Forms.Button btnAlterar;
     }
 }
