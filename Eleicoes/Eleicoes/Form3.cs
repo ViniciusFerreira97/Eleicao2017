@@ -12,25 +12,28 @@ namespace Eleicoes
 {
     public partial class Form3 : Form
     {
+        //Variaveis de Controle do Form
+        bool votacaoIniciada = false;
+        bool votacaoFinalizada = false;
         bool confirmar = false;
-
-        int[,] votosPrefeitos = new int[Urna.aPrefeitos.Count, 2];
         bool prefeito = true;
 
-
+        //Variaveis de Voto
+        int[,] votosPrefeitos = new int[Urna.aPrefeitos.Count, 2];
         private int votosNulosPref;
         private int votosBrancosPref;
         private int votosNulosVer;
         private int votosBrancosVer;
-
         int[,] votosVereador = new int[Urna.aVereador.Count, 2];
 
+        //Variaveis de seleção da Urna
         int zona, secao, urnaPos;
 
 
         public Form3()
         {
             InitializeComponent();
+            //Preenchendo as matrizes
             for (int c = 0; c < votosPrefeitos.GetLength(0); c++)
             {
                 votosPrefeitos[c, 0] = Urna.aPrefeitos[c].GetCodigo();
@@ -46,23 +49,33 @@ namespace Eleicoes
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Eleitor.aEleitores.Count != 0)
+            //Teste se a votação foi iniciada e foi finalizada
+            if (votacaoIniciada && !votacaoFinalizada)
             {
-                Eleitor.GetZonaESecao(txtBTitulo.Text, out zona, out secao);
-                urnaPos = Urna.GetUrna(zona, secao);
-                Urna.aUrnas[urnaPos].SetVotos(votosPrefeitos, votosVereador, votosNulosPref, votosBrancosPref, votosNulosVer, votosBrancosVer);
-                Eleitor.ConfirmaVoto(txtBTitulo.Text);
+                MessageBox.Show("Finalize a votação por favor");
+                e.Cancel = true;
             }
+            else
+            {
+
+                if (Eleitor.aEleitores.Count != 0)
+                {
+                    Eleitor.GetZonaESecao(txtBTitulo.Text, out zona, out secao);
+                    urnaPos = Urna.GetUrna(zona, secao);
+                    Urna.aUrnas[urnaPos].SetVotos(votosPrefeitos, votosVereador, votosNulosPref, votosBrancosPref, votosNulosVer, votosBrancosVer);
+                    Eleitor.ConfirmaVoto(txtBTitulo.Text);
+                }
 
 
-            Partido.SalvarPartidos();
-            VicePrefeito.SalvarVice();
-            Prefeito.SalvarPrefeitos();
-            Vereador.SalvarVereador();
-            Urna.SalvarUrnas();
-            Eleitor.SalvarEleitores();
-            Form1 form1 = new Form1();
-            form1.Show();
+                Partido.SalvarPartidos();
+                VicePrefeito.SalvarVice();
+                Prefeito.SalvarPrefeitos();
+                Vereador.SalvarVereador();
+                Urna.SalvarUrnas();
+                Eleitor.SalvarEleitores();
+                Form1 form1 = new Form1();
+                form1.Show();
+            }
         }
 
         private void btn01_Click(object sender, EventArgs e)
@@ -124,7 +137,7 @@ namespace Eleicoes
             mskVotacao.Text += "0";
         }
 
-        //Alterar o modo de votação para Vereador
+        //Altera o modo de votação para Vereador
         public void alterarVotacaoVereador()
         {
 
@@ -137,9 +150,10 @@ namespace Eleicoes
             prefeito = false;
         }
 
-        // Apagar instruções de confirmação
-        public void limparVisorDeConfirmacao()
+        // Limpa visor
+        public void limparVisor()
         {
+            // Apaga instruções de confirmação
             lblAperta.Enabled = false;
             lblVerde.Enabled = false;
             lblVerme.Enabled = false;
@@ -147,9 +161,15 @@ namespace Eleicoes
             lblVerde.Visible = false;
             lblVerme.Visible = false;
 
+            // Apaga os textos dos campos
+            mskVotacao.Text = "";
+            txtBNome.Text = "";
+            txtBPartido.Text = "";
+            txtViceNome.Text = "";
+
         }
 
-        // Mostrar instruções de confirmação
+        // Mostra instruções de confirmação
         public void mostrarVisorDeConfirmaca()
         {
 
@@ -162,9 +182,15 @@ namespace Eleicoes
 
         }
 
+        private void finalizaVotacao()
+        {
+            //Confirmando que a votação foi finalizada
+            votacaoFinalizada = true;
+            this.Close();
+        }
+
         private void btnBranco_Click(object sender, EventArgs e)
         {
-
             //Verificando se a votação é para prefeito ou para vereador
             if (prefeito)
             {
@@ -174,7 +200,7 @@ namespace Eleicoes
             else
             {
                 votosBrancosVer++;
-                this.Close();
+                finalizaVotacao();
             }
 
 
@@ -219,6 +245,9 @@ namespace Eleicoes
 
                         //Desativando o Botão
                         btnVerif.Enabled = false;
+
+                        //Iniciando Votação
+                        votacaoIniciada = true;
                     }
 
                 }
@@ -228,17 +257,8 @@ namespace Eleicoes
         private void btnCorrige_Click(object sender, EventArgs e)
         {
             //Limpando o textboxs
-            mskVotacao.Text = "";
-            txtBNome.Text = "";
-            txtBPartido.Text = "";
-            limparVisorDeConfirmacao();
-
-            //Verificando se a votação é para prefeito ou para vereador
-            if (prefeito)
-            {
-                txtViceNome.Text = "";
-
-            }
+            limparVisor();
+            //Desativando a confirmação
             confirmar = false;
         }
 
@@ -294,7 +314,6 @@ namespace Eleicoes
                             mostrarVisorDeConfirmaca();
 
                             confirmar = true;
-
                         }
                     }
                     else
@@ -302,12 +321,8 @@ namespace Eleicoes
                         if (!nulo)
                         {
                             votosPrefeitos[aux, 1]++;
-                            mskVotacao.Text = "";
-                            txtBNome.Text = "";
-                            txtBPartido.Text = "";
-                            txtViceNome.Text = "";
 
-                            limparVisorDeConfirmacao();
+                            limparVisor();
 
                             alterarVotacaoVereador();
 
@@ -316,13 +331,8 @@ namespace Eleicoes
                         else
                         {
                             votosNulosPref++;
-
-                            mskVotacao.Text = "";
-                            txtBNome.Text = "";
-                            txtBPartido.Text = "";
-                            txtViceNome.Text = "";
-
-                            limparVisorDeConfirmacao();
+                            
+                            limparVisor();
 
                             alterarVotacaoVereador();
 
@@ -336,26 +346,19 @@ namespace Eleicoes
                     //Verificando se o botão Confirma ja foi pressionado
                     if (!confirmar)
                     {
-
                         txtBNome.Text = "Branco";
                         txtViceNome.Text = "Branco";
                         txtBPartido.Text = "Branco";
 
                         mostrarVisorDeConfirmaca();
-
-
+                        
                         confirmar = true;
                     }
                     else
                     {
                         votosBrancosPref++;
-
-                        mskVotacao.Text = "";
-                        txtBNome.Text = "";
-                        txtBPartido.Text = "";
-                        txtViceNome.Text = "";
-
-                        limparVisorDeConfirmacao();
+                        
+                        limparVisor();
 
                         alterarVotacaoVereador();
 
@@ -392,7 +395,6 @@ namespace Eleicoes
                         if (!nulo)
                         {
                             txtBNome.Text = Urna.aVereador[aux].GetNome();
-
                             txtBPartido.Text = Urna.aVereador[aux].GetPartidoSigla();
 
                             mostrarVisorDeConfirmaca();
@@ -402,7 +404,6 @@ namespace Eleicoes
                         else
                         {
                             txtBNome.Text = "Nulo";
-
                             txtBPartido.Text = "Nulo";
 
                             mostrarVisorDeConfirmaca();
@@ -417,28 +418,19 @@ namespace Eleicoes
                         if (!nulo)
                         {
                             votosVereador[aux, 1]++;
-                            mskVotacao.Text = "";
-                            txtBNome.Text = "";
-                            txtBPartido.Text = "";
+                            limparVisor();
 
-                            limparVisorDeConfirmacao();
-
-
-                            this.Close();
+                            finalizaVotacao();
 
                             confirmar = false;
                         }
                         else
                         {
                             votosNulosVer++;
+                            
+                            limparVisor();
 
-                            mskVotacao.Text = "";
-                            txtBNome.Text = "";
-                            txtBPartido.Text = "";
-
-                            limparVisorDeConfirmacao();
-
-                            this.Close();
+                            finalizaVotacao();
 
                             confirmar = false;
 
@@ -451,9 +443,7 @@ namespace Eleicoes
                     if (!confirmar)
                     {
                         txtBNome.Text = "Branco";
-
                         txtBPartido.Text = "Branco";
-
 
                         mostrarVisorDeConfirmaca();
 
@@ -462,15 +452,11 @@ namespace Eleicoes
                     else
                     {
                         votosBrancosVer++;
+                        
+                        limparVisor();
 
-                        mskVotacao.Text = "";
-                        txtBNome.Text = "";
-                        txtBPartido.Text = "";
-
-                        limparVisorDeConfirmacao();
-
-                        this.Close();
-
+                        finalizaVotacao();
+                        
                         confirmar = false;
                     }
                 }
