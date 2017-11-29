@@ -57,6 +57,7 @@ namespace Eleicoes
                     MessageBox.Show("Urna excluida com sucesso");
                 }
             }
+            txtExcluir.Text = "";
         }
 
         private void FrmExcluir_FormClosing(object sender, FormClosingEventArgs e)
@@ -89,6 +90,7 @@ namespace Eleicoes
 
         private void rbnUrna_CheckedChanged(object sender, EventArgs e)
         {
+            lblExcluir.Text = "N° Seção";
             grpTipo.Visible = false;
         }
     }
