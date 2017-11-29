@@ -39,6 +39,8 @@
             this.grpTipo = new System.Windows.Forms.GroupBox();
             this.rbnVereador = new System.Windows.Forms.RadioButton();
             this.rbnPrefeito = new System.Windows.Forms.RadioButton();
+            this.btnListar = new System.Windows.Forms.Button();
+            this.lstEspecificacao = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.grpTipo.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +106,7 @@
             // 
             // txtExcluir
             // 
-            this.txtExcluir.Location = new System.Drawing.Point(5, 102);
+            this.txtExcluir.Location = new System.Drawing.Point(5, 106);
             this.txtExcluir.Name = "txtExcluir";
             this.txtExcluir.Size = new System.Drawing.Size(116, 20);
             this.txtExcluir.TabIndex = 2;
@@ -112,7 +114,7 @@
             // lblExcluir
             // 
             this.lblExcluir.AutoSize = true;
-            this.lblExcluir.Location = new System.Drawing.Point(5, 83);
+            this.lblExcluir.Location = new System.Drawing.Point(5, 85);
             this.lblExcluir.Name = "lblExcluir";
             this.lblExcluir.Size = new System.Drawing.Size(44, 13);
             this.lblExcluir.TabIndex = 3;
@@ -120,7 +122,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(139, 245);
+            this.btnExcluir.Location = new System.Drawing.Point(247, 329);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(182, 37);
             this.btnExcluir.TabIndex = 4;
@@ -132,7 +134,7 @@
             // 
             this.grpTipo.Controls.Add(this.rbnVereador);
             this.grpTipo.Controls.Add(this.rbnPrefeito);
-            this.grpTipo.Location = new System.Drawing.Point(0, 159);
+            this.grpTipo.Location = new System.Drawing.Point(196, 73);
             this.grpTipo.Name = "grpTipo";
             this.grpTipo.Size = new System.Drawing.Size(248, 54);
             this.grpTipo.TabIndex = 14;
@@ -161,11 +163,31 @@
             this.rbnPrefeito.Text = "Prefeito / Vice Prefeito";
             this.rbnPrefeito.UseVisualStyleBackColor = true;
             // 
+            // btnListar
+            // 
+            this.btnListar.Location = new System.Drawing.Point(32, 329);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(182, 37);
+            this.btnListar.TabIndex = 15;
+            this.btnListar.Text = "Listar";
+            this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
+            // 
+            // lstEspecificacao
+            // 
+            this.lstEspecificacao.FormattingEnabled = true;
+            this.lstEspecificacao.Location = new System.Drawing.Point(5, 152);
+            this.lstEspecificacao.Name = "lstEspecificacao";
+            this.lstEspecificacao.Size = new System.Drawing.Size(441, 147);
+            this.lstEspecificacao.TabIndex = 16;
+            // 
             // FrmExcluir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 294);
+            this.ClientSize = new System.Drawing.Size(466, 378);
+            this.Controls.Add(this.lstEspecificacao);
+            this.Controls.Add(this.btnListar);
             this.Controls.Add(this.grpTipo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.lblExcluir);
@@ -196,5 +218,7 @@
         private System.Windows.Forms.GroupBox grpTipo;
         private System.Windows.Forms.RadioButton rbnVereador;
         private System.Windows.Forms.RadioButton rbnPrefeito;
+        private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.ListBox lstEspecificacao;
     }
 }

@@ -122,8 +122,8 @@ namespace Eleicoes
 
         public override string ToString()
         {
-            return "Eleitor -- Nome: " + nome + "Data de nascimento: " + dataNascimento +
-                " Titulo de eleitor: " + tituloEleitor + " Zona: " + zona + " Seção: " + secao;
+            return "Eleitor-- Nome: " + nome + "| Data de nascimento: " + dataNascimento +
+                "| Titulo de eleitor: " + tituloEleitor + "| Zona: " + zona + "| Seção: " + secao;
         }
         public static void SalvarEleitores()
         {
@@ -131,7 +131,13 @@ namespace Eleicoes
             StreamWriter escritor = new StreamWriter(salvar);
             foreach (Eleitor p in aEleitores)
             {
-                escritor.WriteLine(p.nome + ";" + p.dataNascimento + ";" + p.tituloEleitor + ";" + p.zona + ";" + p.secao);
+                int aux = -1;
+                if (p.jaVotou == true)
+                    aux = 1;
+                else
+                    aux = 0;
+
+                escritor.WriteLine(p.nome + ";" + p.dataNascimento + ";" + p.tituloEleitor + ";" + p.zona + ";" + p.secao+ ";" + aux);
             }
             escritor.Close();
             salvar.Close();
@@ -141,6 +147,7 @@ namespace Eleicoes
             if (File.Exists("Eleitor.txt"))
             {
                 aEleitores.Clear();
+                int cont = 0;
                 Stream entrada = File.Open(caminho, FileMode.Open);
                 StreamReader leitor = new StreamReader(entrada);
                 string linha = leitor.ReadLine();
@@ -148,6 +155,12 @@ namespace Eleicoes
                 {
                     string[] campos = linha.Split(';');
                     aEleitores.Add(new Eleitor(campos[0], campos[1], campos[2], campos[3], campos[4]));
+                    if (int.Parse(campos[5]) == 0)
+                        Eleitor.aEleitores[cont].jaVotou = false;
+                    else
+                        Eleitor.aEleitores[cont].jaVotou = true;
+
+                    cont++;
                     linha = leitor.ReadLine();
                 }
                 leitor.Close();

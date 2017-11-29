@@ -66,7 +66,7 @@ namespace Eleicoes
 
         public override string ToString()
         {
-            return "Prefeito -- Código: " + codigo + base.ToString();
+            return "Prefeito -- " + base.ToString();
         }
         public static void ExcluirCandidato(int a, int b, int c)
         {

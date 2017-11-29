@@ -163,7 +163,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 32);
             this.btnExcluir.TabIndex = 4;
-            this.btnExcluir.Text = "Excluir ";
+            this.btnExcluir.Text = "Excluir / Listar";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 

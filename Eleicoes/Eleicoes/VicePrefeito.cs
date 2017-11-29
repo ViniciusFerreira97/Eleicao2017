@@ -46,7 +46,7 @@ namespace Eleicoes
 
         public override string ToString()
         {
-            return "Vice-Prefeito -- Código: " + codigo + base.ToString();
+            return "Vice-Prefeito -- " + codigo + base.ToString();
         }
         public static int VerificaPosicao(int x)
         {

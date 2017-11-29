@@ -20,6 +20,7 @@ namespace Eleicoes
 
         private void btnFim_Click(object sender, EventArgs e)
         {
+            lstVereadores.Items.Clear();
             FinalizadorVotacao fim = new FinalizadorVotacao(Urna.aVereador);
             // Escrevendo os vereadores no ListBox
             IEnumerable<Vereador> query = Urna.aVereador.OrderByDescending(c => c.votos);

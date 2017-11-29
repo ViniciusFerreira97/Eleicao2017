@@ -57,8 +57,8 @@ namespace Eleicoes
         }
         public override string ToString()
         {
-            return "Código: " + codigo + " Nome: " + nome + " Email: " + email +
-                " Aniversario: " + dataNascimento + " Partido: " + partido + " Votos: "+ votos;
+            return "| Código: " + codigo + "| Nome: " + nome + "| Email: " + email +
+                "| Aniversario: " + dataNascimento + "| Partido: " + partido + "| Votos: "+ votos;
         }
     }
 }

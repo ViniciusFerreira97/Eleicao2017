@@ -79,6 +79,7 @@ namespace Eleicoes
             cbxPartido.Text = "";
             cbxSecaoEleitor.Text = "";
             cbxZonaEleitor.Text = "";
+            cbxPartido.Text = "";
         }
         private void rbnPartido_CheckedChanged(object sender, EventArgs e)
         {
@@ -322,6 +323,7 @@ namespace Eleicoes
                 Urna.aUrnas.Add(new Urna(txtVariavel1.Text, txtVariavel2.Text));
             }
             zerarTudo();
+            rbnVereador.Checked = true;
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {

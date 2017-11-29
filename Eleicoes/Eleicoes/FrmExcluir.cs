@@ -15,6 +15,8 @@ namespace Eleicoes
         public FrmExcluir()
         {
             InitializeComponent();
+            rbnPartido.Checked = true;
+            grpTipo.Visible = false;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -57,6 +59,7 @@ namespace Eleicoes
                     MessageBox.Show("Urna excluida com sucesso");
                 }
             }
+            lstEspecificacao.Items.Clear();
             txtExcluir.Text = "";
         }
 
@@ -92,6 +95,53 @@ namespace Eleicoes
         {
             lblExcluir.Text = "N° Seção";
             grpTipo.Visible = false;
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            if (rbnPartido.Checked == true)
+            {
+                lstEspecificacao.Items.Clear();
+                foreach(Partido x in Urna.aPartidos)
+                {
+                    lstEspecificacao.Items.Add(x.ToString());
+                }
+            }
+            if (rbnCandidato.Checked == true)
+            {
+                if (rbnPrefeito.Checked == true)
+                {
+                    lstEspecificacao.Items.Clear();
+                    foreach (Prefeito x in Urna.aPrefeitos)
+                    {
+                        lstEspecificacao.Items.Add(x.ToString());
+                    }
+                }
+                else if (rbnVereador.Checked == true)
+                {
+                    lstEspecificacao.Items.Clear();
+                    foreach (Vereador x in Urna.aVereador)
+                    {
+                        lstEspecificacao.Items.Add(x.ToString());
+                    }
+                }
+            }
+            else if (rbnEleitores.Checked == true)
+            {
+                lstEspecificacao.Items.Clear();
+                foreach (Eleitor x in Eleitor.aEleitores)
+                {
+                    lstEspecificacao.Items.Add(x.ToString());
+                }
+            }
+            else if (rbnUrna.Checked == true)
+            {
+                lstEspecificacao.Items.Clear();
+                foreach (Urna x in Urna.aUrnas)
+                {
+                    lstEspecificacao.Items.Add(x.ToString());
+                }
+            }
         }
     }
 }

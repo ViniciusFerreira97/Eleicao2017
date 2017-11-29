@@ -76,7 +76,7 @@ namespace Eleicoes
 
         public override string ToString()
         {
-            return "Partido: " + sigla;
+            return "Partido: " + sigla + "    Numero: " +numero;
         }
 
         //Clonar posição do array em que está o texto selecionado
